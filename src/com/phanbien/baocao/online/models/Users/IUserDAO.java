@@ -1,5 +1,6 @@
 package com.phanbien.baocao.online.models.Users;
 
+import java.io.InputStream;
 import java.sql.ResultSet;
 
 import com.phanbien.baocao.online.utils.objectdatabase.User;
@@ -13,6 +14,6 @@ public interface IUserDAO {
 	
 	public boolean ChangePassword(String username,String oldpassword,String newpassword);
 	
-	public boolean ChangeAvatar(String username,String nameAvatar);
+	public boolean ChangeAvatar(String username,InputStream nameAvatar);
 	
 }

@@ -84,23 +84,22 @@
 											<tr>
 												<th style="width: 50px">
 													<div class="cuibap">
-														<form method="post" id="frm-changeAvatar"
-															action='<%=request.getContextPath() %>/uploadfile'
-															enctype="multipart/form-data">
+														<form method="post" action="<%=request.getContextPath() %>/editavatar" enctype="multipart/form-data">
 															<p align="center">
 																<c:if test="${sessionScope.user.getAvatar() !=null }">
 																	<img width="100" height="100" id="myavatar"
-																		src="<%=request.getContextPath() %>/users/avatar/${sessionScope.user.getAvatar()} ">
+																		src="<%=request.getContextPath() %>/avatar?id=${sessionScope.user.getMaSo()}">
 																</c:if>
 																<c:if test="${sessionScope.user.getAvatar() ==null }">
 																	<img width="100" height="100" id="myavatar"
-																		src="<%=request.getContextPath()%>/users/avatar/avatar-default.png">
+																		src="<%=request.getContextPath()%>/public/images/avatar-default.png">
 																</c:if>
 															</p>
 															
 																    <input type="file" id="my_file"
-																	name="uploadFile" style="display: none;" accept="image/jpeg"
+																	name="photo" style="display: none;" accept="image/jpeg"
 																	onchange="onFileSelected(event)" /> 
+																	
 																	<p align="center">
 																	<input
 																	type="submit" value="Lưu" id="btnLuuAvatar"

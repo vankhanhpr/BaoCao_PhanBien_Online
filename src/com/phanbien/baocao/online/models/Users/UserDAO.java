@@ -1,5 +1,6 @@
 package com.phanbien.baocao.online.models.Users;
 
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -83,13 +84,13 @@ public class UserDAO implements IUserDAO{
 	}
 
 	@Override
-	public boolean ChangeAvatar(String username, String nameAvatar) {
+	public boolean ChangeAvatar(String username, InputStream nameAvatar) {
 		String sql="update User set Avatar=? where username=?";
 		PreparedStatement pre=null;
 		try{
 			
 			pre=dbm.getConnect().prepareStatement(sql);
-			pre.setString(1, nameAvatar);
+			pre.setBlob(1, nameAvatar);
 			pre.setString(2, username);
 			
 		}catch(SQLException e){

@@ -1,5 +1,6 @@
 package com.phanbien.baocao.online.models.Users;
 
+import java.io.InputStream;
 import java.sql.SQLException;
 
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
@@ -28,7 +29,7 @@ public class UserControl {
 	public boolean ChangePassword(String username, String oldpassword, String newpassword){
 		return this.uModel.ChangePassword(username,oldpassword,newpassword);
 	}
-	public boolean ChangeAvatar(String username,String nameAvatar){
+	public boolean ChangeAvatar(String username,InputStream nameAvatar){
 		return this.uModel.ChangeAvatar(username, nameAvatar);
 	}
 }

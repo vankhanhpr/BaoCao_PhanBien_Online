@@ -1,47 +1,59 @@
 package com.phanbien.baocao.online.controls;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
-import com.phanbien.baocao.online.IPagePath;
 import com.phanbien.baocao.online.models.Users.UserControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
-import com.phanbien.baocao.online.utils.classes.Page;
 import com.phanbien.baocao.online.utils.objectdatabase.User;
 
-@WebServlet("/login")
-
-
-public class Authe extends HttpServlet  implements IPagePath{
+/**
+ * Servlet implementation class EditAvatar
+ */
+@WebServlet("/editavatar")
+@MultipartConfig(maxFileSize = 16177215)
+public class EditAvatar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public Authe() {
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public EditAvatar() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		request.getRequestDispatcher("404page.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		InputStream inputStream = null;
+		Part filePart = request.getPart("photo");
+		if (filePart != null) {
+			// prints out some information for debugging
+			System.out.println(filePart.getName());
+			System.out.println(filePart.getSize());
+			System.out.println(filePart.getContentType());
 
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String chucvu = request.getParameter("chucvu");
-		
+			// obtains input stream of the upload file
+			inputStream = filePart.getInputStream();
+		}
 
-		System.out.print("abc"+request.getParameter("action"));
-		// Lấy Connectionpool có sẵn trong context: nếu có thì dùng ko có tạo  mới
 		ServletContext context = getServletConfig().getServletContext();
 
 		ConnectionPool cp = (ConnectionPool) context.getAttribute("c_pool");
@@ -51,35 +63,31 @@ public class Authe extends HttpServlet  implements IPagePath{
 		if (cp == null) {
 			context.setAttribute("c_pool", uControl.getConnectionPool());
 		}
+		HttpSession session = request.getSession();
+		User curUser = (User) session.getAttribute("user");
 
-		User curUser = null;
+		String username = curUser.getUsername();
+
+		boolean changePass = uControl.ChangeAvatar(username, inputStream);
+		if (!changePass) {
+			response.getWriter().write("error");
+			return;
+		}
+
 		try {
-			curUser = uControl.CheckLogin(username, password, chucvu);
+			curUser=uControl.CheckLogin(username, curUser.getPassword(), curUser.getChucVu());
 		} catch (SQLException e) {
-
+			
 			e.printStackTrace();
 		}
+		
+		
+		session.setAttribute("user", curUser);
+
+		request.getRequestDispatcher("/thong-tin-ca-nhan/edit?update=success").forward(request, response);
 
 		uControl.releaseConnection();
 
-		if (curUser == null) {
-			response.getWriter().write("error");
-		} else {
-			response.getWriter().write("trang-chu");
-			HttpSession session = request.getSession();
-			
-			Page page = new Page();
-			
-			page.setHomepage(HOMEPAGE);
-			page.setListtopic(LISTOPIC);
-			page.setProfile(PROFILE);
-			page.setReport(REPORT);
-			
-			session.setAttribute("pages", page);
-			
-			session.setAttribute("user", curUser);
-			
-			
-		}
 	}
+
 }

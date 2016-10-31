@@ -1,5 +1,6 @@
 package com.phanbien.baocao.online.models.Users;
 
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -33,6 +34,7 @@ public class UserModel {
 			if(rs.next()){
 				u=new User();
 				u.setUsername(rs.getString(1));
+				u.setPassword(rs.getString(2));
 				u.setChucVu(rs.getString(3));
 				u.setHoTen(rs.getString(4));
 				u.setMaSo(rs.getString(5));
@@ -42,7 +44,7 @@ public class UserModel {
 				u.setKhoa(rs.getString(9));
 				u.setNgaySinh(rs.getDate(10).toString());
 				u.setDiaChi(rs.getString(11));
-				u.setAvatar(rs.getString(12));
+				u.setAvatar(rs.getBlob(12));
 			}
 		}
 		return u;
@@ -53,7 +55,7 @@ public class UserModel {
 	public boolean ChangePassword(String username, String oldpassword, String newpassword){
 		return this.uDAO.ChangePassword(username,oldpassword,newpassword);
 	}
-	public boolean ChangeAvatar(String username,String nameAvatar){
+	public boolean ChangeAvatar(String username,InputStream nameAvatar){
 		return this.uDAO.ChangeAvatar(username, nameAvatar);
 	}
 	

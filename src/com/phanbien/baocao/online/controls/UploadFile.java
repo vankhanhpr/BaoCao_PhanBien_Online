@@ -114,17 +114,10 @@ public class UploadFile extends HttpServlet {
 					// processes only fields that are not form fields
 					if (!item.isFormField()) {
 						fileName = new File(item.getName()).getName();
-						String extension = FilenameUtils.getExtension(fileName);
-						fileName = curUser.getUsername() + "." + extension;
 						String filePath = uploadPath + File.separator + fileName;
 						File storeFile = new File(filePath);
 						// saves the file on disk
 						item.write(storeFile);
-						boolean changePass = uControl.ChangeAvatar(username, fileName);
-						if (!changePass) {
-							response.getWriter().write("error");
-							return;
-						}
 					}
 				}
 			}

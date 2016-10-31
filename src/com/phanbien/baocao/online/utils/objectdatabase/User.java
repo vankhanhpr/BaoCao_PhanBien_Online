@@ -1,5 +1,6 @@
 package com.phanbien.baocao.online.utils.objectdatabase;
 
+import java.sql.Blob;
 import java.util.Date;
 
 public class User {
@@ -71,11 +72,11 @@ public class User {
 		DiaChi = diaChi;
 	}
 	
-	public String getAvatar() {
+	public Blob getAvatar() {
 		return Avatar;
 	}
-	public void setAvatar(String avatar) {
-		Avatar = avatar;
+	public void setAvatar(Blob blob) {
+		Avatar = blob;
 	}
 
 	private String Username;
@@ -89,6 +90,6 @@ public class User {
 	private String Khoa;
 	private String NgaySinh;
 	private String DiaChi;
-	private String Avatar;
+	private Blob Avatar;
 
 }

@@ -43,12 +43,12 @@
 										<tr>
 											<td>Hình:</td>
 											<td><c:if
-													test="${sessionScope.user.getAvatar() !=null }">
+													test="${sessionScope.user !=null }">
 													<img
-														src="<%=request.getContextPath() %>/users/avatar/${sessionScope.user.getAvatar()}" width="100" height="100">
-												</c:if> <c:if test="${sessionScope.user.getAvatar() ==null }">
+														src="<%=request.getContextPath() %>/avatar?id=${sessionScope.user.getMaSo()}" width="100" height="100">
+												</c:if> <c:if test="${sessionScope.user ==null }">
 													<img
-														src="<%=request.getContextPath()%>/users/avatar/avatar-default.png" width="100" height="100">
+														src="<%=request.getContextPath()%>/public/images/avatar-default.png" width="100" height="100">
 												</c:if></td>
 
 										</tr>
