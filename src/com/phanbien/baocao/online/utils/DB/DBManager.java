@@ -61,6 +61,7 @@ public class DBManager {
 		if (pre != null) {
 			try {
 				int numRow = pre.executeUpdate();
+				System.out.println(numRow);
 				if (numRow == 0) {
 					this.connect.rollback();
 				} else {
@@ -91,6 +92,7 @@ public class DBManager {
 	public boolean delete(PreparedStatement pre) {
 		return executeUpdate(pre);
 	}
+	
 
 	public ResultSet get(PreparedStatement pre) {
 		try {
@@ -120,6 +122,5 @@ public class DBManager {
 		}
 		return null;
 	}
-
 
 }

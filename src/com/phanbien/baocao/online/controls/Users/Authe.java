@@ -1,4 +1,4 @@
-package com.phanbien.baocao.online.controls;
+package com.phanbien.baocao.online.controls.Users;
 
 import java.io.IOException;
 import java.sql.SQLException;

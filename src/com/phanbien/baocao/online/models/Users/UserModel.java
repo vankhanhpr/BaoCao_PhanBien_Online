@@ -58,6 +58,30 @@ public class UserModel {
 	public boolean ChangeAvatar(String username,InputStream nameAvatar){
 		return this.uDAO.ChangeAvatar(username, nameAvatar);
 	}
+	public User InfoUser(String username) throws SQLException{
+		User u=null;
+		
+		ResultSet rs=this.uDAO.InfoUser(username);
+		
+		if(rs!=null){
+			if(rs.next()){
+				u=new User();
+				u.setUsername(rs.getString(1));
+				u.setPassword(rs.getString(2));
+				u.setChucVu(rs.getString(3));
+				u.setHoTen(rs.getString(4));
+				u.setMaSo(rs.getString(5));
+				u.setSDT(rs.getString(6));
+				u.setEmail(rs.getString(7));
+				u.setChuyenNganh(rs.getString(8));
+				u.setKhoa(rs.getString(9));
+				u.setNgaySinh(rs.getDate(10).toString());
+				u.setDiaChi(rs.getString(11));
+				u.setAvatar(rs.getBlob(12));
+			}
+		}
+		return u;
+	}
 	
 
 }

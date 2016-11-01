@@ -55,7 +55,7 @@ public class UserDAO implements IUserDAO{
 			pre=dbm.getConnect().prepareStatement(sql);
 			pre.setString(1, user.getSDT());
 			pre.setString(2, user.getHoTen());
-			pre.setString(3,user.getNgaySinh());
+			pre.setString(3, user.getNgaySinh());
 			pre.setString(4, user.getDiaChi());
 			pre.setString(5, user.getUsername());
 		}catch(SQLException e){
@@ -98,6 +98,22 @@ public class UserDAO implements IUserDAO{
 		}
 		
 		return dbm.update(pre);
+	}
+
+	@Override
+	public ResultSet InfoUser(String username) {
+		String sql="select * from User where Username= ?";
+		PreparedStatement pre=null;
+		try{
+			
+			pre=dbm.getConnect().prepareStatement(sql);
+			pre.setString(1, username);
+			
+		}catch(SQLException e){
+			System.out.print("FAIL Checklogin USERDAO");
+		}
+		
+		return dbm.get(pre);
 	}
 
 }

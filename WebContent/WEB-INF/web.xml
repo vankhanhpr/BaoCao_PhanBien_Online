@@ -2,16 +2,16 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>BaoCao_PhanBien_Online</display-name>
   <welcome-file-list>
-    <welcome-file>/pages/trang-chu.jsp</welcome-file>
+    <welcome-file>trang-chu</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>trangchu</servlet-name>
-    <jsp-file>/pages/trang-chu.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>trangchu</servlet-name>
-    <url-pattern>/trang-chu</url-pattern>
-  </servlet-mapping>
+<!--   <servlet> -->
+<!--     <servlet-name>trangchu</servlet-name> -->
+<!--     <jsp-file>/pages/trang-chu.jsp</jsp-file> -->
+<!--   </servlet> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>trangchu</servlet-name> -->
+<!--     <url-pattern>/trang-chu</url-pattern> -->
+<!--   </servlet-mapping> -->
   <servlet>
     <servlet-name>logout</servlet-name>
     <jsp-file>/pages/logout.jsp</jsp-file>

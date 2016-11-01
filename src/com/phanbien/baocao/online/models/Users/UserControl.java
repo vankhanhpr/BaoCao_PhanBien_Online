@@ -32,4 +32,7 @@ public class UserControl {
 	public boolean ChangeAvatar(String username,InputStream nameAvatar){
 		return this.uModel.ChangeAvatar(username, nameAvatar);
 	}
+	public User InfoUser(String username) throws SQLException{
+		return this.uModel.InfoUser(username);
+	}
 }

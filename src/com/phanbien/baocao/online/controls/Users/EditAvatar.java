@@ -1,4 +1,4 @@
-package com.phanbien.baocao.online.controls;
+package com.phanbien.baocao.online.controls.Users;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -75,7 +75,7 @@ public class EditAvatar extends HttpServlet {
 		}
 
 		try {
-			curUser=uControl.CheckLogin(username, curUser.getPassword(), curUser.getChucVu());
+			curUser=uControl.InfoUser(username);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -84,8 +84,10 @@ public class EditAvatar extends HttpServlet {
 		
 		session.setAttribute("user", curUser);
 
-		request.getRequestDispatcher("/thong-tin-ca-nhan/edit?update=success").forward(request, response);
-
+//		request.getRequestDispatcher("/thong-tin-ca-nhan/edit?update=success").Re(request, response);
+			
+		response.sendRedirect("/BaoCao_PhanBien_Online/thong-tin-ca-nhan/edit?update=success");
+		
 		uControl.releaseConnection();
 
 	}

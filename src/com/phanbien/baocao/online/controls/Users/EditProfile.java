@@ -1,4 +1,4 @@
-package com.phanbien.baocao.online.controls;
+package com.phanbien.baocao.online.controls.Users;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,6 +48,7 @@ public class EditProfile extends HttpServlet {
 		oldpassword = request.getParameter("oldpassword");
 		newpassword = request.getParameter("newpassword");
 
+			System.out.print(oldpassword+newpassword);
 		
 		if (oldpassword == null && newpassword == null)
 			ChangeProfile(request, response);
@@ -88,7 +89,7 @@ public class EditProfile extends HttpServlet {
 	
 
 	private void ChangeProfile(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		/* Đổi thông tin cơ bản */
+		/* Ä�á»•i thÃ´ng tin cÆ¡ báº£n */
 		hoten = request.getParameter("hoten");
 		ngaysinh = request.getParameter("ngaysinh");
 		diachi = request.getParameter("diachi");

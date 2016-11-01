@@ -16,4 +16,6 @@ public interface IUserDAO {
 	
 	public boolean ChangeAvatar(String username,InputStream nameAvatar);
 	
+	public ResultSet InfoUser(String username);
+	
 }

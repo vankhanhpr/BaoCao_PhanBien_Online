@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.phanbien.baocao.online.utils.classes.Function"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <title>Trang chủ</title>
@@ -31,8 +32,8 @@
 							<ol class="breadcrumb">
 								<li><a href="trang-chu">Home</a></li>
 								<li class="active">Thông báo</li>
-								<span style="float: right;" id="glyphicon glyphicon-time"> <span
-									id="time" class="label label-primary pull-right"><i
+								<span style="float: right;" id="glyphicon glyphicon-time">
+									<span id="time" class="label label-primary pull-right"><i
 										class="icon-time"></i><%=Function.getDate()%></span><br>
 								</span>
 							</ol>
@@ -44,7 +45,21 @@
 										báo</h4>
 								</div>
 								<div class="panel-body" id="#content">
-									<%@ include file="//includes/thong-bao.jsp"%>
+									<ul class="list-unstyled">
+										<c:forEach var="tb" items="${requestScope.thongbaos}">
+											<li class="article-area">
+												<p>
+													<span class="btn btn-primary btn-sm">${tb.getNgay()}</span>
+													${tb.getTieuDe()}
+													<c:if test="${tb.getMaThongBao() == requestScope.newestTB}">
+														<img src="<%=request.getContextPath()%>/public/images/new1.gif">
+													</c:if>
+												</p>
+												<p style="display: none" class='content-tb'>${tb.getNoiDung()}</p>
+											</li>
+										</c:forEach>
+
+									</ul>
 								</div>
 							</div>
 						</div>
@@ -54,14 +69,19 @@
 				</div>
 			</div>
 			<!-- End wrapper -->
-			${requestScope.message}
 			<!--  FOOTER -->
 			<%@ include file="//includes/footer.jsp"%>
 			<!--END FOOTER -->
 
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.article-area').click(function(event) {
+				$(this).children(".content-tb").toggle();
 
-
+			})
+		})
+	</script>
 </body>
 </html>

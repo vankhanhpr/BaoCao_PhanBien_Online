@@ -1,10 +1,10 @@
 package com.phanbien.baocao.online.utils.objectdatabase;
 
 public class ThongBao {
-	public String MaThongBao;
-	public String TieuDe;
-	public String Ngay;
-	public String NoiDung;
+	private String MaThongBao;
+	private String TieuDe;
+	private String Ngay;
+	private String NoiDung;
 	
 	public String getMaThongBao() {
 		return MaThongBao;
