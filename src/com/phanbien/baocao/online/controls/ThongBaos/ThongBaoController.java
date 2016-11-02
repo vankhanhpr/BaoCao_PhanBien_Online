@@ -1,6 +1,7 @@
 package com.phanbien.baocao.online.controls.ThongBaos;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.phanbien.baocao.online.models.ThongBao.ThongBaoControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
-import com.phanbien.baocao.online.utils.classes.Function;
 import com.phanbien.baocao.online.utils.objectdatabase.ThongBao;
 
 /**
@@ -30,6 +30,23 @@ public class ThongBaoController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		showThongBao(request, response);
+	}
+		//Add ThongBao
+//		Function f=new Function();
+//
+//		ThongBao tt=new ThongBao();
+//		tt.setNgay(f.toDate2AddDatabase(new Date()));
+//		tt.setTieuDe("Tiêu đề mới");
+//		tt.setNoiDung("nội dụng mới");
+//		
+//		if(tbControl.addThongBao(tt)){
+//			System.out.println("success");
+//		}else System.out.println("fails");
+	
+
+	private void showThongBao(HttpServletRequest request, HttpServletResponse response)
+			throws UnsupportedEncodingException, ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
@@ -46,33 +63,12 @@ public class ThongBaoController extends HttpServlet {
 		try {
 			thongbaos = tbControl.getAllThongBao();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-	
+		
 		request.setAttribute("thongbaos", thongbaos);
 		request.setAttribute("newestTB", thongbaos.get(0).getMaThongBao());
-		
-		//Add ThongBao
-//		Function f=new Function();
-//
-//		ThongBao tt=new ThongBao();
-//		tt.setNgay(f.toDate2AddDatabase(new Date()));
-//		tt.setTieuDe("Tiêu đề mới");
-//		tt.setNoiDung("nội dụng mới");
-//		
-//		if(tbControl.addThongBao(tt)){
-//			System.out.println("success");
-//		}else System.out.println("fails");
-		
-		
 		request.getRequestDispatcher("pages/trang-chu.jsp").forward(request, response);
-
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
-
 }

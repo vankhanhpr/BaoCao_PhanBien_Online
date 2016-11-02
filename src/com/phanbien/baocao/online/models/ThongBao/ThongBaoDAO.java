@@ -36,6 +36,7 @@ public class ThongBaoDAO implements IThongBaoDAO {
 		String sql="call spAddThongBao(?,?,?)";
 		
 		PreparedStatement pre=null;
+		
 		try{
 			pre=dbm.getConnect().prepareStatement(sql);
 			pre.setString(1, thongbao.getTieuDe());
