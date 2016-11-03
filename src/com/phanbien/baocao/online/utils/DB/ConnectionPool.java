@@ -86,7 +86,6 @@ public class ConnectionPool {
 	public void refreshConnectionPool() {
 		while (!this.poolConnect.empty()) {
 			try {
-
 				this.poolConnect.pop().close();
 
 			} catch (SQLException e) {

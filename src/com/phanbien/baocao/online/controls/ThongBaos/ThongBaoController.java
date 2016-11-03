@@ -67,6 +67,8 @@ public class ThongBaoController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		tbControl.releaseConnection();
+		
 		request.setAttribute("thongbaos", thongbaos);
 		request.setAttribute("newestTB", thongbaos.get(0).getMaThongBao());
 		request.getRequestDispatcher("pages/trang-chu.jsp").forward(request, response);
