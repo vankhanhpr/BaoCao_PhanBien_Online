@@ -28,4 +28,12 @@ public class ThongBaoControl {
 	public boolean addThongBao(ThongBao tb){
 		return this.tbModel.addThongBao(tb);
 	}
+	
+	public ArrayList<ThongBao> getThongBao(int startFromPage,int recordOfPage) throws SQLException{
+		return this.tbModel.getThongBao(startFromPage, recordOfPage);
+	}
+	
+	public int getCountThongBao(){
+		return this.tbModel.getCountThongBao();
+	}
 }

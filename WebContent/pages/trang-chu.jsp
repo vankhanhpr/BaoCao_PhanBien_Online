@@ -44,22 +44,40 @@
 									<h4 style="font-family: verdana; color: rgb(87, 87, 87);">Thông
 										báo</h4>
 								</div>
-								<div class="panel-body" id="#content">
-									<ul class="list-unstyled">
+								<div class="panel-body" id="tb-content">
+									<ul class="list-unstyled" id="">
 										<c:forEach var="tb" items="${requestScope.thongbaos}">
 											<li class="article-area">
 												<p>
 													<span class="btn btn-primary btn-sm">${tb.getNgay()}</span>
 													${tb.getTieuDe()}
-													<c:if test="${tb.getMaThongBao() == requestScope.newestTB}">
-														<img src="<%=request.getContextPath()%>/public/images/new1.gif">
+													<c:if test="${tb.getMaThongBao() == sessionScope.newestTB}">
+														<img
+															src="<%=request.getContextPath()%>/public/images/new1.gif">
 													</c:if>
 												</p>
 												<p style="display: none" class='content-tb'>${tb.getNoiDung()}</p>
 											</li>
 										</c:forEach>
-
 									</ul>
+
+									<div class="pagination pagination-centered"
+										style="margin-left: 50%">
+										<ul class="pagination">
+											<c:forEach begin="1" end="${requestScope.numOfPage}" var="i">
+												<c:choose>
+													<c:when test="${requestScope.curPage == i }">
+														<li class="active"><a href="trang-chu?page=${i}">${i}</a>
+
+														</li>
+													</c:when>
+													<c:otherwise>
+														<li><a class="pagination_link" id='${i}'
+															href="trang-chu?page=${i}">${i}</a></li>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -78,10 +96,12 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.article-area').click(function(event) {
+
 				$(this).children(".content-tb").toggle();
 
 			})
 		})
 	</script>
+
 </body>
 </html>

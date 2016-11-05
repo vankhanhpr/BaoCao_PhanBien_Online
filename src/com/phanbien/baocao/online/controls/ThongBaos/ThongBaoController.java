@@ -1,6 +1,7 @@
 package com.phanbien.baocao.online.controls.ThongBaos;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,8 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.connector.Request;
+
 import com.phanbien.baocao.online.models.ThongBao.ThongBaoControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
+import com.phanbien.baocao.online.utils.classes.Function;
 import com.phanbien.baocao.online.utils.objectdatabase.ThongBao;
 
 /**
@@ -32,24 +36,25 @@ public class ThongBaoController extends HttpServlet {
 			throws ServletException, IOException {
 		showThongBao(request, response);
 	}
-		//Add ThongBao
-//		Function f=new Function();
-//
-//		ThongBao tt=new ThongBao();
-//		tt.setNgay(f.toDate2AddDatabase(new Date()));
-//		tt.setTieuDe("Tiêu đề mới");
-//		tt.setNoiDung("nội dụng mới");
-//		
-//		if(tbControl.addThongBao(tt)){
-//			System.out.println("success");
-//		}else System.out.println("fails");
-	
+
+	// Add ThongBao
+	// Function f=new Function();
+	//
+	// ThongBao tt=new ThongBao();
+	// tt.setNgay(f.toDate2AddDatabase(new Date()));
+	// tt.setTieuDe("TiÃªu Ä‘á»� má»›i");
+	// tt.setNoiDung("ná»™i dá»¥ng má»›i");
+	//
+	// if(tbControl.addThongBao(tt)){
+	// System.out.println("success");
+	// }else System.out.println("fails");
 
 	private void showThongBao(HttpServletRequest request, HttpServletResponse response)
-			throws UnsupportedEncodingException, ServletException, IOException {
+			throws ServletException, IOException {
+
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		
+
 		ServletContext context = getServletConfig().getServletContext();
 
 		ConnectionPool cp = (ConnectionPool) context.getAttribute("c_pool");
@@ -59,18 +64,38 @@ public class ThongBaoController extends HttpServlet {
 		if (cp == null) {
 			context.setAttribute("c_pool", tbControl.getConnectionPool());
 		}
+		int page = 1;
+		int startFromPage = 1;
+		int recordPerPage = 6;
+		int numOfThongBao = -1;
+		int numOfPage = -1;
+		if (request.getParameter("page") != null) {
+
+			page = Integer.parseInt(request.getParameter("page"));
+			startFromPage = (page - 1) * recordPerPage;
+		}
+
+		response.getWriter().write("page:::" + page);
 		ArrayList<ThongBao> thongbaos = null;
+
 		try {
-			thongbaos = tbControl.getAllThongBao();
+			thongbaos = tbControl.getThongBao(startFromPage, recordPerPage);
+
+			numOfThongBao = tbControl.getCountThongBao();
+
+			numOfPage = (int) Math.ceil(numOfThongBao * 1.0 / recordPerPage);
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
-		
+
 		tbControl.releaseConnection();
 		
+					
 		request.setAttribute("thongbaos", thongbaos);
-		request.setAttribute("newestTB", thongbaos.get(0).getMaThongBao());
+		request.setAttribute("curPage", page);
+		request.setAttribute("numOfPage", numOfPage);
+		request.getSession().setAttribute("newestTB", thongbaos.get(0).getMaThongBao());
 		request.getRequestDispatcher("pages/trang-chu.jsp").forward(request, response);
 	}
 }

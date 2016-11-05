@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<ul class="list-unstyled">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:forEach var="tb" items="${requestScope.thongbaos}">
 	<li class="article-area">
 		<p>
-			<span class="btn btn-primary btn-sm">09/09/2016 - 18:16</span> 
-			Thông báo đăng ký đề tài tiểu luận chuyên ngành khóa 13 <img src="public/images/new1.gif">	
+			<span class="btn btn-primary btn-sm">${tb.getNgay()}</span>
+			${tb.getTieuDe()}
+			<c:if test="${tb.getMaThongBao() == requestScope.newestTB}">
+				<img src="<%=request.getContextPath()%>/public/images/new1.gif">
+			</c:if>
 		</p>
+		<p style="display: none" class='content-tb'>${tb.getNoiDung()}</p>
 	</li>
-</ul>
-
+</c:forEach>

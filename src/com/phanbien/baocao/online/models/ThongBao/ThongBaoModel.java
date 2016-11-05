@@ -31,14 +31,14 @@ public class ThongBaoModel {
 	}
 
 	public ArrayList<ThongBao> getAllThongBao() throws SQLException {
-		//10/10/2016 - 18:16
-		
-		
+
+		// 10/10/2016 - 18:16
+
 		ArrayList<ThongBao> listThongBao = null;
 
 		ResultSet rs = this.tbDAO.getAllThongBao();
 
-		Function f=new Function();
+		Function f = new Function();
 		if (rs != null) {
 			listThongBao = new ArrayList<>();
 			while (rs.next()) {
@@ -48,9 +48,8 @@ public class ThongBaoModel {
 				tb.setMaThongBao(rs.getString(1));
 				tb.setTieuDe(rs.getString(2));
 				tb.setNgay(f.toDateThongBao(rs.getTimestamp(3)));
-				tb.setNoiDung(rs.getString(4));	
-			
-				
+				tb.setNoiDung(rs.getString(4));
+
 				listThongBao.add(tb);
 			}
 			rs.close();
@@ -58,6 +57,36 @@ public class ThongBaoModel {
 
 		return listThongBao;
 
+	}
+
+	public ArrayList<ThongBao> getThongBao(int startFromPage, int recordOfPage) throws SQLException {
+		// return
+		ArrayList<ThongBao> listThongBao = null;
+
+		ResultSet rs = this.tbDAO.getThongBao(startFromPage, recordOfPage);
+
+		Function f = new Function();
+		if (rs != null) {
+			listThongBao = new ArrayList<>();
+			while (rs.next()) {
+
+				ThongBao tb = new ThongBao();
+
+				tb.setMaThongBao(rs.getString(1));
+				tb.setTieuDe(rs.getString(2));
+				tb.setNgay(f.toDateThongBao(rs.getTimestamp(3)));
+				tb.setNoiDung(rs.getString(4));
+
+				listThongBao.add(tb);
+			}
+			rs.close();
+		}
+		return listThongBao;
+
+	}
+
+	public int getCountThongBao() {
+		return this.tbDAO.getCountThongBao();
 	}
 
 	public boolean addThongBao(ThongBao tb) {

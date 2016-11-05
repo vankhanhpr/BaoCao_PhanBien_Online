@@ -63,7 +63,9 @@ public class EditAvatar extends HttpServlet {
 		if (cp == null) {
 			context.setAttribute("c_pool", uControl.getConnectionPool());
 		}
+		
 		HttpSession session = request.getSession();
+		
 		User curUser = (User) session.getAttribute("user");
 
 		String username = curUser.getUsername();

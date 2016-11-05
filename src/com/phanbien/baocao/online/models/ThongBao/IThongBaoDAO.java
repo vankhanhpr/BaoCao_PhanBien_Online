@@ -8,6 +8,10 @@ public interface IThongBaoDAO {
 	
 	public ResultSet getAllThongBao();
 	
+	public ResultSet getThongBao(int startFromPage,int recordOfPage);
+	
+	public int getCountThongBao();
+	
 	public boolean addThongBao(ThongBao thongbao);
 
 }

@@ -40,7 +40,7 @@ public class Authe extends HttpServlet  implements IPagePath{
 		String chucvu = request.getParameter("chucvu");
 		
 
-		System.out.print("abc"+request.getParameter("action"));
+		System.out.print(username + password + chucvu);
 		// Lấy Connectionpool có sẵn trong context: nếu có thì dùng ko có tạo  mới
 		ServletContext context = getServletConfig().getServletContext();
 

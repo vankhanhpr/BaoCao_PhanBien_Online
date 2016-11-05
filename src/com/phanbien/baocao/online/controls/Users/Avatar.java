@@ -44,6 +44,8 @@ public class Avatar extends HttpServlet {
 		
 		String contentType = this.getServletContext().getMimeType(imageName);
 		
+		System.out.print(contentType);
+		
 		response.setHeader("Content-Type", contentType);
 	       
         response.setHeader("Content-Length", String.valueOf(imgData.length));
