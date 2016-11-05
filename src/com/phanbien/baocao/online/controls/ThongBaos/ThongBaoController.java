@@ -49,6 +49,7 @@ public class ThongBaoController extends HttpServlet {
 	// System.out.println("success");
 	// }else System.out.println("fails");
 
+	int newestTB=0;
 	private void showThongBao(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -64,6 +65,20 @@ public class ThongBaoController extends HttpServlet {
 		if (cp == null) {
 			context.setAttribute("c_pool", tbControl.getConnectionPool());
 		}
+//		for (int i = 0; i < 20; i++) {
+//			Function f = new Function();
+//
+//			ThongBao tt = new ThongBao();
+//			tt.setNgay(f.toDate2AddDatabase(new Date()));
+//			tt.setTieuDe("Tiêu đề mới");
+//			tt.setNoiDung("Nội dung mới");
+//
+//			if (tbControl.addThongBao(tt)) {
+//				System.out.println("success");
+//			} else
+//				System.out.println("fails");
+//		}
+
 		int page = 1;
 		int startFromPage = 1;
 		int recordPerPage = 6;
@@ -74,8 +89,6 @@ public class ThongBaoController extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 			startFromPage = (page - 1) * recordPerPage;
 		}
-
-		response.getWriter().write("page:::" + page);
 		ArrayList<ThongBao> thongbaos = null;
 
 		try {
@@ -90,12 +103,20 @@ public class ThongBaoController extends HttpServlet {
 		}
 
 		tbControl.releaseConnection();
+		if(!thongbaos.isEmpty()){
+			request.setAttribute("thongbaos", thongbaos);
+			request.setAttribute("curPage", page);
+			request.setAttribute("numOfPage", numOfPage);
+			
+			int temp=Integer.parseInt(thongbaos.get(0).getMaThongBao());
+			if(temp>=newestTB){
+				newestTB=temp;
+			}
+			request.getServletContext().setAttribute("newestTB",newestTB);
+		}
 		
-					
-		request.setAttribute("thongbaos", thongbaos);
-		request.setAttribute("curPage", page);
-		request.setAttribute("numOfPage", numOfPage);
-		request.getSession().setAttribute("newestTB", thongbaos.get(0).getMaThongBao());
+		
+		
 		request.getRequestDispatcher("pages/trang-chu.jsp").forward(request, response);
 	}
 }
