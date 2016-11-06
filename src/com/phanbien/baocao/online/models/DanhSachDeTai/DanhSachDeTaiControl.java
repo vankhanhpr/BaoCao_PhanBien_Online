@@ -99,40 +99,8 @@ public class DanhSachDeTaiControl {
 			dt = new ArrayList<>();
 			while (rs.next()){
 				DeTaiGV_TK ct=new DeTaiGV_TK();
-				ct.setMaSo(rs.getString(1));
-				ct.setMaDT(rs.getInt(2)+"");
-				ct.setTenDeTai(rs.getString(3));
-				ct.setNgayBaoCao(rs.getDate(4).toString());
-				ct.setThoiGianBaoCao(rs.getTime(5).toString());
-				ct.setTrangThai(rs.getString(6));
 				
-				ResultSet hd = this.ds.TenGVHD_DeTai(ct.getMaDT());
-				ResultSet uv = this.ds.TenUyVien_DeTai(ct.getMaDT());
-				ResultSet pb = this.ds.TenPhanBien_DeTai(ct.getMaDT());
-				ResultSet soLuong = this.ds.SoLuong_SV(ct.getMaDT());
-				
-				if(hd!=null)
-					while(hd.next()){
-						ct.setGiangVienHD(hd.getString(2));
-					}
-				if(uv!=null)
-					while(uv.next()){
-						ct.setUyVien(uv.getString(2));
-					}
-				if(pb!=null)
-					while(pb.next()){
-						ct.setGiangVienPB(pb.getString(2));
-					}
-				if(soLuong!=null){
-					while(soLuong.next()){
-						ct.setSoLuongSV(soLuong.getString(2));
-					}
-				}
-				
-				hd.close();
-				uv.close();
-				pb.close();
-				soLuong.close();
+				DanhSach(ct, rs);
 							
 				dt.add(ct);
 			}
@@ -147,41 +115,8 @@ public class DanhSachDeTaiControl {
 			dt = new ArrayList<>();
 			while (rs.next()){
 				DeTaiGV_TK ct=new DeTaiGV_TK();
-				ct.setMaSo(rs.getString(1));
-				ct.setMaDT(rs.getInt(2)+"");
-				ct.setTenDeTai(rs.getString(3));
-				ct.setNgayBaoCao(rs.getDate(4).toString());
-				ct.setThoiGianBaoCao(rs.getTime(5).toString());
-				ct.setTrangThai(rs.getString(6));
 				
-				ResultSet hd = this.ds.TenGVHD_DeTai(ct.getMaDT());
-				ResultSet uv = this.ds.TenUyVien_DeTai(ct.getMaDT());
-				ResultSet pb = this.ds.TenPhanBien_DeTai(ct.getMaDT());
-				ResultSet soLuong = this.ds.SoLuong_SV(ct.getMaDT());
-				
-				if(hd!=null)
-					while(hd.next()){
-						ct.setGiangVienHD(hd.getString(2));
-					}
-				if(uv!=null)
-					while(uv.next()){
-						ct.setUyVien(uv.getString(2));
-					}
-				if(pb!=null)
-					while(pb.next()){
-						ct.setGiangVienPB(pb.getString(2));
-					}
-				if(soLuong!=null){
-					while(soLuong.next()){
-						ct.setSoLuongSV(soLuong.getString(2));
-					}
-				}
-				
-				hd.close();
-				uv.close();
-				pb.close();
-				soLuong.close();
-
+				DanhSach(ct, rs);
 				
 				dt.add(ct);
 			}
@@ -199,40 +134,8 @@ public class DanhSachDeTaiControl {
 			
 			while (rs.next()){
 				DeTaiGV_TK ct=new DeTaiGV_TK();
-				ct.setMaSo(rs.getString(1));
-				ct.setMaDT(rs.getInt(2)+"");
-				ct.setTenDeTai(rs.getString(3));
-				ct.setNgayBaoCao(rs.getDate(4).toString());
-				ct.setThoiGianBaoCao(rs.getTime(5).toString());
-				ct.setTrangThai(rs.getString(6));
 				
-				ResultSet hd = this.ds.TenGVHD_DeTai(ct.getMaDT());
-				ResultSet uv = this.ds.TenUyVien_DeTai(ct.getMaDT());
-				ResultSet pb = this.ds.TenPhanBien_DeTai(ct.getMaDT());
-				ResultSet soLuong = this.ds.SoLuong_SV(ct.getMaDT());
-				
-				if(hd!=null)
-					while(hd.next()){
-						ct.setGiangVienHD(hd.getString(2));
-					}
-				if(uv!=null)
-					while(uv.next()){
-						ct.setUyVien(uv.getString(2));
-					}
-				if(pb!=null)
-					while(pb.next()){
-						ct.setGiangVienPB(pb.getString(2));
-					}
-				if(soLuong!=null){
-					while(soLuong.next()){
-						ct.setSoLuongSV(soLuong.getString(2));
-					}
-				}
-				
-				hd.close();
-				uv.close();
-				pb.close();
-				soLuong.close();
+				DanhSach(ct, rs);
 				
 				dt.add(ct);
 			}
@@ -240,20 +143,49 @@ public class DanhSachDeTaiControl {
 		}
 		return dt;
 	}
-
+	public void DanhSach(DeTaiGV_TK ct, ResultSet rs) throws SQLException{
+		
+		ct.setMaSo(rs.getString(1));
+		ct.setMaDT(rs.getInt(2)+"");
+		ct.setTenDeTai(rs.getString(3));
+		ct.setNgayBaoCao(rs.getDate(4).toString());
+		ct.setThoiGianBaoCao(rs.getTime(5).toString());
+		ct.setTrangThai(rs.getString(6));
+		
+		ResultSet hd = this.ds.TenGVHD_DeTai(ct.getMaDT());
+		ResultSet uv = this.ds.TenUyVien_DeTai(ct.getMaDT());
+		ResultSet pb = this.ds.TenPhanBien_DeTai(ct.getMaDT());
+		ResultSet soLuong = this.ds.SoLuong_SV(ct.getMaDT());
+		
+		if(hd!=null)
+			while(hd.next()){
+				ct.setGiangVienHD(hd.getString(2));
+			}
+		if(uv!=null)
+			while(uv.next()){
+				ct.setUyVien(uv.getString(2));
+			}
+		if(pb!=null)
+			while(pb.next()){
+				ct.setGiangVienPB(pb.getString(2));
+			}
+		if(soLuong!=null){
+			while(soLuong.next()){
+				ct.setSoLuongSV(soLuong.getString(2));
+			}
+		}
+		
+		hd.close();
+		uv.close();
+		pb.close();
+		soLuong.close();
+	}
 	public static void main(String[]arg) throws SQLException{
 		DanhSachDeTaiControl c=new DanhSachDeTaiControl(new ConnectionPool());
 		System.out.println("dgghgfgf");
 		ArrayList<DeTaiGV_TK> dsdt=c.DanhSachDeTaiChucVuHuongDan("2");
-//		c.addChiTietGV();
-		//DeTaiGV_TK ct=new DeTaiGV_TK();
-		
 		for (DeTaiGV_TK deTaiGV_TK : dsdt) {
-//			ResultSet rs =ds.TenHuongDan_DeTai(deTaiGV_TK.getMaDT())
-//			ct.setGiangVienHD(this.getString(2));
 				System.out.println(deTaiGV_TK.getSoLuongSV());
-
-			//System.out.println(deTaiGV_TK.getGiangVienPB());
 		}
 		System.out.println("dsfds");
 	}
