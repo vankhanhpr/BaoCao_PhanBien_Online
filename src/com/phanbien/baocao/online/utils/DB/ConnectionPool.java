@@ -80,7 +80,6 @@ public class ConnectionPool {
 	public void releaseConnection(Connection con, String objectName) throws SQLException {
 		System.out.println(objectName + " have pushed the Connection.");
 		this.poolConnect.push(con);
-
 	}
 
 	public void refreshConnectionPool() {
@@ -92,6 +91,5 @@ public class ConnectionPool {
 				System.out.println(e.getMessage());
 			}
 		}
-
 	}
 }

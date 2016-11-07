@@ -16,7 +16,7 @@ public class Function {
 		return curDate.getHours() + " Giờ " + curDate.getMinutes() + " phút, Ngày " + curDate.getDate() + " tháng "
 				+ curDate.getMonth() + " năm " + (curDate.getYear() + 1900);
 	}
-
+	
 	public String toDateThongBao(Timestamp date) {
 
 		SimpleDateFormat localDateFormat = new SimpleDateFormat("dd/MM/yyyy-HH:mm");

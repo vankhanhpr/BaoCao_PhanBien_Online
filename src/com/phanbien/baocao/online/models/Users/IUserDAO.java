@@ -18,4 +18,6 @@ public interface IUserDAO {
 	
 	public ResultSet InfoUser(String username);
 	
+	public ResultSet InfoUser_MaSo(String MaSo);
+	
 }

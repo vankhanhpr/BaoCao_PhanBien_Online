@@ -68,8 +68,8 @@
 						</tbody>
 					</table>
 				</td>
-				<td><a target="_blank" href="chi-tiet-de-tai-1.jsp"
-					class="btn btn-success btn-xs">Chi tiết</a></td>
+				<td><a target="_blank" href="<%= request.getContextPath()%>/danh-sach-de-tai/chi-tiet?id=${hd.getMaDT()}"
+					class="btn btn-success btn-xs">Chi tiết </a></td>
 			</tr>
 		</tbody>
 		<!--END ROW-->

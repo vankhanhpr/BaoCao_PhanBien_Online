@@ -35,4 +35,7 @@ public class UserControl {
 	public User InfoUser(String username) throws SQLException{
 		return this.uModel.InfoUser(username);
 	}
+	public User InfoUser_MaSo(String MaSo) throws SQLException{
+		return this.uModel.InfoUser_MaSo(MaSo);
+	}
 }

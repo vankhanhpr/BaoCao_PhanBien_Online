@@ -4,14 +4,6 @@
   <welcome-file-list>
     <welcome-file>trang-chu</welcome-file>
   </welcome-file-list>
-<!--   <servlet> -->
-<!--     <servlet-name>trangchu</servlet-name> -->
-<!--     <jsp-file>/pages/trang-chu.jsp</jsp-file> -->
-<!--   </servlet> -->
-<!--   <servlet-mapping> -->
-<!--     <servlet-name>trangchu</servlet-name> -->
-<!--     <url-pattern>/trang-chu</url-pattern> -->
-<!--   </servlet-mapping> -->
   <servlet>
     <servlet-name>logout</servlet-name>
     <jsp-file>/pages/logout.jsp</jsp-file>
@@ -43,6 +35,14 @@
   <servlet-mapping>
     <servlet-name>chinhsuathongtincanhan</servlet-name>
     <url-pattern>/thong-tin-ca-nhan/edit</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>chitietdetai</servlet-name>
+    <jsp-file>/pages/chi-tiet-de-tai.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>chitietdetai</servlet-name>
+    <url-pattern>/danh-sach-de-tai/chi-tiet</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>UrlRewriteFilter</filter-name>

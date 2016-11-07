@@ -85,8 +85,8 @@ public class ThongBaoController extends HttpServlet {
 		int numOfThongBao = -1;
 		int numOfPage = -1;
 		if (request.getParameter("page") != null) {
-
 			page = Integer.parseInt(request.getParameter("page"));
+			System.out.print(page);
 			startFromPage = (page - 1) * recordPerPage;
 		}
 		ArrayList<ThongBao> thongbaos = null;
@@ -114,9 +114,7 @@ public class ThongBaoController extends HttpServlet {
 			}
 			request.getServletContext().setAttribute("newestTB",newestTB);
 		}
-		
-		
-		
+
 		request.getRequestDispatcher("pages/trang-chu.jsp").forward(request, response);
 	}
 }

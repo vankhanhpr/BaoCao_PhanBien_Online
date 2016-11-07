@@ -67,6 +67,7 @@ public class Authe extends HttpServlet  implements IPagePath{
 		} else {
 			response.getWriter().write("trang-chu");
 			HttpSession session = request.getSession();
+			 
 			
 			Page page = new Page();
 			

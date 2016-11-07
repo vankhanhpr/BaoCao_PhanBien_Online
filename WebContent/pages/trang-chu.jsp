@@ -51,7 +51,9 @@
 												<p>
 													<span class="btn btn-primary btn-sm">${tb.getNgay()}</span>
 													${tb.getTieuDe()}
-													<c:if test="${tb.getMaThongBao() == sessionScope.newestTB}">
+													<c:if test="${tb.getMaThongBao() == requestScope.newestTB}">
+													${ tb.getMaThongBao()}
+													${ sessionScope.newestTB}
 														<img
 															src="<%=request.getContextPath()%>/public/images/new1.gif">
 													</c:if>
@@ -62,7 +64,7 @@
 									</ul>
 
 									<div class="pagination pagination-centered"
-										style="margin-left: 50%">
+										>
 										<ul class="pagination">
 											<c:forEach begin="1" end="${requestScope.numOfPage}" var="i">
 												<c:choose>
@@ -96,9 +98,7 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.article-area').click(function(event) {
-
 				$(this).children(".content-tb").toggle();
-
 			})
 		})
 	</script>

@@ -116,4 +116,20 @@ public class UserDAO implements IUserDAO{
 		return dbm.get(pre);
 	}
 
+	@Override
+	public ResultSet InfoUser_MaSo(String MaSo) {
+		String sql="select * from User where MaSo= ?";
+		PreparedStatement pre=null;
+		try{
+			
+			pre=dbm.getConnect().prepareStatement(sql);
+			pre.setString(1, MaSo);
+			
+		}catch(SQLException e){
+			System.out.print("FAIL Checklogin USERDAO");
+		}
+		
+		return dbm.get(pre);
+	}
+
 }

@@ -73,10 +73,10 @@ public class UploadFile extends HttpServlet {
 		// constructs the directory path to store upload file
 		// this path is relative to application's directory
 
-		/* Để upload lên host internet */
+		/* Ä�á»ƒ upload lÃªn host internet */
 		// String uploadPath = getServletContext().getRealPath("")
 		// + File.separator + UPLOAD_DIRECTORY;                         
-		/* Máy trạm */
+		/* MÃ¡y tráº¡m */
 		String uploadPath = UPLOAD_DIRECTORY;
 
 		// creates the directory if it does not exist
@@ -85,23 +85,24 @@ public class UploadFile extends HttpServlet {
 			uploadDir.mkdir();
 		}
 		String fileName = "";
-		ServletContext context = getServletConfig().getServletContext();
-
-		ConnectionPool cp = (ConnectionPool) context.getAttribute("c_pool");
-
-		UserControl uControl = new UserControl(cp);
-
-		if (cp == null) {
-			context.setAttribute("c_pool", uControl.getConnectionPool());
-		}
-		HttpSession session = request.getSession();
-		User curUser = (User) session.getAttribute("user");
-
-		String username = curUser.getUsername();
-
-		session.setAttribute("user", curUser);
-
-		uControl.releaseConnection();
+		
+//		ServletContext context = getServletConfig().getServletContext();
+//
+//		ConnectionPool cp = (ConnectionPool) context.getAttribute("c_pool");
+//
+//		UserControl uControl = new UserControl(cp);
+//
+//		if (cp == null) {
+//			context.setAttribute("c_pool", uControl.getConnectionPool());
+//		}
+//		HttpSession session = request.getSession();
+//		User curUser = (User) session.getAttribute("user");
+//
+//		String username = curUser.getUsername();
+//
+//		session.setAttribute("user", curUser);
+//
+//		uControl.releaseConnection();
 		try {
 			// parses the request's content to extract file data
 			@SuppressWarnings("unchecked")
