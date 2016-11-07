@@ -126,6 +126,7 @@ public class DanhSachDeTai extends HttpServlet {
 			
 			e.printStackTrace();
 		}
+		//------------------
 		dsControl.releaseConnection();
 		request.setAttribute("gvhd", gvhd);
 		request.setAttribute("uyvien", uyvien);

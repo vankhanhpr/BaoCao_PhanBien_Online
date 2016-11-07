@@ -1,4 +1,4 @@
-package com.phanbien.baocao.online.models.DanhSachDeTai;
+﻿package com.phanbien.baocao.online.models.DanhSachDeTai;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ public class DanhSachDeTaiDAO {
 	public DBManager getDbm() {
 		return dbm;
 	}
-	//khởi tạo kết nối
+	//khởi tạo kết nối -----------
 	public DanhSachDeTaiDAO(ConnectionPool cp) {
 		dbm=new DBManager(cp,"danhsachdetai");
 	}
