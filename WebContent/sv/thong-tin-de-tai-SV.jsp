@@ -12,50 +12,67 @@
 </style>
 </head>
 <body>
-	<!-- ############################ form bao cao ############################## -->
-	<div class="modal fade" id="fbaocao">
-		<div class="modal-dialog" id='aa' >
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h2 class="form-signin-heading">
-						<p align="center">
-							<font size="4">Form Báo Cáo</font></p>
-					</h2>
-				</div>
-				<form action="#">
-						<table class="table">
-								<tr>
-									<td>Tên đề tài:</td>
-									<td>Thi Công và thiết kết máy bay bốn cánh</td>
-								</tr>
-								<tr>
-									<td>MSSV:</td>
-									<td class="sizeInput"><input type="textbox" name="MaSV"></td>
-								</tr>
-								<tr>
-									<td>Sinh Viên:</td>
-									<td class="sizeInput"><input type="textbox" name="tenSV"></td>
-								</tr>
-								<tr>
-									<td>Giáo Viên Hướng Dẫn:</td>
-									<td class="sizeInput"><input type="texbox" name="GVHD"></td>
-								</tr>
-								<tr>
-									<td>Mô Tả Đề Tài:</td>
-									<td ><textarea rows="6" cols="90"></textarea></td>
-								</tr>
-						</table>
-						<p style="margin-left: 184px;"><input type="file" name="" value="" accept=".rar"></p>		
-						<p align="right"><button  type="button" class="btnNop btn btn-success" type="submit" style="background-color: gray;">Nộp báo cáo</button></p>
-			     </form>
+<!-- 	<!-- ############################ form bao cao ############################## --> -->
+<!-- 	<div class="modal fade" id="fbaocao"> -->
+<!-- 		<div class="modal-dialog" id='aa' > -->
+<!-- 			<div class="modal-content"> -->
+<!-- 				<div class="modal-header"> -->
+<!-- 					<button type="button" class="close" data-dismiss="modal" -->
+<!-- 						aria-hidden="true">&times;</button> -->
+<!-- 					<h2 class="form-signin-heading"> -->
+<!-- 						<p align="center"> -->
+<!-- 							<font size="4">Form Báo Cáo</font></p> -->
+<!-- 					</h2> -->
+<!-- 				</div> -->
+<!-- 				<form action="#"> -->
+<!-- 						<table class="table"> -->
+<!-- 								<tr> -->
+<!-- 									<td>Tên đề tài:</td> -->
+<!-- 									<td>Thi Công và thiết kết máy bay bốn cánh</td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td>MSSV:</td> -->
+<!-- 									<td class="sizeInput"><input type="textbox" name="MaSV"></td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td>Sinh Viên:</td> -->
+<!-- 									<td class="sizeInput"><input type="textbox" name="tenSV"></td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td>Giáo Viên Hướng Dẫn:</td> -->
+<!-- 									<td class="sizeInput"><input type="texbox" name="GVHD"></td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td>Mô Tả Đề Tài:</td> -->
+<!-- 									<td ><textarea rows="6" cols="90"></textarea></td> -->
+<!-- 								</tr> -->
+<!-- 						</table> -->
+<!-- 						<p style="margin-left: 184px;"><input type="file" name="" value="" accept=".rar"></p>		 -->
+<!-- 						<p align="right"><button  type="button" class="btnNop btn btn-success" type="submit" style="background-color: gray;">Nộp báo cáo</button></p> -->
+<!-- 			     </form> -->
+<!-- 			</div> -->
+<!-- 			<!-- /.modal-content --> 
+<!-- 		</div> -->
+<!-- 		<!-- /.modal-dialog --> 
+<!-- 	</div> -->
+<!-- 	<!-- /.modal --> 
+<div class="modal fade" id="dang_nhap11">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Đăng nhập</h4>
 			</div>
-			<!-- /.modal-content -->
+			<!-- action='login' -->
+			fsdfsdfsdsfds
+			
 		</div>
-		<!-- /.modal-dialog -->
+		<!-- /.modal-content -->
 	</div>
-	<!-- /.modal -->
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 	<%@include file="//includes/menu-mobile.jsp"%>
 	<div>
 		<div id="container">
@@ -136,7 +153,7 @@
 									</tr>
 									
 							</table> <br> 
-							<a style="margin-left: 45%" type="button" class="btnNopBaoCao btn btn-primary" id="btNopform">Nộp báo cáo</a>
+							<a data-toggle="modal" style="margin-left: 45%" href="#dang_nhap11" type="button" class="btnNopBaoCao btn btn-primary" id="btNopform">Nộp báo cáo</a>
 						</div>
 						<!--end bản tin-->
 					</div>
@@ -150,13 +167,6 @@
 	</div>
 	<!-- start wrapper -->
 	
-	<script>
-	$(document).ready(function(){
-	    $("#btNopform").click(function(){
-	        $("#fbaocao").modal();
-	    });
-	});
-	</script>
 	<!-- End wrapper -->
 	<!--  FOOTER -->
 	<%@ include file="//includes/footer.jsp"%>

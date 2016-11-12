@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/thong-tin-ca-nhan/*,/danh-sach-de-tai/*")
+@WebFilter({"/thong-tin-ca-nhan/*","/danh-sach-de-tai/*","/show-chi-tiet"})
 public class LoginFiter implements Filter {
 
 	public LoginFiter() {

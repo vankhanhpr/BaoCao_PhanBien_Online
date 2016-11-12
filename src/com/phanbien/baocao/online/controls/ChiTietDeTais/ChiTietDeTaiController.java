@@ -52,6 +52,8 @@ public class ChiTietDeTaiController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		ctdtControl.releaseConnection();
+		
 		Gson gson=new Gson();
 		String json=gson.toJson(ctdt);
 		
