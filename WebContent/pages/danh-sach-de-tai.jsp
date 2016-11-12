@@ -74,13 +74,6 @@
 		</div>
 		<!-- End wrapper -->
 	</div>
-	<script>
-		$(document).ready(function() {
-			$("#btNopform").click(function() {
-				$("#fbaocao").modal();
-			});
-		});
-	</script>
 	<!--  FOOTER -->
 	<%@ include file="//includes/footer.jsp"%>
 	<!--END FOOTER -->

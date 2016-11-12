@@ -16,6 +16,7 @@ import com.phanbien.baocao.online.models.Users.UserControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
 import com.phanbien.baocao.online.utils.classes.Page;
 import com.phanbien.baocao.online.utils.objectdatabase.User;
+import com.sun.net.httpserver.HttpContext;
 
 @WebServlet("/login")
 
@@ -38,6 +39,7 @@ public class Authe extends HttpServlet  implements IPagePath{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String chucvu = request.getParameter("chucvu");
+		
 		
 
 		System.out.print(username + password + chucvu);

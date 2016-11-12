@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
 import com.phanbien.baocao.online.utils.DB.DBManager;
+import com.phanbien.baocao.online.utils.objectdatabase.User;
 
 public class DanhSachDeTaiDAO {
 	
@@ -147,6 +148,20 @@ public class DanhSachDeTaiDAO {
 		
 		return dbm.get(pre);
 	}
+	public ResultSet TenChuTich_DeTai(String MaDT) {
+		String sql="select * from view_chucvu_chutich_detai where MaDeTai=?";
+		PreparedStatement pre=null;
+		try{
+			
+			pre=dbm.getConnect().prepareStatement(sql);
+			pre.setString(1, MaDT);
+			
+		}catch(SQLException e){
+			System.out.print("FAIL DanhSachDeTai_SV");
+		}
+		
+		return dbm.get(pre);
+	}
 	public ResultSet TenPhanBien_DeTai(String MaDT) {
 		String sql="select * from view_chucvu_phanbien_detai where MaDeTai=?";
 		PreparedStatement pre=null;
@@ -188,5 +203,23 @@ public class DanhSachDeTaiDAO {
 		}
 		
 		return dbm.get(pre);
+	}
+	public boolean updateFormBaoCao(String MaDT,String tenFile, String tomTat, String TrangThai) {
+		String sql="update quatrinhbaocao set ";
+		sql=sql+"FileBaiNop=?, TomTatDT=?, TrangThaiSV=? where MaDT= ?";
+		
+		PreparedStatement pre=null;
+		try{
+			pre=dbm.getConnect().prepareStatement(sql);
+			pre.setString(1, tenFile);
+			pre.setString(2, tomTat);
+			pre.setString(3, TrangThai);
+			pre.setString(4, MaDT);
+		}catch(SQLException e){
+			System.out.print("FAIL Form Bao Cao.");
+		}
+		
+		return dbm.update(pre);
+		
 	}
 }

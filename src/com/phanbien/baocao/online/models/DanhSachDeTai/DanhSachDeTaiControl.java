@@ -44,6 +44,7 @@ public class DanhSachDeTaiControl {
 				dt.setThoiGianBaoCao(rs.getTime(5).toString());
 				dt.setThoiLuongBaoCao(rs.getInt(6)+"");
 				dt.setTrangThai(rs.getString(7));
+				dt.setMaDT(rs.getInt(8)+"");
 			}
 		}
 		return dt;
@@ -155,6 +156,7 @@ public class DanhSachDeTaiControl {
 		ResultSet hd = this.ds.TenGVHD_DeTai(ct.getMaDT());
 		ResultSet uv = this.ds.TenUyVien_DeTai(ct.getMaDT());
 		ResultSet pb = this.ds.TenPhanBien_DeTai(ct.getMaDT());
+		ResultSet ctich = this.ds.TenChuTich_DeTai(ct.getMaDT());
 		ResultSet soLuong = this.ds.SoLuong_SV(ct.getMaDT());
 		
 		if(hd!=null)
@@ -169,6 +171,10 @@ public class DanhSachDeTaiControl {
 			while(pb.next()){
 				ct.setGiangVienPB(pb.getString(2));
 			}
+		if(ctich!=null)
+			while(ctich.next()){
+				ct.setChuTich(ctich.getString(2));
+			}
 		if(soLuong!=null){
 			while(soLuong.next()){
 				ct.setSoLuongSV(soLuong.getString(2));
@@ -180,13 +186,15 @@ public class DanhSachDeTaiControl {
 		pb.close();
 		soLuong.close();
 	}
+	public boolean SaveFormBaoCao(String MaDT, String tenFile, String tomTat, String TrangThai){
+		return ds.updateFormBaoCao(MaDT, tenFile, tomTat, TrangThai);
+	}
 	public static void main(String[]arg) throws SQLException{
 		DanhSachDeTaiControl c=new DanhSachDeTaiControl(new ConnectionPool());
-		System.out.println("dgghgfgf");
-		ArrayList<DeTaiGV_TK> dsdt=c.DanhSachDeTaiChucVuHuongDan("2");
-		for (DeTaiGV_TK deTaiGV_TK : dsdt) {
-				System.out.println(deTaiGV_TK.getSoLuongSV());
+		ArrayList<DeTaiGV_TK> dsd=c.DanhSachDeTaiChucVuHuongDan("13000000");
+		for (DeTaiGV_TK deTaiGV_TK : dsd) {
+			System.out.println(deTaiGV_TK.getChuTich());
 		}
-		System.out.println("dsfds");
 	}
+	
 }

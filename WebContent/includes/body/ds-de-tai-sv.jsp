@@ -13,7 +13,9 @@
 					</p>
 				</h2>
 			</div>
-			<form action="#" id="frmBaoCao" method="post">
+			<form action="FormBaoCao" id="frmBaoCao" method="post"
+				enctype="multipart/form-data">
+				<div id="err"></div>
 				<table class="table">
 					<tr>
 						<td>Tên đề tài:</td>
@@ -21,7 +23,7 @@
 					</tr>
 					<tr>
 						<td>MSSV:</td>
-						<td class="sizeInput">${requestScope.detai.getMaSo()}</td>
+						<td class="sizeInput" name="maSV">${requestScope.detai.getMaSo()}</td>
 					</tr>
 					<tr>
 						<td>Sinh Viên:</td>
@@ -33,16 +35,17 @@
 					</tr>
 					<tr>
 						<td>Mô Tả Đề Tài:</td>
-						<td><textarea  id="tomtat" rows="6" cols="90"></textarea></td>
+						<td><textarea name="mota" rows="6" cols="90"></textarea></td>
 					</tr>
 				</table>
 				<p style="margin-left: 184px;">
-					<input id="fileBaoCao" type="file" name="" value="" accept=".rar">
+					<input id="fileBaoCao" type="file" name="file" value="">
 				</p>
 				<p align="right">
-					<button class="btnNop btn btn-success " id="btnNopBaoCao" type="submit">Nộp báo cáo</button>
+					<button class="btnNop btn btn-success " id="btnNopBaoCao"
+						type="submit">Nộp báo cáo</button>
 				</p>
-				<div id="err_login"></div>
+
 			</form>
 		</div>
 		<!-- /.modal-content -->
@@ -50,7 +53,6 @@
 	<!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-<script type="text/javascript" src="<%=request.getContextPath() %>/public/js/ajax/nop-from-bao-cao.js"></script>
 <!--Các bản tin-->
 <table class="table" border="1">
 	<tr>
@@ -78,7 +80,8 @@
 		<td>${requestScope.detai.getTrangThai()}</td>
 	</tr>
 </table>
-<table class="table table-bordered" border="1" align="center" style="width: 50%;">
+<table class="table table-bordered" border="1" align="center"
+	style="width: 50%;">
 	<caption>
 		<font size="4" class=""> Hội Đồng Báo Cáo</font>
 	</caption>
@@ -106,11 +109,16 @@
 <br>
 <c:choose>
 	<c:when test="${requestScope.detai.getTrangThai()=='Chưa nộp'}">
-		<a style="margin-left: 45%" type="button" class="btnNopBaoCao btn btn-primary"id="btNopform">Nộp báo cáo</a>
+		<a data-toggle="modal" href="#fbaocao" style="margin-left: 45%"
+			type="button" class="btnNopBaoCao btn btn-primary" id="btNopform">Nộp
+			báo cáo</a>
 	</c:when>
 	<c:otherwise>
-		<a style="margin-left: 45%" type="button" class="btnNopBaoCao btn btn-primary disabled"id="btNopform">Nộp báo cáo</a>
+		<a data-toggle="modal" href="#fbaocao" style="margin-left: 45%"
+			type="button" class="btnNopBaoCao btn btn-primary disabled"
+			id="btNopform">Nộp báo cáo</a>
 	</c:otherwise>
 </c:choose>
 </div>
 <!--end bản tin-->
+<script type="text/javascript" src="<%=request.getContextPath() %>/public/js/ajax/form-bao-cao.js"></script>

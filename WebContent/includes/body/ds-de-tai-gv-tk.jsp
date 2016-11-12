@@ -34,7 +34,7 @@
 							<a target="_blank" href="#"class="btn btn-danger btn-xs disabled">Xét duyệt </a>
 						</c:when>
 						<c:otherwise>
-							<a target="_blank" href="#"class="btn btn-success btn-xs">Chưa xét duyệt</a>
+							<a href="<%= request.getContextPath()%>/XetDuyetDeTai?id=${hd.getMaDT()}"class="btn btn-success btn-xs">Chưa xét duyệt</a>
 						</c:otherwise>
 					</c:choose>
 					
@@ -63,7 +63,7 @@
 							</tr>
 							<tr>
 								<td>Chủ Tịch</td>
-								<td></td>
+								<td>${hd.getChuTich()}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -85,14 +85,7 @@
 				<td>${uv.getNgayBaoCao()}/${uv.getThoiGianBaoCao()}</td>
 				<td>Ủy Viên</td>
 				<td>
-					<c:choose>
-						<c:when test="${uv.getTrangThai()=='Xét duyệt'}">
-							<a target="_blank" href="#"class="btn btn-danger btn-xs disabled">Xét duyệt </a>
-						</c:when>
-						<c:otherwise>
-							<a target="_blank" href="#"class="btn btn-success btn-xs">Chưa xét duyệt</a>
-						</c:otherwise>
-					</c:choose>
+					
 				</td>
 				<td>${uv.getSoLuongSV()}</td>
 				<td>
@@ -118,12 +111,12 @@
 							</tr>
 							<tr>
 								<td>Chủ Tịch</td>
-								<td></td>
+								<td>${uv.getChuTich()}</td>
 							</tr>
 						</tbody>
 					</table>
 				</td>
-				<td><a target="_blank" href="chi-tiet-de-tai-1.jsp"
+				<td><a target="_blank" href="<%= request.getContextPath()%>/danh-sach-de-tai/chi-tiet?id=${uv.getMaDT()}"
 					class="btn btn-success btn-xs">Chi tiết</a></td>
 			</tr>
 		</tbody>
@@ -140,14 +133,7 @@
 				<td>${pb.getNgayBaoCao()}/${pb.getThoiGianBaoCao()}</td>
 				<td>Phản Biện</td>
 				<td>
-					<c:choose>
-						<c:when test="${pb.getTrangThai()=='Xét duyệt'}">
-							<a target="_blank" href="#"class="btn btn-danger btn-xs disabled">Xét duyệt </a>
-						</c:when>
-						<c:otherwise>
-							<a target="_blank" href="#"class="btn btn-success btn-xs">Chưa xét duyệt</a>
-						</c:otherwise>
-					</c:choose>				
+							
 				</td>
 				
 				<td>${pb.getSoLuongSV()}</td>
@@ -174,12 +160,12 @@
 							</tr>
 							<tr>
 								<td>Chủ Tịch</td>
-								<td></td>
+								<td>${pb.getChuTich()}</td>
 							</tr>
 						</tbody>
 					</table>
 				</td>
-				<td><a target="_blank" href="chi-tiet-de-tai-1.jsp"
+				<td><a target="_blank" href="<%= request.getContextPath()%>/danh-sach-de-tai/chi-tiet?id=${pb.getMaDT()}"
 					class="btn btn-success btn-xs">Chi tiết</a></td>
 			</tr>
 		</tbody>

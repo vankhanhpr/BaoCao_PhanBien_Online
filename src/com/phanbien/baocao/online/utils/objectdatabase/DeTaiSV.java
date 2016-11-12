@@ -75,6 +75,13 @@ public class DeTaiSV {
 	private String ChuTich;
 	private String PhanBien;
 	private String UyVien;
+	private String MaDT;
+	public String getMaDT() {
+		return MaDT;
+	}
+	public void setMaDT(String maDT) {
+		MaDT = maDT;
+	}
 	public String getUyVien() {
 		return UyVien;
 	}

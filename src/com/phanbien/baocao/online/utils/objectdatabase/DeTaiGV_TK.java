@@ -74,5 +74,12 @@ public class DeTaiGV_TK {
 	private String GiangVienPB;
 	private String GiangVienHD;
 	private String UyVien;
+	private String ChuTich;
+	public String getChuTich() {
+		return ChuTich;
+	}
+	public void setChuTich(String chuTich) {
+		ChuTich = chuTich;
+	}
 	private String SoLuongSV;
 }
