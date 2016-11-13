@@ -11,6 +11,7 @@ import com.phanbien.baocao.online.utils.DB.ConnectionPool;
 import com.phanbien.baocao.online.utils.objectdatabase.DeTaiGV_TK;
 import com.phanbien.baocao.online.utils.objectdatabase.DeTaiSV;
 import com.phanbien.baocao.online.utils.objectdatabase.User;
+import com.phanbien.baocao.online.utils.objectdatabase.XD_DeTai;
 
 public class DanhSachDeTaiControl {
 	DanhSachDeTaiDAO ds;
@@ -189,11 +190,29 @@ public class DanhSachDeTaiControl {
 	public boolean SaveFormBaoCao(String MaDT, String tenFile, String tomTat, String TrangThai){
 		return ds.updateFormBaoCao(MaDT, tenFile, tomTat, TrangThai);
 	}
+	public ArrayList<XD_DeTai> DanhSachDeTaiCanXepLich() throws SQLException {
+		ArrayList<XD_DeTai>  dt = null;
+		ResultSet rs = this.ds.getDanhSachDeTaiXepLich();
+		
+		if (rs != null) {
+			dt = new ArrayList<>();
+			while (rs.next()){
+				XD_DeTai xl=new XD_DeTai();
+				
+				xl.setMaDT(rs.getInt(1)+"");
+				xl.setTenDT(rs.getString(2));
+				
+				dt.add(xl);
+			}
+			rs.close();
+		}
+		return dt;
+	}
 	public static void main(String[]arg) throws SQLException{
 		DanhSachDeTaiControl c=new DanhSachDeTaiControl(new ConnectionPool());
-		ArrayList<DeTaiGV_TK> dsd=c.DanhSachDeTaiChucVuHuongDan("13000000");
-		for (DeTaiGV_TK deTaiGV_TK : dsd) {
-			System.out.println(deTaiGV_TK.getChuTich());
+		ArrayList<XD_DeTai> dsd=c.DanhSachDeTaiCanXepLich();
+		for (XD_DeTai xd_DeTai : dsd) {
+			System.out.println(xd_DeTai.getTenDT());
 		}
 	}
 	

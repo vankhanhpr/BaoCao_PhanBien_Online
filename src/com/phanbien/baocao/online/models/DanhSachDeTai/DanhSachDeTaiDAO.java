@@ -222,4 +222,9 @@ public class DanhSachDeTaiDAO {
 		return dbm.update(pre);
 		
 	}
+	public ResultSet getDanhSachDeTaiXepLich() {
+		String sql="select * from `view_danh-sach-de-tai-xep-lich`";
+		return dbm.get(sql);
+	}
+	
 }

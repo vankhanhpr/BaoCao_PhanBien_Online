@@ -1,0 +1,11 @@
+VIEW `view_danh-sach-de-tai-xep-lich` AS
+    (SELECT 
+        `detai`.`MaDT` AS `MaDT`, `detai`.`TenDeTai` AS `TenDeTai`
+    FROM
+        (`detai`
+        JOIN `xeplich`)
+    WHERE
+        ((`detai`.`MaDT` = `xeplich`.`MaDeTai`)
+            AND (ISNULL(`xeplich`.`MaGVPB`)
+            OR ISNULL(`xeplich`.`MaChuTich`)
+            OR ISNULL(`xeplich`.`MaUyVien`))))
