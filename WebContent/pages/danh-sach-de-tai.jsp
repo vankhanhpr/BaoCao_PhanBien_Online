@@ -49,7 +49,7 @@
 										</c:when>
 
 										<c:when test="${sessionScope.user.getChucVu() == '3'}">
-											<a href="danh-sach-de-tai-can-xep-lich.jsp"
+											<a href="DanhSachDeTaiCanXepLich"
 												class="btn btn-success btn-xs pull-right">Xếp lịch báo
 												cáo</a>
 											<%@include file="//includes/body/ds-de-tai-gv-tk.jsp"%>
