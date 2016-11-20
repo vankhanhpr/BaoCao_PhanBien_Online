@@ -1,10 +1,9 @@
-package com.phanbien.baocao.online.controls.NopFormBaoCao;
+package com.phanbien.baocao.online.controls.BaoCaoSVs;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -15,26 +14,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.taglibs.standard.tag.common.fmt.RequestEncodingSupport;
 
-import com.phanbien.baocao.online.controls.DanhSachDeTai.DanhSachDeTai;
 import com.phanbien.baocao.online.models.DanhSachDeTai.DanhSachDeTaiControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
 import com.phanbien.baocao.online.utils.objectdatabase.DeTaiSV;
 import com.phanbien.baocao.online.utils.objectdatabase.User;
 
-@WebServlet("/FormBaoCao")
-@MultipartConfig(maxFileSize=16177215)
-public class FormBaoCao extends HttpServlet {
+/**
+ * Servlet implementation class SubmitTopic
+ */
+@WebServlet("/SubmitTopic")
+@MultipartConfig(maxFileSize = 16177215)
+public class SubmitTopic extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	// location to store file uploaded -host
-	private static final String UPLOAD_DIRECTORY = "fileUpload";
+	private static final String UPLOAD_DIRECTORY = "D:\\fileUpload";
 	// private static final String UPLOAD_DIRECTORY =
 	// "D:\\PROGRAMING\\Eclipse_Project_2\\BaoCao_PhanBien_Online\\WebContent\\users\\avatar";
 
@@ -43,8 +41,9 @@ public class FormBaoCao extends HttpServlet {
 	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
 	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
 
-	public FormBaoCao() {
+	public SubmitTopic() {
 		super();
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -54,16 +53,16 @@ public class FormBaoCao extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		if (!ServletFileUpload.isMultipartContent(request)) {
 			// if not, we stop here
 			PrintWriter writer = response.getWriter();
-			writer.println("Error: Form must has.");
+			writer.println("Error: Form must has enctype=multipart/form-data.");
 			writer.flush();
 			return;
 		}
-		
+
 		// configures upload settings
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		// sets memory threshold - beyond which files are stored in disk
@@ -82,44 +81,50 @@ public class FormBaoCao extends HttpServlet {
 		// constructs the directory path to store upload file
 		// this path is relative to application's directory
 
-		/* Ã„ï¿½Ã¡Â»Æ’ upload lÃƒÂªn host internet */
-		String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
-		
+		// String uploadPath = getServletContext().getRealPath("")
+		// + File.separator + UPLOAD_DIRECTORY;
+		String uploadPath = UPLOAD_DIRECTORY;
+
+		System.out.print(uploadPath);
+
 		// creates the directory if it does not exist
 		File uploadDir = new File(uploadPath);
 		if (!uploadDir.exists()) {
 			uploadDir.mkdir();
 		}
 		String fileName = "";
-		
+		String tomTat="";
 		try {
 			// parses the request's content to extract file data
 			@SuppressWarnings("unchecked")
 			List<FileItem> formItems = upload.parseRequest(request);
-			System.out.println(formItems.size());
-			System.out.println(formItems.size());
+
 			if (formItems != null && formItems.size() > 0) {
 				// iterates over form's fields
 				for (FileItem item : formItems) {
 					// processes only fields that are not form fields
 					if (!item.isFormField()) {
+						///Type File
 						fileName = new File(item.getName()).getName();
-						
 						String filePath = uploadPath + File.separator + fileName;
 						File storeFile = new File(filePath);
+
 						System.out.println(filePath);
 						// saves the file on disk
 						item.write(storeFile);
+					} else {
+						//Type # file
+						
+						String fieldvalue = item.getString();
+
+						tomTat=new String (fieldvalue.getBytes ("iso-8859-1"), "UTF-8");
 					}
 				}
 			}
 		} catch (Exception ex) {
 			request.setAttribute("message", "There was an error: " + ex.getMessage());
 		}
-		
-		Part filePart = request.getPart("file");
-		
-		String TomTat =request.getParameter("mota");
+
 		HttpSession session = request.getSession();
 		String MaSV = ((User) session.getAttribute("user")).getMaSo();
 
@@ -134,23 +139,15 @@ public class FormBaoCao extends HttpServlet {
 		}
 		
 		DeTaiSV detai = null;
-		System.out.println(TomTat);
-		
-		
 		try {
 			detai = dsControl.ChiTietDeTaiSV(MaSV);
 			MaDT=detai.getMaDT();
-			System.out.println(MaDT);
-			boolean trangthai=dsControl.SaveFormBaoCao(MaDT, fileName, TomTat, "Đã nộp");
+			boolean trangthai=dsControl.SaveFormBaoCao(MaDT, fileName, tomTat, "Đã nộp");
 			if(trangthai){
-				//response.getWriter().write("danh-sach-de-tai");
-				response.sendRedirect("danh-sach-de-tai");
-				//response.getWriter().write("danh-sach-de-tai");
+				response.getWriter().write("danh-sach-de-tai?submit=success");
 			}
 			else{
-		//response.getWriter().write("error");
-				PrintWriter writer = response.getWriter();
-				writer.println("error");
+				response.getWriter().write("error");
 			}
 			
 		} catch (SQLException e) {
@@ -158,6 +155,8 @@ public class FormBaoCao extends HttpServlet {
 			e.printStackTrace();
 		}
 
+		// request.getRequestDispatcher("/thong-tin-ca-nhan/edit").forward(request,
+		// response);
 	}
 
 }

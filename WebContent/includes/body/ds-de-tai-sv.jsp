@@ -13,10 +13,10 @@
 					</p>
 				</h2>
 			</div>
-			<form action="FormBaoCao" id="frmBaoCao" method="post"
-				enctype="multipart/form-data">
+			<form id="frmBaoCao" 
+				enctype="multipart/form-data" acceptcharset="UTF-8">
 				<div id="err"></div>
-				<table class="table">
+				<table class="table" id="table-form">
 					<tr>
 						<td>Tên đề tài:</td>
 						<td>${requestScope.detai.getTenDeTai()}</td>
@@ -35,16 +35,22 @@
 					</tr>
 					<tr>
 						<td>Mô Tả Đề Tài:</td>
-						<td><textarea name="mota" rows="6" cols="90"></textarea></td>
+						<td><textarea name="mota" rows="6" cols="90" id="tomtat"></textarea></td>
+					</tr>
+					<tr>
+						<td>Nộp file:</td>
+						<td><input id="fileBaoCao" type="file" name="file" value=""></td>
 					</tr>
 				</table>
 				<p style="margin-left: 184px;">
-					<input id="fileBaoCao" type="file" name="file" value="">
+					
 				</p>
-				<p align="right">
-					<button class="btnNop btn btn-success " id="btnNopBaoCao"
-						type="submit">Nộp báo cáo</button>
-				</p>
+				<div id="footer-form">
+					<p align="right">
+						<button class="btnNop btn btn-success " id="btnNopBaoCao"
+							type="submit">Nộp báo cáo</button>
+					</p>
+				</div>
 
 			</form>
 		</div>
@@ -77,7 +83,7 @@
 	</tr>
 	<tr>
 		<td class="tt_detaiSV">Nộp báo cáo</td>
-		<td>${requestScope.detai.getTrangThai()}</td>
+		<td>${requestScope.detai.getTrangThai()} </td>
 	</tr>
 </table>
 <table class="table table-bordered" border="1" align="center"
@@ -121,4 +127,4 @@
 </c:choose>
 </div>
 <!--end bản tin-->
-<script type="text/javascript" src="<%=request.getContextPath() %>/public/js/ajax/form-bao-cao.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/public/js/ajax/submitTopic.js"></script>

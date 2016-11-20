@@ -29,6 +29,47 @@ public class HoiDong {
 	public void setMaChuTich(String maChuTich) {
 		MaChuTich = maChuTich;
 	}
-	
+	String DiemGVHD;
+	String DiemGVPB;
+	public String getDiemGVHD() {
+		return DiemGVHD;
+	}
+	public void setDiemGVHD(String diemGVHD) {
+		DiemGVHD = diemGVHD;
+	}
+	public String getDiemGVPB() {
+		return DiemGVPB;
+	}
+	public void setDiemGVPB(String diemGVPB) {
+		DiemGVPB = diemGVPB;
+	}
+	public String getDiemUyVien() {
+		return DiemUyVien;
+	}
+	public void setDiemUyVien(String diemUyVien) {
+		DiemUyVien = diemUyVien;
+	}
+	public String getNhanXetGVHD() {
+		return NhanXetGVHD;
+	}
+	public void setNhanXetGVHD(String nhanXetGVHD) {
+		NhanXetGVHD = nhanXetGVHD;
+	}
+	public String getNhanXetGVPB() {
+		return NhanXetGVPB;
+	}
+	public void setNhanXetGVPB(String nhanXetGVPB) {
+		NhanXetGVPB = nhanXetGVPB;
+	}
+	public String getNhanXetUyVien() {
+		return NhanXetUyVien;
+	}
+	public void setNhanXetUyVien(String nhanXetUyVien) {
+		NhanXetUyVien = nhanXetUyVien;
+	}
+	String DiemUyVien;
+	String NhanXetGVHD;
+	String NhanXetGVPB;
+	String NhanXetUyVien;
 	
 }

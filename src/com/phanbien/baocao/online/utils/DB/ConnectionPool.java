@@ -57,12 +57,11 @@ public class ConnectionPool {
 
 		}
 	}
-
 	public Connection getConnection(String objectName) throws SQLException {
 
 		Connection con = null;
-
-		//refreshConnectionPool();
+		
+		refreshConnectionPool();
 		if (this.poolConnect.isEmpty()) {
 
 			System.out.println(objectName + " have created a new Connection.");
