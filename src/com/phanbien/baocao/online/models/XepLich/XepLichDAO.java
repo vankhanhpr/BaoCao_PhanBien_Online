@@ -83,7 +83,7 @@ public class XepLichDAO {
 		return dbm.get(sql);
 	}
 	public ResultSet getDanhSach_GV(String NgayBaoCao, String ThoiGianBaoCao, String ThoiLuong) {
-		String sql="call spThemLichTruc(?,?,?)";
+		String sql="call spDemoXepLich(?,?,?)";
 		PreparedStatement pre=null;
 		try{
 			

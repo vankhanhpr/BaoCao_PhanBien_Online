@@ -133,3 +133,21 @@ VIEW `view_gvhd_xeplich` AS
         (`user`.`MaSo` = `detai`.`MaGVHD`))
 
 ---------------------------------------------------------------------------------------
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spDemoXepLich`(
+     _NgayBaoCao date,
+     _ThoiGianBaoCao time,
+     _ThoiLuongBaoCao int
+)
+BEGIN
+		select user.MaSo,user.HoTen
+		from user
+		where (user.ChucVu!=1) and user.MaSo not in ( select MaSo
+		from view_demo
+        where CONCAT(_NgayBaoCao,' ',_ThoiGianBaoCao) between CONCAT(NgayBaoCao,' ',ThoiGianBC) and CONCAT(NgayBaoCao, ' ',ADDTIME(ThoiGianBC, SEC_TO_TIME(ThoiLuong*60)))
+        or CONCAT(_NgayBaoCao, ' ', ADDTIME(_ThoiGianBaoCao, SEC_TO_TIME(_ThoiLuongBaoCao*60))) between CONCAT(NgayBaoCao,' ',ThoiGianBC) and CONCAT(NgayBaoCao, ' ',ADDTIME(ThoiGianBC, SEC_TO_TIME(ThoiLuong*60)))
+        or CONCAT(NgayBaoCao,' ',ThoiGianBC) between CONCAT(_NgayBaoCao,' ',_ThoiGianBaoCao) and CONCAT(_NgayBaoCao, ' ', ADDTIME(_ThoiGianBaoCao, SEC_TO_TIME(_ThoiLuongBaoCao*60)))
+        or CONCAT(NgayBaoCao, ' ',ADDTIME(ThoiGianBC, SEC_TO_TIME(ThoiLuong*60))) between CONCAT(_NgayBaoCao,' ',_ThoiGianBaoCao) and CONCAT(_NgayBaoCao, ' ', ADDTIME(_ThoiGianBaoCao, SEC_TO_TIME(_ThoiLuongBaoCao*60)))
+        );
+END
