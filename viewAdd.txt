@@ -9,3 +9,127 @@ VIEW `view_danh-sach-de-tai-xep-lich` AS
             AND (ISNULL(`xeplich`.`MaGVPB`)
             OR ISNULL(`xeplich`.`MaChuTich`)
             OR ISNULL(`xeplich`.`MaUyVien`))))
+
+
+
+=================================================
+xep lich
+--------------------------------
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `view_tomtat_filebainop_xeplich` AS
+    (SELECT 
+        `quatrinhbaocao`.`MaDT` AS `MaDT`,
+        `quatrinhbaocao`.`TomTatDT` AS `TomTatDT`,
+        `quatrinhbaocao`.`FileBaiNop` AS `FileBaiNop`
+    FROM
+        `quatrinhbaocao`)
+
+-------------------------------
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `view_demo` AS
+    (SELECT 
+        `q`.`MaSo` AS `MaSo`,
+        `q`.`HoTen` AS `HoTen`,
+        `q`.`NgayBaoCao` AS `NgayBaoCao`,
+        `q`.`ThoiGianBC` AS `ThoiGianBC`,
+        `q`.`ThoiLuong` AS `ThoiLuong`
+    FROM
+        ((SELECT 
+            `dbobaocaophanbien`.`user`.`MaSo` AS `MaSo`,
+                `dbobaocaophanbien`.`user`.`HoTen` AS `HoTen`,
+                `dbobaocaophanbien`.`xeplich`.`NgayBaoCao` AS `NgayBaoCao`,
+                `dbobaocaophanbien`.`xeplich`.`ThoiGianBC` AS `ThoiGianBC`,
+                `dbobaocaophanbien`.`xeplich`.`ThoiLuong` AS `ThoiLuong`
+        FROM
+            ((`dbobaocaophanbien`.`detai`
+        JOIN `dbobaocaophanbien`.`user`)
+        JOIN `dbobaocaophanbien`.`xeplich`)
+        WHERE
+            ((`dbobaocaophanbien`.`detai`.`MaGVHD` = `dbobaocaophanbien`.`user`.`MaSo`)
+                AND (`dbobaocaophanbien`.`detai`.`MaDT` = `dbobaocaophanbien`.`xeplich`.`MaDeTai`))) UNION (SELECT 
+            `dbobaocaophanbien`.`user`.`MaSo` AS `MaSo`,
+                `dbobaocaophanbien`.`user`.`HoTen` AS `HoTen`,
+                `dbobaocaophanbien`.`xeplich`.`NgayBaoCao` AS `NgayBaoCao`,
+                `dbobaocaophanbien`.`xeplich`.`ThoiGianBC` AS `ThoiGianBC`,
+                `dbobaocaophanbien`.`xeplich`.`ThoiLuong` AS `ThoiLuong`
+        FROM
+            (`dbobaocaophanbien`.`user`
+        JOIN `dbobaocaophanbien`.`xeplich`)
+        WHERE
+            (`dbobaocaophanbien`.`xeplich`.`MaGVPB` = `dbobaocaophanbien`.`user`.`MaSo`)) UNION (SELECT 
+            `dbobaocaophanbien`.`user`.`MaSo` AS `MaSo`,
+                `dbobaocaophanbien`.`user`.`HoTen` AS `HoTen`,
+                `dbobaocaophanbien`.`xeplich`.`NgayBaoCao` AS `NgayBaoCao`,
+                `dbobaocaophanbien`.`xeplich`.`ThoiGianBC` AS `ThoiGianBC`,
+                `dbobaocaophanbien`.`xeplich`.`ThoiLuong` AS `ThoiLuong`
+        FROM
+            (`dbobaocaophanbien`.`user`
+        JOIN `dbobaocaophanbien`.`xeplich`)
+        WHERE
+            (`dbobaocaophanbien`.`xeplich`.`MaUyVien` = `dbobaocaophanbien`.`user`.`MaSo`))) `q`
+    WHERE
+        ((CONCAT(`q`.`NgayBaoCao`, ' ', `q`.`ThoiGianBC`) >= NOW())
+            OR ISNULL(`q`.`NgayBaoCao`)))
+----------------------------------------------------------------------------------------
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spThemLichTruc`(
+     _NgayBaoCao date,
+     _ThoiGianBaoCao time,
+     _ThoiLuongBaoCao int
+)
+BEGIN
+
+select user.MaSo,user.HoTen
+from user
+where (user.ChucVu!=1) and user.MaSo not in ( select MaSo
+from view_demo
+where (CONCAT(_NgayBaoCao,' ',_ThoiGianBaoCao)>=CONCAT(NgayBaoCao,' ',ThoiGianBC)and CONCAT(_NgayBaoCao, ' ', _ThoiGianBaoCao)<=CONCAT(NgayBaoCao, ' ',ADDTIME(ThoiGianBC, SEC_TO_TIME(ThoiLuong*60))))
+ or (CONCAT(_NgayBaoCao, ' ', ADDTIME(_ThoiGianBaoCao, SEC_TO_TIME(_ThoiLuongBaoCao*60)))>=CONCAT(NgayBaoCao, ' ', ThoiGianBC) and CONCAT(_NgayBaoCao, ' ', ADDTIME(_ThoiGianBaoCao, SEC_TO_TIME(_ThoiLuongBaoCao*60)))<=CONCAT(NgayBaoCao,' ',ADDTIME(ThoiGianBC, SEC_TO_TIME(ThoiLuong*60))))
+);
+ 
+END
+
+
+
+DELIMITER $$
+
+create PROCEDURE spThemLichTruc(
+     _NgayBaoCao date,
+     _ThoiGianBaoCao time,
+     _ThoiLuongBaoCao int
+)
+BEGIN
+
+select user.MaSo,user.HoTen
+from user
+where (user.ChucVu!=1) and user.MaSo not in ( select MaSo
+from view_demo
+where (CONCAT(_NgayBaoCao,' ',_ThoiGianBaoCao)>=CONCAT(NgayBaoCao,' ',ThoiGianBC)and CONCAT(_NgayBaoCao, ' ', _ThoiGianBaoCao)<=CONCAT(NgayBaoCao, ' ',ADDTIME(ThoiGianBC, SEC_TO_TIME(ThoiLuong*60))))
+ or (CONCAT(_NgayBaoCao, ' ', ADDTIME(_ThoiGianBaoCao, SEC_TO_TIME(_ThoiLuongBaoCao*60)))>=CONCAT(NgayBaoCao, ' ', ThoiGianBC) and CONCAT(_NgayBaoCao, ' ', ADDTIME(_ThoiGianBaoCao, SEC_TO_TIME(_ThoiLuongBaoCao*60)))<=CONCAT(NgayBaoCao,' ',ADDTIME(ThoiGianBC, SEC_TO_TIME(ThoiLuong*60))))
+);
+ 
+END$$
+
+DELIMITER ;
+---------------------------------------------------------------------------------------
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `view_gvhd_xeplich` AS
+    (SELECT 
+        `detai`.`MaDT` AS `MaDT`,
+        `user`.`MaSo` AS `MaSo`,
+        `user`.`HoTen` AS `HoTen`
+    FROM
+        (`user`
+        JOIN `detai`)
+    WHERE
+        (`user`.`MaSo` = `detai`.`MaGVHD`))
+
+---------------------------------------------------------------------------------------
