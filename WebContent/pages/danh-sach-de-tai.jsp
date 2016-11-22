@@ -44,12 +44,13 @@
 											<%@include file="//includes/body/ds-de-tai-sv.jsp"%>
 										</c:when>
 
+
 										<c:when test="${sessionScope.user.getChucVu()== '2'}">
 											<%@include file="//includes/body/ds-de-tai-gv-tk.jsp"%>
 										</c:when>
 
 										<c:when test="${sessionScope.user.getChucVu() == '3'}">
-											<a href="DanhSachDeTaiCanXepLich"
+											<a href="<%=request.getContextPath()%>/DanhSachDeTaiCanXepLich"
 												class="btn btn-success btn-xs pull-right">Xếp lịch báo
 												cáo</a>
 											<%@include file="//includes/body/ds-de-tai-gv-tk.jsp"%>
@@ -58,9 +59,9 @@
 										<c:otherwise>
 											<a data-toggle="modal" href="#dang_nhap">Đăng nhập</a>
 										</c:otherwise>
-										
+
 									</c:choose>
-									
+
 								</c:if>
 
 							</div>
@@ -74,10 +75,15 @@
 		</div>
 		<!-- End wrapper -->
 	</div>
+	<script>
+// 		$(document).ready(function() {
+// 			$("#btNopform").click(function() {
+// 				$("#fbaocao").modal();
+// 			});
+// 		});
+	</script>
 	<!--  FOOTER -->
 	<%@ include file="//includes/footer.jsp"%>
 	<!--END FOOTER -->
-	<script type="text/javascript"
-		src="<%=request.getContextPath()%>/public/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

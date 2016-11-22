@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>BaoCao_PhanBien_Online</display-name>
+
+   
+  <servlet>
+    <servlet-name>DanhSachDeTaiCanXepLich1</servlet-name>
+    <servlet-class>com.phanbien.baocao.online.controls.DanhSachDeTaiCanXepLich.DanhSachDeTaiCanXepLich</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DanhSachDeTaiCanXepLich1</servlet-name>
+    <url-pattern>/danh-sach-de-tai/xep-lich</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>trang-chu</welcome-file>
   </welcome-file-list>
@@ -44,16 +55,15 @@
     <servlet-name>chitietdetai</servlet-name>
     <url-pattern>/danh-sach-de-tai/chi-tiet</url-pattern>
   </servlet-mapping>
-  <filter>
-    <filter-name>UrlRewriteFilter</filter-name>
-    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>UrlRewriteFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-    <dispatcher>FORWARD</dispatcher>
-  </filter-mapping>
+  
+  <servlet>
+    <servlet-name>quenmatkhau</servlet-name>
+    <jsp-file>/pages/quen-mat-khau.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>quenmatkhau</servlet-name>
+    <url-pattern>/quen-mat-khau</url-pattern>
+  </servlet-mapping>
   <error-page>
     <error-code>404</error-code>
     <location>/404page.jsp</location>

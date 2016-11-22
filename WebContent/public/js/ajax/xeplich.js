@@ -31,8 +31,9 @@
 	    	                    return false;
 	    	                }
 	    	                else
-	    	                {  	                   
-	    	                	 window.location.href = ''+msg_login+'';
+	    	                {  	          
+	    	                		
+			                  	   window.location.href = ''+msg_login+'';
 	    	                }
 	    	            }
 	    	            });

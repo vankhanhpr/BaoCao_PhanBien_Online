@@ -39,18 +39,18 @@ public class UpdateXepLich extends HttpServlet {
 		String PhanBien=request.getParameter("PhanBien").split("-")[0];
 		String UyVien=request.getParameter("UyVien").split("-")[0];
 		
-		String temp=request.getParameter("ChuTich");
+		int temp=Integer.parseInt(request.getParameter("ChuTich"));
 		
 		String ChuTich="";
 		
 		switch (temp) {
-		case "1":
+		case 1:
 			ChuTich=GVHD;
 			break;
-		case "2":
+		case 2:
 			ChuTich=UyVien;
 			break;
-		case "3":
+		case 3:
 			ChuTich=PhanBien;
 			break;
 		default:
@@ -80,12 +80,13 @@ public class UpdateXepLich extends HttpServlet {
 			
 			 ThongBao tb=new ThongBao();
 			 tb.setNgay(f.toDate2AddDatabase(new Date()));
-			 tb.setTieuDe("Lịch báo cáo đề tài "+ TenDT +" đã được xếp !");
-			 String nd;
-			 nd="Ngày báo cáo:"+NgayBaoCao+"\n";
-			 nd=nd+"Lúc: "+ThoiGianBaoCao+"\n";
-			 nd=nd+"Thời Lượng: "+ThoiLuong;
-			 tb.setNoiDung(nd);
+			 
+			 String TieuDe="Đề tài "+TenDT+" đã được xếp lịch";
+			 tb.setTieuDe(TieuDe);
+			 
+			 String NoiDung="Ngày Báo Cáo: "+NgayBaoCao+"\n\n"+"Lúc: "+ThoiGianBaoCao+"\n\n"+"Thời lượng: "+ThoiLuong+"\n\n";
+			 tb.setNoiDung(NoiDung);
+			 
 			 if(!tbControl.addThongBao(tb))
 				 return;
 			

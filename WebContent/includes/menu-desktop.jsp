@@ -46,7 +46,6 @@
 						class="pull-right"><i class="icon-chevron-right"></i></span>Hướng
 						dẫn</a>
 					</c:if>
-					
 				</div>
 			</div>
 		</div>

@@ -40,7 +40,7 @@
 									lịch</h4>
 							</div>
 							<div class="panel-body">
-								<form action="XepLich2" method="get" id="xeplichbaocao">
+								<form action="<%=request.getContextPath()%>/XepLich2" method="get" id="xeplichbaocao">
 									<div id="detail">
 										<table class="table table-hover">
 											<tr>

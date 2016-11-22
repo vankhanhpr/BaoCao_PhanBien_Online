@@ -2,7 +2,7 @@
 <html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import=""%>
+<%@ page import="com.phanbien.baocao.online.utils.classes.*"%>
 <head>
 <%@ include file="//includes/header.jsp"%>
 <title>Kết quả</title>

@@ -29,7 +29,7 @@ public class UserDAO implements IUserDAO{
 	
 	@Override
 	public ResultSet CheckLogin(String username, String password,String chucvu) {
-		String sql="select * from User where Username= ? and Password= ? and ChucVu=?";
+		String sql="select * from user where username= ? and password= ? and chucvu=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -47,8 +47,8 @@ public class UserDAO implements IUserDAO{
 
 	@Override
 	public boolean updateUser(User user) {
-		String sql="update User set ";
-		sql=sql+" SDT=?, HoTen=?, NgaySinh=?,DiaChi=? where username= ?";
+		String sql="update user set ";
+		sql=sql+" sdt=?, hoten=?, ngaysinh=?,diachi=? where username= ?";
 		
 		PreparedStatement pre=null;
 		try{
@@ -67,7 +67,7 @@ public class UserDAO implements IUserDAO{
 	}
 	@Override
 	public boolean ChangePassword(String username, String oldpassword, String newpassword) {
-		String sql="update User set password=? where username=? and password=?";
+		String sql="update user set password=? where username=? and password=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -85,7 +85,7 @@ public class UserDAO implements IUserDAO{
 
 	@Override
 	public boolean ChangeAvatar(String username, InputStream nameAvatar) {
-		String sql="update User set Avatar=? where username=?";
+		String sql="update user set avatar=? where username=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -102,7 +102,7 @@ public class UserDAO implements IUserDAO{
 
 	@Override
 	public ResultSet InfoUser(String username) {
-		String sql="select * from User where Username= ?";
+		String sql="select * from user where username= ?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -118,7 +118,7 @@ public class UserDAO implements IUserDAO{
 
 	@Override
 	public ResultSet InfoUser_MaSo(String MaSo) {
-		String sql="select * from User where MaSo= ?";
+		String sql="select * from user where maso= ?";
 		PreparedStatement pre=null;
 		try{
 			

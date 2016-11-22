@@ -58,7 +58,7 @@
 							type="password" class="form-control" name="password"
 							id="password" placeholder="Enter password" /><span
 							class="help-block">Mật khẩu</span> <br /> <a
-							href="pages/quen-mat-khau.jsp" class="text-danger">Quên mật khẩu</a>
+							href="quen-mat-khau" class="text-danger">Quên mật khẩu</a>
 
 					</div>
 					<br />

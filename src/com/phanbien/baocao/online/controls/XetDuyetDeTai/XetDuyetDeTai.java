@@ -22,11 +22,12 @@ import com.phanbien.baocao.online.utils.objectdatabase.XD_DeTai;
 public class XetDuyetDeTai extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public XetDuyetDeTai() {
-        super();
-    }
+	public XetDuyetDeTai() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		ServletContext context = getServletConfig().getServletContext();
 
 		ConnectionPool cp = (ConnectionPool) context.getAttribute("c_pool");
@@ -36,19 +37,19 @@ public class XetDuyetDeTai extends HttpServlet {
 		if (cp == null) {
 			context.setAttribute("c_pool", ctdtControl.getConnectionPool());
 		}
-		
-		XetDuyetDeTaiControl xddt=new XetDuyetDeTaiControl(cp);
-		String MaDeTai=(request.getParameter("id")) != null ? request.getParameter("id"):"";
-		//Lưu mã đề tài để qua bên sevrlet XuLyXetDuyet dùng
+
+		XetDuyetDeTaiControl xddt = new XetDuyetDeTaiControl(cp);
+		String MaDeTai = (request.getParameter("id")) != null ? request.getParameter("id") : "";
+		// Lưu mã đề tài để qua bên sevrlet XuLyXetDuyet dùng
 		context.setAttribute("maDT", MaDeTai);
-		XD_DeTai xd=null;
-		ArrayList<NhomSV> nsv=null;
-		try{
-			xd=ctdtControl.getDeTaiXetDuyet(MaDeTai);
-			nsv=ctdtControl.getNhomSV(MaDeTai);
-			
-		}catch (SQLException e) {
-			
+		XD_DeTai xd = null;
+		ArrayList<NhomSV> nsv = null;
+		try {
+			xd = ctdtControl.getDeTaiXetDuyet(MaDeTai);
+			nsv = ctdtControl.getNhomSV(MaDeTai);
+
+		} catch (SQLException e) {
+
 			e.printStackTrace();
 		}
 		ctdtControl.releaseConnection();
@@ -57,8 +58,10 @@ public class XetDuyetDeTai extends HttpServlet {
 		request.getRequestDispatcher("pages/xet-duyet-de-tai.jsp").forward(request, response);
 
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 	}
 
 }

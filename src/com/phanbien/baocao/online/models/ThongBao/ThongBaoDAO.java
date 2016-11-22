@@ -27,7 +27,7 @@ public class ThongBaoDAO implements IThongBaoDAO {
 
 	@Override
 	public ResultSet getAllThongBao() {
-		String sql = "select * from thongbao order by MaThongBao desc";
+		String sql = "select * from thongbao order by mathongbao desc";
 
 		return dbm.get(sql);
 	}
@@ -53,7 +53,7 @@ public class ThongBaoDAO implements IThongBaoDAO {
 
 	@Override
 	public ResultSet getThongBao(int startFromPage, int recordOfPage) {
-		String sql = "select * from thongbao order by MaThongBao desc limit ?,?";
+		String sql = "select * from thongbao order by mathongbao desc limit ?,?";
 
 		PreparedStatement pre = null;
 

@@ -24,7 +24,7 @@ public class XetDuyetDeTaiDAO {
 		return dbm.getConnectPool();
 	}
 	public ResultSet getTenDeTai(String MaDeTai) {
-		String sql="select * from view_ten_detai_theo_madt where MaDT=?";
+		String sql="select * from view_ten_detai_theo_madt where madt=?";
 		PreparedStatement pre=null;
 		try{
 			pre=dbm.getConnect().prepareStatement(sql);
@@ -36,7 +36,7 @@ public class XetDuyetDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet getNhomSV(String MaDT){
-		String sql="select * from view_nhomsv_detai where MaDT=?";
+		String sql="select * from view_nhomsv_detai where madt=?";
 		PreparedStatement pre=null;
 		try{
 			pre=dbm.getConnect().prepareStatement(sql);
@@ -49,7 +49,7 @@ public class XetDuyetDeTaiDAO {
 	}
 	public boolean updateKhiXetDuyet(String MaDT,String NhanXetTruocBC, String TrangThai,String TrangThaiSV) {
 		String sql="update quatrinhbaocao set ";
-		sql=sql+" NhanXetTruocBC=?, TrangThai=?, TrangThaiSV=? where MaDT= ?";
+		sql=sql+" nhanxettruocbc=?, trangthai=?, trangthaisv=? where madt= ?";
 		
 		PreparedStatement pre=null;
 		try{

@@ -22,7 +22,6 @@
 	</div>
 </body>
 <script type="text/javascript">
-
 	var app = angular.module('myApp', []);
 	app.controller('customersCtrl', function($scope, $http) {
 		$http.get("http://localhost:9080/BaoCao_PhanBien_Online/show-chi-tiet?id=1").then(function(response) {

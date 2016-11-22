@@ -54,7 +54,7 @@
 										<tr>
 											<td><span class="text-info"><%=i++%></span></td>
 											<td>${xl.getTenDT()}</td>
-											<td><a href="<%= request.getContextPath()%>/xep-lich?id=${xl.getMaDT()}"
+											<td><a href="<%= request.getContextPath()%>/XepLich?id=${xl.getMaDT()}"
 												class="btn btn-success btn-xs">Xếp lịch</a></td>
 										</tr>
 									</tbody>

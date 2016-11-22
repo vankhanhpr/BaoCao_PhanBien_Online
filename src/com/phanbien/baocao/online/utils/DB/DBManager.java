@@ -32,7 +32,7 @@ public class DBManager {
 		this.objectName = objectName;
 
 		try {
-			System.out.println(this.connectPool.toString());
+		
 			this.connect = connectPool.getConnection(objectName);
 
 			if (this.connect.getAutoCommit()) {

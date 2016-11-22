@@ -27,7 +27,7 @@ public class XemKQSinhVienDAO {
 
 	public ResultSet getKetQuaSinhVien(String maso)
 	{
-		String sql="select * from view_xemketquasv where MaSV=?";
+		String sql="select * from view_xemketquasv where masv=?";
 		
 		
 		PreparedStatement pre=null;

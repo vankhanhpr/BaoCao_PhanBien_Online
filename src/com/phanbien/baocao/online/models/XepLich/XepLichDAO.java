@@ -22,7 +22,7 @@ public class XepLichDAO {
 		return dbm.getConnectPool();
 	}
 	public ResultSet getSoLuong_SV(String MaDT) {
-		String sql="select * from view_soluongsv where MaDT=?";
+		String sql="select * from view_soluongsv where madt=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -36,7 +36,7 @@ public class XepLichDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet getDeTai(String MaDT) {
-		String sql="select * from `view_danh-sach-de-tai-xep-lich` where MaDT=?";
+		String sql="select * from `view_danh-sach-de-tai-xep-lich` where madt=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -50,7 +50,7 @@ public class XepLichDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet getTomTat_FileBacCao(String MaDT) {
-		String sql="select * from view_tomtat_filebainop_xeplich where MaDT=?";
+		String sql="select * from view_tomtat_filebainop_xeplich where madt=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -64,7 +64,7 @@ public class XepLichDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet getTenGVHD_DeTai(String MaDT) {
-		String sql="select * from view_gvhd_xeplich where MaDT=?";
+		String sql="select * from view_gvhd_xeplich where madt=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -102,7 +102,7 @@ public class XepLichDAO {
 	public boolean updateLichBaoCao(String MaDT, String UyVien, String PhanBien, String ChuTich,String NgayBaoCao,
 			String ThoiGianBaoCao,String ThoiLuong) {
 		String sql="update xeplich set ";
-		sql=sql+" MaUyVien=?, MaGVPB=?, MaChuTich=?,NgayBaoCao=?, ThoiGianBC=?,ThoiLuong=? where MaDeTai= ?";
+		sql=sql+" mauyvien=?, magvpb=?, machutich=?,ngaybaocao=?, thoigianbc=?,thoiluong=? where madetai= ?";
 		
 		PreparedStatement pre=null;
 		try{

@@ -134,7 +134,7 @@
 										</tr>
 										
 										<tr>
-											<td colspan="2" style="text-align: center;"><a href="<%=request.getContextPath() %>/danh-sach-de-ta"
+											<td colspan="2" style="text-align: center;"><a href="<%=request.getContextPath() %>/danh-sach-de-tai"
 													id="back" type="button" class="btn btn-info">Quay
 													về</a></td>
 										</tr>

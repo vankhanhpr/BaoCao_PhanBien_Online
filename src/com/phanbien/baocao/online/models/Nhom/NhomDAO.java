@@ -29,7 +29,7 @@ public class NhomDAO implements INhom {
 	@Override
 	public ResultSet getSVNhom(String MaNhom) {
 		
-			String sql="select user.* from nhom,user where MaNhom= ? and nhom.MaSV=user.MaSo";
+			String sql="select user.* from nhom,user where manhom= ? and nhom.masv=user.maso";
 			PreparedStatement pre=null;
 			try{
 				

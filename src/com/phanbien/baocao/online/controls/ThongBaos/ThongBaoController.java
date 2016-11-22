@@ -37,18 +37,6 @@ public class ThongBaoController extends HttpServlet {
 		showThongBao(request, response);
 	}
 
-	// Add ThongBao
-	// Function f=new Function();
-	//
-	// ThongBao tt=new ThongBao();
-	// tt.setNgay(f.toDate2AddDatabase(new Date()));
-	// tt.setTieuDe("TiÃªu Ä‘á»� má»›i");
-	// tt.setNoiDung("ná»™i dá»¥ng má»›i");
-	//
-	// if(tbControl.addThongBao(tt)){
-	// System.out.println("success");
-	// }else System.out.println("fails");
-
 	int newestTB=0;
 	private void showThongBao(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -65,22 +53,9 @@ public class ThongBaoController extends HttpServlet {
 		if (cp == null) {
 			context.setAttribute("c_pool", tbControl.getConnectionPool());
 		}
-//		for (int i = 0; i < 20; i++) {
-//			Function f = new Function();
-//
-//			ThongBao tt = new ThongBao();
-//			tt.setNgay(f.toDate2AddDatabase(new Date()));
-//			tt.setTieuDe("Tiêu đề mới");
-//			tt.setNoiDung("Nội dung mới");
-//
-//			if (tbControl.addThongBao(tt)) {
-//				System.out.println("success");
-//			} else
-//				System.out.println("fails");
-//		}
 
 		int page = 1;
-		int startFromPage = 1;
+		int startFromPage = 0;
 		int recordPerPage = 6;
 		int numOfThongBao = -1;
 		int numOfPage = -1;
@@ -92,6 +67,7 @@ public class ThongBaoController extends HttpServlet {
 		ArrayList<ThongBao> thongbaos = null;
 
 		try {
+			System.out.print("123 : "+startFromPage+"  " +recordPerPage);
 			thongbaos = tbControl.getThongBao(startFromPage, recordPerPage);
 
 			numOfThongBao = tbControl.getCountThongBao();
@@ -107,12 +83,8 @@ public class ThongBaoController extends HttpServlet {
 			request.setAttribute("thongbaos", thongbaos);
 			request.setAttribute("curPage", page);
 			request.setAttribute("numOfPage", numOfPage);
+			request.setAttribute("numoftb", numOfThongBao);
 			
-			int temp=Integer.parseInt(thongbaos.get(0).getMaThongBao());
-			if(temp>=newestTB){
-				newestTB=temp;
-			}
-			request.getServletContext().setAttribute("newestTB",newestTB);
 		}
 
 		request.getRequestDispatcher("pages/trang-chu.jsp").forward(request, response);

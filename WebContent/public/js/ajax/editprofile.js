@@ -1,7 +1,4 @@
 $(document).ready(function() {
-	
-	
-	
 	$("#frm-profile").submit(function (e) {
 		var err=[];
 		err.length=0;
@@ -72,8 +69,6 @@ $(document).ready(function() {
 		            });
 		            return false;
 		}
-		
-		
 	});
 	$('#frm-changepassword').submit(function (ee){
 		if($('#oldpassword').val()==""){
@@ -95,9 +90,12 @@ $(document).ready(function() {
 	        $("#retypepassword").focus();
 	        return false;
 		}else {
+			
 			var form_data_p = {
 		            newpassword: $("#newpassword").val(),
+		            
 		            oldpassword:$('#oldpassword').val()
+		            
 		        };
 		        $.ajax({
 		            url:'../editprofile',
@@ -107,24 +105,22 @@ $(document).ready(function() {
 		            success:function(msg){
 		                if (msg == 'error')
 		                {
-		                $('#err_login').html('<div class="alert alert-danger">Mật khẩu không chính xác</div>');
-                    	$("#password").val("");
-                    	$("#password").focus();
-		                    return false;
+			                $('#err_login').html('<div class="alert alert-danger">Mật khẩu không chính xác</div>');
+	                    	$("#password").val("");
+	                    	$("#password").focus();
+			                    return false;
 		                }
 		                else
 		                {
-		                $('#err_login').html('<div class="alert alert-success">Đổi mật khẩu thành công</div>');
-		                   setTimeout(function(){
-		                	   window.location.href = ''+msg+'';
-
-		                   },1000);
+			                $('#err_login').html('<div class="alert alert-success">Đổi mật khẩu thành công</div>');
+			                   setTimeout(function(){
+			                	   window.location.href = ''+msg+'';
+			                   },1000);
 		                   
 		                }
 		            }
 		            });
 		        return false;
-
 		}
 	});
 	

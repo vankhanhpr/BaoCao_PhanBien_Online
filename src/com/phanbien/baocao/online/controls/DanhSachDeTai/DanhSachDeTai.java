@@ -29,15 +29,15 @@ public class DanhSachDeTai extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		HttpSession session=request.getSession();
-		String chucvu=((User)session.getAttribute("user")).getChucVu();
+		int chucvu=Integer.parseInt(((User)session.getAttribute("user")).getChucVu());
 		switch (chucvu) {
-		case "1":
+		case 1:
 			doShowDanhSachDeTai_SV(request, response);
 			break;
-		case "2":
+		case 2:
 			doShowDanhSachDeTai_GV_TK(request, response);
 			break;
-		case "3":
+		case 3:
 			doShowDanhSachDeTai_GV_TK(request, response);
 		default:
 			break;
@@ -73,7 +73,6 @@ public class DanhSachDeTai extends HttpServlet {
 		HttpSession session=request.getSession();
 		
 		String MaSo=((User)session.getAttribute("user")).getMaSo();
-		System.out.println(((User)session.getAttribute("user")).getMaSo());
 		try {
 			detai = dsControl.ChiTietDeTaiSV(MaSo);
 			gvhd = dsControl.TenGVHD(MaSo);
@@ -87,13 +86,11 @@ public class DanhSachDeTai extends HttpServlet {
 		}
 		
 		dsControl.releaseConnection();
-		System.out.println(detai.getTrangThai());
 		request.setAttribute("detai", detai);
 		request.setAttribute("gvhd", gvhd);
 		request.setAttribute("uyvien", uyvien);
 		request.setAttribute("gvpb", gvpb);
-		request.setAttribute("chutich", chutich);
-		System.out.println(detai.getThoiLuongBaoCao());
+		request.setAttribute("chutich", chutich);	
 		request.getRequestDispatcher("pages/danh-sach-de-tai.jsp").forward(request, response);
 	}
 	private void doShowDanhSachDeTai_GV_TK(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -117,7 +114,6 @@ public class DanhSachDeTai extends HttpServlet {
 		HttpSession session=request.getSession();
 		
 		String MaSo=((User)session.getAttribute("user")).getMaSo();
-		System.out.println(((User)session.getAttribute("user")).getMaSo());
 		try {
 			gvhd=dsControl.DanhSachDeTaiChucVuHuongDan(MaSo);
 			uyvien=dsControl.DanhSachDeTaiChucVuUyvien(MaSo);

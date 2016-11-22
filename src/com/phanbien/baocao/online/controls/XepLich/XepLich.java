@@ -18,7 +18,7 @@ import com.phanbien.baocao.online.utils.objectdatabase.DS_GiangVien;
 import com.phanbien.baocao.online.utils.objectdatabase.XepLich_DT;
 
 
-@WebServlet("/xep-lich")
+@WebServlet("/XepLich")
 public class XepLich extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -31,7 +31,6 @@ import com.phanbien.baocao.online.utils.objectdatabase.User;
 public class UploadFile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	// location to store file uploaded -host
 	private static final String UPLOAD_DIRECTORY = "fileUpload";
 	//private static final String UPLOAD_DIRECTORY = "D:\\PROGRAMING\\Eclipse_Project_2\\BaoCao_PhanBien_Online\\WebContent\\users\\avatar";
 

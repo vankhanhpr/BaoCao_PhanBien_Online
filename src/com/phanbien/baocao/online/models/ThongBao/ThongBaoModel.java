@@ -61,15 +61,16 @@ public class ThongBaoModel {
 
 	public ArrayList<ThongBao> getThongBao(int startFromPage, int recordOfPage) throws SQLException {
 		// return
-		ArrayList<ThongBao> listThongBao = null;
-
+		ArrayList<ThongBao> listThongBao = new ArrayList<>();
+		
 		ResultSet rs = this.tbDAO.getThongBao(startFromPage, recordOfPage);
 
+		if(rs==null)
+			return listThongBao;
+		
 		Function f = new Function();
-		if (rs != null) {
-			listThongBao = new ArrayList<>();
+		if (rs != null) {	
 			while (rs.next()) {
-
 				ThongBao tb = new ThongBao();
 
 				tb.setMaThongBao(rs.getString(1));

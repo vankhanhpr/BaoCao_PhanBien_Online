@@ -25,7 +25,7 @@ public class ChiTietDeTaiDAO implements IChiTietDeTai {
 
 	@Override
 	public ResultSet getChiTietDeTai(String MaDeTai) {
-		String sql="select * from viewChiTietDeTai where MaDeTai=?";
+		String sql="select * from viewchitietdetai where madetai=?";
 		PreparedStatement pre=null;
 		try{
 			pre=dbm.getConnect().prepareStatement(sql);

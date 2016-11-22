@@ -51,9 +51,7 @@
 												<p>
 													<span class="btn btn-primary btn-sm">${tb.getNgay()}</span>
 													${tb.getTieuDe()}
-													<c:if test="${tb.getMaThongBao() == requestScope.newestTB}">
-													${ tb.getMaThongBao()}
-													${ sessionScope.newestTB}
+													<c:if test="${tb.getMaThongBao() == requestScope.numoftb}">
 														<img
 															src="<%=request.getContextPath()%>/public/images/new1.gif">
 													</c:if>

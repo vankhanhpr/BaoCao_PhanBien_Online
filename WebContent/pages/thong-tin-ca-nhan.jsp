@@ -41,12 +41,13 @@
 								<div>
 									<table class="table">
 										<tr>
-											<td>Hình:</td>
+											<td>Avatar:</td>
 											<td><c:if
-													test="${sessionScope.user !=null }">
+													test="${sessionScope.user.getAvatar() !=null }">
 													<img
 														src="<%=request.getContextPath() %>/avatar?id=${sessionScope.user.getMaSo()}" width="100" height="100">
-												</c:if> <c:if test="${sessionScope.user ==null }">
+												</c:if> 
+												<c:if test="${sessionScope.user.getAvatar() ==null }">
 													<img
 														src="<%=request.getContextPath()%>/public/images/avatar-default.png" width="100" height="100">
 												</c:if></td>
@@ -80,18 +81,18 @@
 										<tr>
 											<td>Chức Vụ:</td>
 											<%
-												String temp = ((User) session.getAttribute("user")).getChucVu();
+												int temp =Integer.parseInt(( ((User) session.getAttribute("user")).getChucVu()));
 
 												String result = "";
 
 												switch (temp) {
-												case "1":
+												case 1:
 													result = "Sinh Viên";
 													break;
-												case "2":
+												case 2:
 													result = "Giảng viên";
 													break;
-												case "3":
+												case 3:
 													result = "Trưởng khoa";
 													break;
 												default:

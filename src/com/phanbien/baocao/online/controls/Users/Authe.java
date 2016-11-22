@@ -77,6 +77,7 @@ public class Authe extends HttpServlet  implements IPagePath{
 			page.setListtopic(LISTOPIC);
 			page.setProfile(PROFILE);
 			page.setReport(REPORT);
+			page.setViewresult(VIEWRESULT);
 			
 			session.setAttribute("pages", page);
 			

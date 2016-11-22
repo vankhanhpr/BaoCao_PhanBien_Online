@@ -69,8 +69,11 @@ public class ChiTietDeTaiModel {
 				
 				ctdt.setNgayBC(rs.getDate("NgayBaoCao").toString());
 				ctdt.setThoiGianBC(rs.getTime("ThoiGianBC").toString());
+				
+			
 				ctdt.setTomTat(rs.getString("TomTatDT"));
 				ctdt.setThoiLuongBC(rs.getInt("ThoiLuong"));
+				
 				
 			}
 		}

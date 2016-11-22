@@ -23,7 +23,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.getConnectPool();
 	}
 	public ResultSet ThongTinDeTaiSV(String MaSo) {
-		String sql="select * from viewdanhsachdetaisv where MaSo=?";
+		String sql="select * from viewdanhsachdetaisv where maso=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -37,7 +37,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet TenGVHD(String MaSo) {
-		String sql="select * from viewtengvhdcuasv where MaSV=?";
+		String sql="select * from viewtengvhdcuasv where maso=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -51,7 +51,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet TenUyVien(String MaSo) {
-		String sql="select * from viewtenuyviencuasv where MaSV=?";
+		String sql="select * from viewtenuyviencuasv where masv=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -65,7 +65,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet TenGVPB(String MaSo) {
-		String sql="select * from viewtengvpbcuasv where MaSV=?";
+		String sql="select * from viewtengvpbcuasv where masv=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -79,7 +79,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet TenChuTich(String MaSo) {
-		String sql="select * from viewtenchutichcuasv where MaSV=?";
+		String sql="select * from viewtenchutichcuasv where masv=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -93,7 +93,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet DanhSachDeTaiChucVuUyVien(String MaSo) {
-		String sql="select * from view_dsdt_chucvu_uyvien where MaSo=?";
+		String sql="select * from view_dsdt_chucvu_uyvien where maso=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -107,7 +107,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet DanhSachDeTaiChucVuPhanBien(String MaSo) {
-		String sql="select * from view_dsdt_chucvu_phanbien where MaSo=?";
+		String sql="select * from view_dsdt_chucvu_phanbien where maso=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -121,7 +121,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet DanhSachDeTaiChucVuHuongDan(String MaSo) {
-		String sql="select * from view_dsdt_chucvu_huongdan where MaSo=?";
+		String sql="select * from view_dsdt_chucvu_huongdan where maso=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -135,7 +135,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet TenGVHD_DeTai(String MaDT) {
-		String sql="select * from view_chucvu_gvhd_detai where MaDT=?";
+		String sql="select * from view_chucvu_gvhd_detai where madt=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -149,7 +149,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet TenChuTich_DeTai(String MaDT) {
-		String sql="select * from view_chucvu_chutich_detai where MaDeTai=?";
+		String sql="select * from view_chucvu_chutich_detai where madetai=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -163,7 +163,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet TenPhanBien_DeTai(String MaDT) {
-		String sql="select * from view_chucvu_phanbien_detai where MaDeTai=?";
+		String sql="select * from view_chucvu_phanbien_detai where madetai=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -177,7 +177,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet TenUyVien_DeTai(String MaDT) {
-		String sql="select * from view_chucvu_uyvien_detai where MaDeTai=?";
+		String sql="select * from view_chucvu_uyvien_detai where madetai=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -191,7 +191,7 @@ public class DanhSachDeTaiDAO {
 		return dbm.get(pre);
 	}
 	public ResultSet SoLuong_SV(String MaDT) {
-		String sql="select * from view_soluongsv where MaDT=?";
+		String sql="select * from view_soluongsv where madt=?";
 		PreparedStatement pre=null;
 		try{
 			
@@ -206,7 +206,7 @@ public class DanhSachDeTaiDAO {
 	}
 	public boolean updateFormBaoCao(String MaDT,String tenFile, String tomTat, String TrangThai) {
 		String sql="update quatrinhbaocao set ";
-		sql=sql+"FileBaiNop=?, TomTatDT=?, TrangThaiSV=? where MaDT= ?";
+		sql=sql+"filebainop=?, tomtatdt=?, trangthaisv=? where madt= ?";
 		
 		PreparedStatement pre=null;
 		try{

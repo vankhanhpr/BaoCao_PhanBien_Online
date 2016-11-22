@@ -22,7 +22,6 @@ import com.sun.org.apache.regexp.internal.recompile;
 @WebServlet("/xem-ket-qua")
 public class XemKetQuaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	public XemKetQuaController() {
 		super();
 
@@ -40,14 +39,14 @@ public class XemKetQuaController extends HttpServlet {
 		User currentUser = (User) session.getAttribute("user");
 
 		String maso = currentUser.getMaSo();
-		String chucvu = currentUser.getChucVu();
+		int chucvu =Integer.parseInt( currentUser.getChucVu());
 
 		switch (chucvu) {
-		case "1":
+		case 1:
 			doXemKetQua_SV(maso, request, response);
 			break;
-		case "2":
-		case "3":
+		case 2:
+		case 3:
 			doXemKetQua_GV(maso, request, response);
 			break;
 		default:
