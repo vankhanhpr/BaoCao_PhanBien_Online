@@ -100,7 +100,7 @@
 											</tr>
 											<tr>
 												<td>Bài báo cáo</td>
-												<td><a href="">${requestScope.xldt.getFileBaoCao()}</a></td>
+												<td><a href="<%=request.getContextPath()%>/Download?id=${requestScope.xldt.getMaDT()}">Download file...</a></td>
 											</tr>
 										</table>
 										<p align="center">

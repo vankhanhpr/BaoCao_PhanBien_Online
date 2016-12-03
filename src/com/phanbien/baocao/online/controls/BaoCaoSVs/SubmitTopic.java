@@ -2,9 +2,11 @@ package com.phanbien.baocao.online.controls.BaoCaoSVs;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,6 +23,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.phanbien.baocao.online.models.DanhSachDeTai.DanhSachDeTaiControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
+import com.phanbien.baocao.online.utils.classes.Function;
 import com.phanbien.baocao.online.utils.objectdatabase.DeTaiSV;
 import com.phanbien.baocao.online.utils.objectdatabase.User;
 
@@ -32,7 +35,7 @@ import com.phanbien.baocao.online.utils.objectdatabase.User;
 public class SubmitTopic extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final String UPLOAD_DIRECTORY = "D:\\fileUpload";
+	private static String UPLOAD_DIRECTORY;
 	// private static final String UPLOAD_DIRECTORY =
 	// "D:\\PROGRAMING\\Eclipse_Project_2\\BaoCao_PhanBien_Online\\WebContent\\users\\avatar";
 
@@ -44,6 +47,8 @@ public class SubmitTopic extends HttpServlet {
 	public SubmitTopic() {
 		super();
 
+		UPLOAD_DIRECTORY =new Function().getUploadPath();
+		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -85,7 +90,6 @@ public class SubmitTopic extends HttpServlet {
 		// + File.separator + UPLOAD_DIRECTORY;
 		String uploadPath = UPLOAD_DIRECTORY;
 
-		System.out.print(uploadPath);
 
 		// creates the directory if it does not exist
 		File uploadDir = new File(uploadPath);

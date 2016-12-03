@@ -36,5 +36,21 @@ public class ChiTietDeTaiDAO implements IChiTietDeTai {
 		}
 		return dbm.get(pre);
 	}
+	
+	public ResultSet getFileofTopic(String MaDeTai){
+		
+		String sql="select filebainop from quatrinhbaocao where madt=?";
+		
+		PreparedStatement pre=null;
+		
+		try{
+			pre=dbm.getConnect().prepareStatement(sql);
+			pre.setString(1, MaDeTai);
+		}catch(SQLException e){
+			System.out.print("Fail getFileofTopic ChiTietDeTai");
+		}
+		return dbm.get(pre);
+		
+	}
 
 }

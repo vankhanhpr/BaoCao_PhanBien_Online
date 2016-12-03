@@ -72,7 +72,7 @@
 										</tr>
 										<tr>
 											<td>Bài báo cáo</td>
-											<td><a href="#taifile">Download file....</a></td>
+											<td><a href="<%=request.getContextPath()%>/Download?id={{myData.MaDeTai}}">Download file....</a></td>
 										</tr>
 										<%
 											for(int i=0;i<3;i++)

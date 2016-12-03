@@ -50,9 +50,9 @@ public class DanhSachDeTaiControl {
 		}
 		return dt;
 	}
-	public DeTaiSV TenGVHD(String MaSo) throws SQLException {
+	public DeTaiSV TenGVHD(String MaDT) throws SQLException {
 		DeTaiSV dt = null;
-		ResultSet rs = this.ds.TenGVHD(MaSo);
+		ResultSet rs = this.ds.TenGVHD(MaDT);
 		if (rs != null) {
 			if (rs.next()) {
 				dt = new DeTaiSV();
@@ -61,9 +61,9 @@ public class DanhSachDeTaiControl {
 		}
 		return dt;
 	}
-	public DeTaiSV TenUyVien(String MaSo) throws SQLException {
+	public DeTaiSV TenUyVien(String MaDT) throws SQLException {
 		DeTaiSV dt = null;
-		ResultSet rs = this.ds.TenUyVien(MaSo);
+		ResultSet rs = this.ds.TenUyVien(MaDT);
 		if (rs != null) {
 			if (rs.next()) {
 				dt = new DeTaiSV();
@@ -72,9 +72,9 @@ public class DanhSachDeTaiControl {
 		}
 		return dt;
 	}
-	public DeTaiSV TenGVPB(String MaSo) throws SQLException {
+	public DeTaiSV TenGVPB(String MaDT) throws SQLException {
 		DeTaiSV dt = null;
-		ResultSet rs = this.ds.TenGVPB(MaSo);
+		ResultSet rs = this.ds.TenGVPB(MaDT);
 		if (rs != null) {
 			if (rs.next()) {
 				dt = new DeTaiSV();
@@ -83,9 +83,9 @@ public class DanhSachDeTaiControl {
 		}
 		return dt;
 	}
-	public DeTaiSV TenChuTich(String MaSo) throws SQLException {
+	public DeTaiSV TenChuTich(String MaDT) throws SQLException {
 		DeTaiSV dt = null;
-		ResultSet rs = this.ds.TenChuTich(MaSo);
+		ResultSet rs = this.ds.TenChuTich(MaDT);
 		if (rs != null) {
 			if (rs.next()) {
 				dt = new DeTaiSV();

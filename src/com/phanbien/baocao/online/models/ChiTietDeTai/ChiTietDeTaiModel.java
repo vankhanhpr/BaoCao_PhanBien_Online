@@ -80,4 +80,17 @@ public class ChiTietDeTaiModel {
 	
 		return ctdt;
 	}
+	
+	public String getFileofTopic(String MaDeTai) throws SQLException{
+		String result="";
+		
+		ResultSet rs=this.ctdtDAO.getFileofTopic(MaDeTai);
+		
+		if(rs!=null){
+			if(rs.next()){
+				result=rs.getString(1);
+			}
+		}
+		return result;
+	}
 }

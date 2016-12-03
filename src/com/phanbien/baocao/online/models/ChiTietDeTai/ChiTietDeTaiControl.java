@@ -27,6 +27,10 @@ public class ChiTietDeTaiControl {
 		return this.ctdtModel.getChiTietDeTai(MaDeTai);
 	}
 	
+	public String getFileofTopic(String MaDeTai) throws SQLException{
+		return this.ctdtModel.getFileofTopic(MaDeTai);
+	}
+	
 	public static void main(String[] args) throws SQLException{
 		ChiTietDeTaiControl ctdt=new ChiTietDeTaiControl(new ConnectionPool());
 		

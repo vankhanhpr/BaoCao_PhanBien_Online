@@ -9,42 +9,6 @@
 <title>Báo cáo</title>
 <%@include file="//includes/header.jsp"%>
 </head>
-<style type="text/css">
-.videoPro {
-	width: 660px;
-	min-height: 400px;
-	margin-left: 10px;
-	border: 1px solid #CDCDCD;
-	float: left;
-	background-color: gray;
-	margin-bottom: 5px;
-}
-
-.gh {
-	width: 130px;
-	min-height: 40px;
-	margin-left: 30px;
-	margin-top: 5px;
-	border: 1px solid black;
-	float: left;
-	background-color: white;
-	margin-bottom: 5px;
-}
-
-.nutbam {
-	width: 170px;
-	min-height: 40px;
-	margin-left: 800px border: 2px solid black;
-	float: left;
-	background-color: white;
-	margin-bottom: 5px;
-}
-
-#aa {
-	width: 75%;
-	height: 70%;
-}
-</style>
 <body>
 <%@include file="//includes/menu-mobile.jsp"%>
 	<div>
@@ -72,40 +36,20 @@
 			class="label label-primary pull-right"><i class="glyphicon glyphicon-time"></i><%=Function.getDate() %></span><br></span>
 							</ol>
 							<div class="videoPro">
-								<video width="660" height="400" controls> <source
-									src="forrest_gump.mp4" type="video/mp4"> <source
-									src="forrest_gump.ogg" type="video/ogg"> <track
-									src="subtitles_en.vtt" kind="subtitles" srclang="en"
-									label="English"> <track src="subtitles_no.vtt"
-									kind="subtitles" srclang="no" label="Norwegian"></video>
-							</div>
-							<div class="gh">
-								<img src="../public/images/user-icon-6.png" width="120"
-									height="120">
-							</div>
-							<div class="gh">
-								<img src="../public/images/user-icon-6.png" width="120"
-									height="120">
-							</div>
-							<div class="gh">
-								<img src="../public/images/user-icon-6.png" width="120"
-									height="120">
-							</div>
-
-							<div class="nutbam">
-								<p align="right">
-									<a href=""><button type="button"
-											class="btnKick btn btn-danger" type="submit">Kích</button></a> <a
-										href="#"><button type="button" id="chamdiem"
-											class="btnDiem btn btn-success">Chấm Điểm</button>
-								</p>
-							</div>
+								<video width="856" height="405" controls> </video>
+							</div>						
 						</div>
 						<!--Khung hiển thị chính-->
 					</div>
 				</div>
 			</div>
-			<!-- ############################ Cho điểm ############################## -->
+				
+
+		</div>
+
+	</div>
+
+		<!-- ############################ Cho điểm ############################## -->
 			<div class="modal fade" id="chodiem">
 				<div class="modal-dialog" id='aa'>
 					<div class="modal-content">
@@ -154,24 +98,11 @@
 				<!-- /.modal-dialog -->
 			</div>
 			<!-- /.modal -->
-			<!-- ============================================================-->
-
-		</div>
-
-	</div>
-
-
+	
 	<!--  FOOTER -->
 	<%@ include file="//includes/footer.jsp"%>
 	<!--END FOOTER -->
 	<script type="text/javascript"
 		src="<%=request.getContextPath()%>/public/bootstrap/js/bootstrap.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$("#chamdiem").click(function() {
-				$("#chodiem").modal();
-			});
-		});
-	</script>
 </body>
 </html>

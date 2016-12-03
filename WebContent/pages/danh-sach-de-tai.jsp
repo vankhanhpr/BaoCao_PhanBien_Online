@@ -16,7 +16,7 @@
 				<%@include file="//includes/banner-mobile.jsp"%>
 				<%@include file="//includes/banner-desktop.jsp"%>
 			</div>
-		</div>
+		
 		<!-- start wrapper -->
 		<div id="wrapper">
 			<div class="container">
@@ -71,6 +71,7 @@
 					</div>
 					<!--Khung hiển thị chính-->
 				</div>
+			</div>
 			</div>
 		</div>
 		<!-- End wrapper -->

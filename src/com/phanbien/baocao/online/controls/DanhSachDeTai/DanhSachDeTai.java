@@ -75,10 +75,10 @@ public class DanhSachDeTai extends HttpServlet {
 		String MaSo=((User)session.getAttribute("user")).getMaSo();
 		try {
 			detai = dsControl.ChiTietDeTaiSV(MaSo);
-			gvhd = dsControl.TenGVHD(MaSo);
-			uyvien = dsControl.TenUyVien(MaSo);
-			gvpb = dsControl.TenGVPB(MaSo);
-			chutich = dsControl.TenChuTich(MaSo);
+			gvhd = dsControl.TenGVHD(detai.getMaDT());
+			uyvien = dsControl.TenUyVien(detai.getMaDT());
+			gvpb = dsControl.TenGVPB(detai.getMaDT());
+			chutich = dsControl.TenChuTich(detai.getMaDT());
 			
 		} catch (SQLException e) {
 			

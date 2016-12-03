@@ -36,13 +36,13 @@ public class DanhSachDeTaiDAO {
 		
 		return dbm.get(pre);
 	}
-	public ResultSet TenGVHD(String MaSo) {
-		String sql="select * from viewtengvhdcuasv where maso=?";
+	public ResultSet TenGVHD(String MaDT) {
+		String sql="select * from viewtengvhdcuasv where madt=?";
 		PreparedStatement pre=null;
 		try{
 			
 			pre=dbm.getConnect().prepareStatement(sql);
-			pre.setString(1, MaSo);
+			pre.setString(1, MaDT);
 			
 		}catch(SQLException e){
 			System.out.print("FAIL DanhSachDeTai_SV");
@@ -50,13 +50,13 @@ public class DanhSachDeTaiDAO {
 		
 		return dbm.get(pre);
 	}
-	public ResultSet TenUyVien(String MaSo) {
-		String sql="select * from viewtenuyviencuasv where masv=?";
+	public ResultSet TenUyVien(String MaDT) {
+		String sql="select * from viewtenuyviencuasv where madetai=?";
 		PreparedStatement pre=null;
 		try{
 			
 			pre=dbm.getConnect().prepareStatement(sql);
-			pre.setString(1, MaSo);
+			pre.setString(1, MaDT);
 			
 		}catch(SQLException e){
 			System.out.print("FAIL DanhSachDeTai_SV");
@@ -64,13 +64,13 @@ public class DanhSachDeTaiDAO {
 		
 		return dbm.get(pre);
 	}
-	public ResultSet TenGVPB(String MaSo) {
-		String sql="select * from viewtengvpbcuasv where masv=?";
+	public ResultSet TenGVPB(String MaDT) {
+		String sql="select * from viewtengvpbcuasv where madetai=?";
 		PreparedStatement pre=null;
 		try{
 			
 			pre=dbm.getConnect().prepareStatement(sql);
-			pre.setString(1, MaSo);
+			pre.setString(1, MaDT);
 			
 		}catch(SQLException e){
 			System.out.print("FAIL DanhSachDeTai_SV");
@@ -78,13 +78,13 @@ public class DanhSachDeTaiDAO {
 		
 		return dbm.get(pre);
 	}
-	public ResultSet TenChuTich(String MaSo) {
-		String sql="select * from viewtenchutichcuasv where masv=?";
+	public ResultSet TenChuTich(String MaDT) {
+		String sql="select * from viewtenchutichcuasv where madetai=?";
 		PreparedStatement pre=null;
 		try{
 			
 			pre=dbm.getConnect().prepareStatement(sql);
-			pre.setString(1, MaSo);
+			pre.setString(1, MaDT);
 			
 		}catch(SQLException e){
 			System.out.print("FAIL DanhSachDeTai_SV");
