@@ -318,11 +318,17 @@
             {
              	 btnKick.onclick= function(){
              		 if(confirm('Bạn chắc chắn muốn dừng bài bào cáo này?')){
+             			 
+             			
+
              			connection.attachStreams.forEach(function(stream) {
                     	    stream.stop();
                     	});
+             			
+             			connection.stopPartOfScreenSharing();
              		 }
-             	 }
+             	 
+           		 }
             };
             
             var btnJoin=document.getElementById('join');
@@ -337,6 +343,11 @@
                      };
                      var socket = connection.getSocket();
                      socket.emit('check-broadcast-presence', broadcastId, function(isBroadcastExists) {
+                    	 if(!isBroadcastExists){
+                    		 alert("Sinh viên chưa phát trực tiếp");
+                    		 return;
+                    	 }
+                    		
                          console.log('check-broadcast-presence', broadcastId, isBroadcastExists);
                          socket.emit('join-broadcast', {
                              broadcastId: broadcastId,
