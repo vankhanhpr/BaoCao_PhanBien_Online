@@ -66,7 +66,7 @@ public class ConnectionPool {
 
 			System.out.println(objectName + " have created a new Connection.");
 
-			con = DriverManager.getConnection(url + database+"?useUnicode=true&characterEncoding=utf-8", user, password);
+			con = DriverManager.getConnection(url + database+"?useUnicode=true&characterEncoding=utf-8&useSSL=true", user, password);
 		} else {
 			System.out.println(objectName + " have poped a Connection.");
 

@@ -14,7 +14,6 @@ public class XemKQGiangVienControl {
 	private XemKQGiangVienDAO xemkqDAO;
 	private UserControl uControl;
 	public XemKQGiangVienControl(ConnectionPool cp){
-		//Đã khai báo thì cần khởi tạo
 				
 		xemkqDAO=new XemKQGiangVienDAO(cp);
 		
@@ -22,7 +21,7 @@ public class XemKQGiangVienControl {
 	}
 	
 	
-	//Các phương thức dùng trên database gồm lấy kết nối, đưa conenction vào stack, đưa connection ra khỏi stack
+	
 	public ConnectionPool getConnectionPool() {
 		return this.xemkqDAO.getConnectionPool();
 
@@ -37,29 +36,23 @@ public class XemKQGiangVienControl {
 		this.xemkqDAO.getDbm().refreshConnectionPool();
 	}
 
-	//Vì Giảng viên có nhiều đề tài nên cần 1 mảng dữ liệu chứa từng đề tài
-	
-		//Dùng ArrayList với kiểu dữ liệu của đề tài là XemKetQuaSV
-		
 	public ArrayList<XemKetQuaSV> getKetQuaGiangVien(String maso) throws SQLException{
 		
-		//Khỏi tạo biến listKQGV 
-		
+	
 		ArrayList<XemKetQuaSV> listKQGV=new ArrayList<>();
 		
-		//Dùng lớp DAO để thực thi lệnh từ sql tạo thành 1 datatable (tức ResultSet)
+	
 		
 		
 		ResultSet rs=xemkqDAO.getKetQuaGiangVien(maso);
 		
 		if(rs!=null){
-			//Lấy từng record trong resultset
 			while(rs.next()){
 				
 				XemKetQuaSV xemkq=new XemKetQuaSV();
 				
-				xemkq.setNgayBaoCao(rs.getDate("NgayBaoCao").toString());
-				xemkq.setThoiGianBaoCao(rs.getTime("ThoiGianBC").toString());
+				xemkq.setNgayBaoCao(rs.getDate("NgayBaoCao")==null?"":rs.getDate("NgayBaoCao").toString());
+				xemkq.setThoiGianBaoCao(rs.getTime("ThoiGianBC")==null?"":rs.getTime("ThoiGianBC").toString());
 				xemkq.setTenDeTai(rs.getString("TenDeTai"));
 				
 				HoiDong hd=new HoiDong();
@@ -82,7 +75,6 @@ public class XemKQGiangVienControl {
 
 				xemkq.setHoiDong(hd);
 				
-				//Thêm 1 hàng trong csdl vào list
 				listKQGV.add(xemkq);
 			}
 		

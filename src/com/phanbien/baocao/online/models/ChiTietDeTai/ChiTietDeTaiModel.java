@@ -67,8 +67,8 @@ public class ChiTietDeTaiModel {
 				ctdt.setSLSV(nhom.getSV().size());
 				ctdt.setSLHD(3);
 				
-				ctdt.setNgayBC(rs.getDate("NgayBaoCao").toString());
-				ctdt.setThoiGianBC(rs.getTime("ThoiGianBC").toString());
+				ctdt.setNgayBC(rs.getDate("NgayBaoCao")==null?"":rs.getDate("NgayBaoCao").toString());
+				ctdt.setThoiGianBC(rs.getTime("ThoiGianBC")==null?"":rs.getTime("ThoiGianBC").toString());
 				
 			
 				ctdt.setTomTat(rs.getString("TomTatDT"));

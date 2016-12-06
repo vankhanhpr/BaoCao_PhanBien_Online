@@ -42,8 +42,8 @@ public class XemKQSinhVienControl {
 				HoiDong hd = new HoiDong();
 				
 				xemkq.setMaSV(rs.getString(1));
-				xemkq.setNgayBaoCao(rs.getDate("NgayBaoCao").toString());
-				xemkq.setThoiGianBaoCao(rs.getTime("ThoiGianBC").toString());
+				xemkq.setNgayBaoCao(rs.getDate("NgayBaoCao")==null?"":rs.getDate("NgayBaoCao").toString());
+				xemkq.setThoiGianBaoCao(rs.getTime("ThoiGianBC")==null?"":rs.getTime("ThoiGianBC").toString());
 				
 				User gvhd=this.uControl.InfoUser_MaSo(rs.getString("MaGVHD"));
 				User gvpb=this.uControl.InfoUser_MaSo(rs.getString("MaGVPB"));

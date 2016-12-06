@@ -30,7 +30,7 @@ public class Authe extends HttpServlet  implements IPagePath{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("404page.jsp").forward(request, response);
+		request.getRequestDispatcher("pages/404page.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

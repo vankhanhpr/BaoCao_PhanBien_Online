@@ -1,7 +1,6 @@
 package com.phanbien.baocao.online.controls.XetDuyetDeTai;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.phanbien.baocao.online.models.ChiTietDeTai.ChiTietDeTaiControl;
 import com.phanbien.baocao.online.models.XetDuyetDeTai.XetDuyetDeTaiControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
 import com.phanbien.baocao.online.utils.objectdatabase.NhomSV;

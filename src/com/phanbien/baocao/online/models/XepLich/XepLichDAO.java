@@ -101,19 +101,20 @@ public class XepLichDAO {
 	
 	public boolean updateLichBaoCao(String MaDT, String UyVien, String PhanBien, String ChuTich,String NgayBaoCao,
 			String ThoiGianBaoCao,String ThoiLuong) {
-		String sql="update xeplich set ";
-		sql=sql+" mauyvien=?, magvpb=?, machutich=?,ngaybaocao=?, thoigianbc=?,thoiluong=? where madetai= ?";
-		
+		//String sql="update xeplich set ";
+		//sql=sql+" mauyvien=?, magvpb=?, machutich=?,ngaybaocao=?, thoigianbc=?,thoiluong=? where madetai= ?";
+		String sql="call spXepLich(?,?,?,?,?,?,?)";
 		PreparedStatement pre=null;
 		try{
 			pre=dbm.getConnect().prepareStatement(sql);
-			pre.setString(1, UyVien);
-			pre.setString(2, PhanBien);
-			pre.setString(3, ChuTich);
-			pre.setString(4, NgayBaoCao);
-			pre.setString(5, ThoiGianBaoCao);
-			pre.setString(6, ThoiLuong);
-			pre.setString(7, MaDT);
+			pre.setString(1, MaDT);
+			pre.setString(2, UyVien);
+			pre.setString(3, PhanBien);
+			pre.setString(4, ChuTich);
+			pre.setString(5, NgayBaoCao);
+			pre.setString(6, ThoiGianBaoCao);
+			pre.setString(7, ThoiLuong);
+	
 		}catch(SQLException e){
 			System.out.print("FAIL xep lich");
 		}

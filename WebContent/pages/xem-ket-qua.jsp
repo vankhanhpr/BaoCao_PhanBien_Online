@@ -229,7 +229,7 @@
 															</tr>
 															<tr>
 																<td>Ủy viên</td>
-																<td>${kq.getHoiDong().getUyVien().getHoTen()}/td>
+																<td>${kq.getHoiDong().getUyVien().getHoTen()}</td>
 																<td>${kq.getHoiDong().getDiemUyVien()}</td>
 															</tr>
 														</tbody>

@@ -59,20 +59,7 @@
 										</tr>
 									</tbody>
 									</c:forEach>
-									<tfoot>
-										<tr>
-											<td colspan="6">
-												<div class="pagination pagination-centered">
-													<ul class="pagination">
-														<li class="active"><a>1</a></li>
-														<li><a href="2.html">2</a></li>
-														<li><a href="3.html">3</a></li>
-														<li><a href="5.html">&raquo;</a></li>
-													</ul>
-												</div>
-											</td>
-										</tr>
-									</tfoot>
+									
 									<!--END PAGE NUMBER-->
 								</table>
 

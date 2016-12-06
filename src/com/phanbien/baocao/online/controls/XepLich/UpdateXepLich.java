@@ -81,6 +81,8 @@ public class UpdateXepLich extends HttpServlet {
 			 ThongBao tb=new ThongBao();
 			 tb.setNgay(f.toDate2AddDatabase(new Date()));
 			 
+			 System.out.print(TenDT);
+			 
 			 String TieuDe="Đề tài "+TenDT+" đã được xếp lịch";
 			 tb.setTieuDe(TieuDe);
 			 

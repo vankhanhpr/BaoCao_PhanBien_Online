@@ -1,4 +1,4 @@
-package com.phanbien.baocao.online.controls.BaoCaoSVs;
+package com.phanbien.baocao.online.controls.BaoCaos;
 
 import java.io.File;
 import java.io.IOException;

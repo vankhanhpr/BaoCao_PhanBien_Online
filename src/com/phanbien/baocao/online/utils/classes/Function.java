@@ -9,6 +9,7 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.security.*;
 public class Function {
 
 	public Function() {
@@ -75,9 +76,8 @@ public class Function {
 				message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(toMail));
 				message.setSubject(("Mật khẩu cho tài khoản "+ username));
-				message.setText("Mật khẩu của bạn là" +password);
+				message.setText("Mật khẩu của bạn là " +password);
 					
-
 				Transport.send(message);
 				System.out.println("Done");
 				return true;
@@ -90,4 +90,46 @@ public class Function {
 			return false;
 		}
 	}
+	
+	public String EncryptionString(String str){
+		MessageDigest messageDigest=null;
+		try {
+			messageDigest = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		str="group!3_"+str;
+		
+		messageDigest.update(str.getBytes());
+
+	    byte byteData[] = messageDigest.digest();
+
+	    StringBuffer sb = new StringBuffer();
+	    for (int i = 0; i < byteData.length; i++)
+	        sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+	    
+	    return sb.toString();
+		
+	}
+	public String getUploadPath(){
+		Properties properties = new Properties();
+
+		InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties");
+
+		if (input == null) {
+			System.out.println("Cannot find config");
+			return "";
+		}
+
+		try {
+			properties.load(input);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return properties.getProperty("uploadpath");
+	}
+
 }

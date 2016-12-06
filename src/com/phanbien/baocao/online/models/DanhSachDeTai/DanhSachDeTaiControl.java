@@ -41,8 +41,8 @@ public class DanhSachDeTaiControl {
 				dt.setMaSo(rs.getString(1));
 				dt.setHoTen(rs.getString(2));
 				dt.setTenDeTai(rs.getString(3));
-				dt.setNgayBaoCao(rs.getDate(4).toString());
-				dt.setThoiGianBaoCao(rs.getTime(5).toString());
+				dt.setNgayBaoCao(rs.getDate(4)==null?"":rs.getDate(4).toString());
+				dt.setThoiGianBaoCao(rs.getTime(5)==null?"":rs.getTime(5).toString());
 				dt.setThoiLuongBaoCao(rs.getInt(6)+"");
 				dt.setTrangThai(rs.getString(7));
 				dt.setMaDT(rs.getInt(8)+"");
@@ -150,8 +150,8 @@ public class DanhSachDeTaiControl {
 		ct.setMaSo(rs.getString(1));
 		ct.setMaDT(rs.getInt(2)+"");
 		ct.setTenDeTai(rs.getString(3));
-		ct.setNgayBaoCao(rs.getDate(4).toString());
-		ct.setThoiGianBaoCao(rs.getTime(5).toString());
+		ct.setNgayBaoCao(rs.getDate(4)==null?"":rs.getDate(4).toString());
+		ct.setThoiGianBaoCao(rs.getTime(5)==null?"":rs.getTime(5).toString());
 		ct.setTrangThai(rs.getString(6));
 		
 		ResultSet hd = this.ds.TenGVHD_DeTai(ct.getMaDT());

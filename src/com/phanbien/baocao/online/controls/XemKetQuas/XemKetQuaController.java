@@ -111,8 +111,6 @@ public class XemKetQuaController extends HttpServlet {
 
 		}
 		xkqControl.releaseConnection();
-
-		System.out.print(xemkq.get(1).getTenDeTai());
 		request.setAttribute("xemketquagv", xemkq);
 		request.getRequestDispatcher("pages/xem-ket-qua.jsp").forward(request, response);
 	}

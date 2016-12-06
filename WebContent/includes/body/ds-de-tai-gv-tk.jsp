@@ -31,7 +31,7 @@
 				<td>
 					<c:choose>
 						<c:when test="${hd.getTrangThai()=='Xét duyệt'}">
-							<a target="_blank" href="#"class="btn btn-danger btn-xs disabled">Xét duyệt </a>
+							<a target="_blank" href="#"class="btn btn-danger btn-xs disabled">Đã Xét duyệt </a>
 						</c:when>
 						<c:otherwise>
 							<a href="<%= request.getContextPath()%>/XetDuyetDeTai?id=${hd.getMaDT()}"class="btn btn-success btn-xs">Chưa xét duyệt</a>
@@ -173,19 +173,6 @@
 
 	</c:forEach>
 	<!--PAGE NUMBER-->
-	<tfoot>
-		<tr>
-			<td colspan="6">
-				<div class="pagination pagination-centered">
-					<ul class="pagination">
-						<li class="active"><a>1</a></li>
-						<li><a href="2.html">2</a></li>
-						<li><a href="3.html">3</a></li>
-						<li><a href="5.html">&raquo;</a></li>
-					</ul>
-				</div>
-			</td>
-		</tr>
-	</tfoot>
+	
 	<!--END PAGE NUMBER-->
 </table>

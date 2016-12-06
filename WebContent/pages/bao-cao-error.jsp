@@ -69,9 +69,7 @@ body {
 	<!---728x90-->
 	<div class="wrap">
 		<div class="logo">
-			<p>OOPS! - Could not Find it</p>
-			<img src="<%=request.getContextPath()%>/public/images/404page.png" />
-
+			<p>Đề tài của bạn chưa đến thời gian báo cáo ! Vui lòng thử lại lúc khác :)</p>
 			<!---728x90-->
 			<div class="sub">
 				<p>
