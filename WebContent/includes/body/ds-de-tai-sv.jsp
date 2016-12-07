@@ -85,13 +85,18 @@
 		<td class="tt_detaiSV">Nộp báo cáo</td>
 		<td>${requestScope.detai.getTrangThai()} </td>
 	</tr>
+	<tr>
+		<td class="tt_detaiSV">Chi tiết</td>
+		<td><a href="<%=request.getContextPath()%>/danh-sach-de-tai/chi-tiet?id=${requestScope.detai.getMaDT()}" target="_blank">Xem</a></td>
+	</tr>
+	
 </table>
 <table class="table table-bordered" border="1" align="center"
 	style="width: 50%;">
 	<caption>
 		<font size="4" class=""> Hội Đồng Báo Cáo</font>
 	</caption>
-	<tr style="background-color: gray;">
+	<tr>
 		<th class="">Giảng Viên</th>
 		<th class="">Vai trò</th>
 	</tr>

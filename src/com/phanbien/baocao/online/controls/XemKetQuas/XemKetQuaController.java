@@ -83,8 +83,10 @@ public class XemKetQuaController extends HttpServlet {
 
 		}
 		xkqControl.releaseConnection();
-
-		System.out.print(xemkq.getHoiDong().getDiemGVHD());
+		if(xemkq==null){
+			request.getRequestDispatcher("pages/xem-ket-qua-error.jsp").forward(request, response);
+			return;
+		}
 		request.setAttribute("xemketqua", xemkq);
 		request.getRequestDispatcher("pages/xem-ket-qua.jsp").forward(request, response);
 	}

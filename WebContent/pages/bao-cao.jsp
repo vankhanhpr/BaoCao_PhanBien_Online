@@ -279,8 +279,7 @@
                     });
                 }, 30 * 1000); // 30-seconds
             };
-            // Using getScreenId.js to capture screen from any domain
-            // You do NOT need to deploy Chrome Extension YOUR-Self!!
+           
             connection.getScreenConstraints = function(callback) {
                 getScreenConstraints(function(error, screen_constraints) {
                     if (!error) {
@@ -319,8 +318,6 @@
              	 btnKick.onclick= function(){
              		 if(confirm('Bạn chắc chắn muốn dừng bài bào cáo này?')){
              			 
-             			
-
              			connection.attachStreams.forEach(function(stream) {
                     	    stream.stop();
                     	});
@@ -379,16 +376,34 @@
          connection_video.videosContainer = document.getElementById('videos-container');
          
          connection_video.onstream = function(event) {
-             var width = parseInt(/*connection_video.videosContainer.clientWidth */ 450/ 2) - 20;
-             var mediaElement = getMediaElement(event.mediaElement, {
-                 title: event.userid,
-                 buttons: ['full-screen'],
-                 width: width,
-                 showOnMouseEnter: false
-             });
-             connection_video.videosContainer.appendChild(mediaElement);
-             mediaElement.media.play();
-             mediaElement.id = event.streamid;
+             
+        	 var width = parseInt(/*connection_video.videosContainer.clientWidth */ 450/ 2) - 20;
+        	 
+             var btnKick=document.getElementById('kick');
+             
+             if (typeof(btnKick) != 'undefined' && btnKick != null)
+             {
+            	 var mediaElement = getMediaElement(event.mediaElement, {
+                     title: event.userid,
+                     buttons: ['full-screen','stop'],
+                     width: width,
+                     showOnMouseEnter: false
+                 });
+                 connection_video.videosContainer.appendChild(mediaElement);
+                 mediaElement.media.play();
+                 mediaElement.id = event.streamid;
+             }else{
+            	 var mediaElement = getMediaElement(event.mediaElement, {
+                     title: event.userid,
+                     buttons: ['full-screen'],
+                     width: width,
+                     showOnMouseEnter: false
+                 });
+                 connection_video.videosContainer.appendChild(mediaElement);
+                 mediaElement.media.play();
+                 mediaElement.id = event.streamid;
+             }
+            
          };
         
          connection_video.onstreamended = function(event) {
@@ -553,7 +568,7 @@
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
         }
-  	  });
+  	  })
 			</script>
 			
 </c:if>
