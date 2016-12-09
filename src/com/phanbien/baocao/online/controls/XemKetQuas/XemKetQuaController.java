@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.phanbien.baocao.online.models.XemKetQua.XemKQGiangVienControl;
 import com.phanbien.baocao.online.models.XemKetQua.XemKQSinhVienControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
+import com.phanbien.baocao.online.utils.classes.Function;
 import com.phanbien.baocao.online.utils.objectdatabase.User;
 import com.phanbien.baocao.online.utils.objectdatabase.XemKetQuaSV;
 import com.sun.org.apache.regexp.internal.recompile;
@@ -87,7 +88,15 @@ public class XemKetQuaController extends HttpServlet {
 			request.getRequestDispatcher("pages/xem-ket-qua-error.jsp").forward(request, response);
 			return;
 		}
+		Function f=new Function();
+		String xlGVHD=f.XepLoai(xemkq.getHoiDong().getDiemGVHD());
+		String xlGVPB=f.XepLoai(xemkq.getHoiDong().getDiemGVPB());
+		String xlUyVien=f.XepLoai(xemkq.getHoiDong().getDiemUyVien());
+		
 		request.setAttribute("xemketqua", xemkq);
+		request.setAttribute("xlgvhd", xlGVHD);
+		request.setAttribute("xlgvpb", xlGVPB);
+		request.setAttribute("xluv", xlUyVien);
 		request.getRequestDispatcher("pages/xem-ket-qua.jsp").forward(request, response);
 	}
 
@@ -116,4 +125,5 @@ public class XemKetQuaController extends HttpServlet {
 		request.setAttribute("xemketquagv", xemkq);
 		request.getRequestDispatcher("pages/xem-ket-qua.jsp").forward(request, response);
 	}
+	
 }

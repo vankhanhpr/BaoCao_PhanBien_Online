@@ -1,7 +1,6 @@
-package com.phanbien.baocao.online.controls.XepLich;
+package com.phanbien.baocao.online.controls.Users;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
@@ -12,25 +11,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.phanbien.baocao.online.models.DanhSachDeTai.DanhSachDeTaiControl;
-import com.phanbien.baocao.online.models.XepLich.XepLichControl;
+import com.phanbien.baocao.online.models.Users.UserControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
-import com.phanbien.baocao.online.utils.objectdatabase.DS_GiangVien;
+import com.phanbien.baocao.online.utils.objectdatabase.DeTaiGV_TK;
 import com.phanbien.baocao.online.utils.objectdatabase.User;
-import com.phanbien.baocao.online.utils.objectdatabase.XepLich_DT;
 
-
-@WebServlet("/XepLich")
-public class XepLich extends HttpServlet {
+/**
+ * Servlet implementation class GetAllGiangViens
+ */
+@WebServlet("/danh-sach-giang-vien")
+public class GetAllGiangViens extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public XepLich() {
+       
+    public GetAllGiangViens() {
         super();
+       
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		
+
 		User curUser=((User)request.getSession().getAttribute("user"));
 		
 		if(curUser==null)
@@ -48,30 +49,26 @@ public class XepLich extends HttpServlet {
 
 		ConnectionPool cp = (ConnectionPool) context.getAttribute("c_pool");
 
-		XepLichControl xlControl = new XepLichControl(cp);
+		UserControl uControl = new UserControl(cp);
 
 		if (cp == null) {
-			context.setAttribute("c_pool", xlControl.getConnectionPool());
+			context.setAttribute("c_pool", uControl.getConnectionPool());
 		}
-		String MaDT=(request.getParameter("id")) != null ? request.getParameter("id"):"";
-		XepLich_DT xldt=null;
 		
-		try {
-			xldt=xlControl.getChiTietXepLich(MaDT);
+		ArrayList<User>  dsu = null;
+		try{
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			dsu=uControl.getListGiangVien();
+		}catch(Exception ex){
+			
 		}
-		xlControl.releaseConnection();
 		
-		request.setAttribute("xldt", xldt);
-		
-		request.getRequestDispatcher("pages/xep-lich1.jsp").forward(request, response);
-		
+		request.setAttribute("dsu", dsu);
+		request.getRequestDispatcher("pages/danh-sach-giang-vien.jsp").forward(request, response);
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	}
 
 }

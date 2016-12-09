@@ -132,4 +132,19 @@ public class UserDAO implements IUserDAO{
 		return dbm.get(pre);
 	}
 
+	@Override
+	public ResultSet getListGiangVien() {
+		String sql="select hoten,maso,sdt,email,chuyennganh from user where user.ChucVu='2'";
+		PreparedStatement pre=null;
+		try{
+			
+			pre=dbm.getConnect().prepareStatement(sql);
+			
+		}catch(SQLException e){
+			System.out.print("FAIL Checklogin USERDAO");
+		}
+		
+		return dbm.get(pre);
+	}
+
 }

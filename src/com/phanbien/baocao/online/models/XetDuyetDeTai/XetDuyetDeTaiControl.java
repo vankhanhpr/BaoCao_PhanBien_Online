@@ -61,6 +61,20 @@ public class XetDuyetDeTaiControl {
 	public boolean updateKhiXetDuyet_DeTai(String MaDT, String NhanXetTruocBC, String TrangThai, String TrangThaiSV){
 		return xd.updateKhiXetDuyet(MaDT, NhanXetTruocBC, TrangThai, TrangThaiSV);
 	}
+	public ArrayList<String> getTrangThaiXetDuyetDeTai(String MaDT) throws SQLException{
+		ArrayList<String> result=new ArrayList<>();
+		
+		ResultSet rs=this.xd.getTrangThaiXetDuyetDeTai(MaDT);
+		
+		if (rs != null) {
+			if (rs.next()) {
+				result.add(rs.getString("magvhd"));
+				result.add(rs.getString("trangthai"));
+			}
+		}		
+		return result;
+		
+	}
 	public static void main(String[]arg){
 		XetDuyetDeTaiDAO dvs=new XetDuyetDeTaiDAO(new ConnectionPool());
 		ArrayList<NhomSV> nsv=(ArrayList<NhomSV>) dvs.getNhomSV("1");

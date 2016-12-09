@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.phanbien.baocao.online.models.Users.UserControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
+import com.phanbien.baocao.online.utils.classes.Function;
 public class XemKQGiangVienControl {
 	private XemKQGiangVienDAO xemkqDAO;
 	private UserControl uControl;
@@ -41,11 +42,8 @@ public class XemKQGiangVienControl {
 	
 		ArrayList<XemKetQuaSV> listKQGV=new ArrayList<>();
 		
-	
-		
-		
 		ResultSet rs=xemkqDAO.getKetQuaGiangVien(maso);
-		
+		Function function=new Function();
 		if(rs!=null){
 			while(rs.next()){
 				
@@ -69,11 +67,15 @@ public class XemKQGiangVienControl {
 				
 				hd.setMaChuTich(MaChuTich);
 				
-				hd.setDiemGVHD(rs.getString("DiemGVHD"));
-				hd.setDiemGVPB(rs.getString("DiemGVPB"));		
-				hd.setDiemUyVien(rs.getString("DiemUV"));
+				hd.setDiemGVHD(rs.getString("DiemGVHD")==null?"":rs.getString("DiemGVHD"));
+				hd.setDiemGVPB(rs.getString("DiemGVPB")==null?"":rs.getString("DiemGVPB"));		
+				hd.setDiemUyVien(rs.getString("DiemUV")==null?"":rs.getString("DiemUV"));
 
 				xemkq.setHoiDong(hd);
+				
+				String dtb=function.TinhDiemTrungBinh(hd.getDiemGVHD(), hd.getDiemGVPB(), hd.getDiemUyVien());
+				xemkq.setDTB(dtb);			
+				xemkq.setXepLoaiDT(function.XepLoai(dtb));
 				
 				listKQGV.add(xemkq);
 			}

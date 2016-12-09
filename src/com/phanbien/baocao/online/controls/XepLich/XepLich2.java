@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.phanbien.baocao.online.models.XepLich.XepLichControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
 import com.phanbien.baocao.online.utils.objectdatabase.DS_GiangVien;
+import com.phanbien.baocao.online.utils.objectdatabase.User;
 import com.phanbien.baocao.online.utils.objectdatabase.XepLich_DT;
 
 @WebServlet("/XepLich2")
@@ -28,6 +29,19 @@ public class XepLich2 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
+		
+		User curUser=((User)request.getSession().getAttribute("user"));
+		
+		if(curUser==null)
+		{
+			request.getRequestDispatcher("pages/404page.jsp").forward(request, response);
+			return;
+		}
+		String cv=curUser.getChucVu();
+		if(!cv.equals("3")){
+			request.getRequestDispatcher("pages/404page.jsp").forward(request, response);
+			return;
+		}
 		
 		String MaDT=request.getParameter("maDT");
 		String TenDT=request.getParameter("tenDT");

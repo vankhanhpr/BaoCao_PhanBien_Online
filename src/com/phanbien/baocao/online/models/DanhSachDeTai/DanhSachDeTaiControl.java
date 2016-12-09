@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import com.mysql.fabric.xmlrpc.base.Array;
+import com.phanbien.baocao.online.models.Users.UserControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
 import com.phanbien.baocao.online.utils.objectdatabase.DeTaiGV_TK;
 import com.phanbien.baocao.online.utils.objectdatabase.DeTaiSV;
@@ -15,9 +16,10 @@ import com.phanbien.baocao.online.utils.objectdatabase.XD_DeTai;
 
 public class DanhSachDeTaiControl {
 	DanhSachDeTaiDAO ds;
-
+	UserControl uControl;
 	public DanhSachDeTaiControl(ConnectionPool cp) {
 		ds = new DanhSachDeTaiDAO(cp);
+		uControl=new UserControl(cp);
 	}
 
 	public ConnectionPool getConnectionPool() {
@@ -208,11 +210,50 @@ public class DanhSachDeTaiControl {
 		}
 		return dt;
 	}
+	public ArrayList<DeTaiGV_TK> getAllDanhSachDeTai() throws SQLException {
+		ArrayList<DeTaiGV_TK>  result = null;
+		ResultSet rs = this.ds.getAllDanhSachDeTai();
+		
+		if (rs != null) {
+			result = new ArrayList<>();
+			while (rs.next()){
+				DeTaiGV_TK dt=new DeTaiGV_TK();
+				
+				dt.setMaDT(rs.getString("MaDT"));
+				dt.setTenDeTai(rs.getString("TenDeTai"));
+				
+				dt.setChuTich(uControl.InfoUser_MaSo(rs.getString("MaChuTich")).getHoTen());
+				dt.setGiangVienHD(uControl.InfoUser_MaSo(rs.getString("MaGVHD")).getHoTen());
+				dt.setGiangVienPB(uControl.InfoUser_MaSo(rs.getString("MaGVPB")).getHoTen());
+				dt.setUyVien(uControl.InfoUser_MaSo(rs.getString("MaUyVien")).getHoTen());
+				dt.setThoiGianBaoCao(rs.getTime("ThoiGianBC")==null?"":rs.getTime("ThoiGianBC").toString());
+				dt.setNgayBaoCao(rs.getDate("NgayBaoCao")==null?"":rs.getDate("NgayBaoCao").toString());
+				
+				dt.setTrangThai(rs.getString("TrangThai"));
+				result.add(dt);
+			}
+			rs.close();
+		}
+		return result;
+	}
+	public String getNhanXetTruocBC(String MaDT) throws SQLException{
+		
+		String result="";
+		ResultSet rs = this.ds.getNhanXetTruocBC(MaDT);
+		
+		if (rs != null) {
+			if(rs.next()){
+				result=rs.getString("nhanxettruocbc");
+			}
+		}
+		return result;
+	}
+	
 	public static void main(String[]arg) throws SQLException{
 		DanhSachDeTaiControl c=new DanhSachDeTaiControl(new ConnectionPool());
-		ArrayList<XD_DeTai> dsd=c.DanhSachDeTaiCanXepLich();
-		for (XD_DeTai xd_DeTai : dsd) {
-			System.out.println(xd_DeTai.getTenDT());
+		ArrayList<DeTaiGV_TK> dsd=c.getAllDanhSachDeTai();
+		for (DeTaiGV_TK xd_DeTai : dsd) {
+			System.out.println(xd_DeTai.getMaDT());
 		}
 	}
 	

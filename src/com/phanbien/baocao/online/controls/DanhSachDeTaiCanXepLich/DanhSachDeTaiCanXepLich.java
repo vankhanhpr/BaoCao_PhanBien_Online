@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.phanbien.baocao.online.models.DanhSachDeTai.DanhSachDeTaiControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
+import com.phanbien.baocao.online.utils.objectdatabase.User;
 import com.phanbien.baocao.online.utils.objectdatabase.XD_DeTai;
 
 @WebServlet("/DanhSachDeTaiCanXepLich")
@@ -25,6 +26,22 @@ public class DanhSachDeTaiCanXepLich extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		
+		User curUser=((User)request.getSession().getAttribute("user"));
+		
+		if(curUser==null)
+		{
+			request.getRequestDispatcher("pages/404page.jsp").forward(request, response);
+			return;
+		}
+		String cv=curUser.getChucVu();
+		if(!cv.equals("3")){
+			request.getRequestDispatcher("pages/404page.jsp").forward(request, response);
+			return;
+		}
 		
 		ServletContext context = getServletConfig().getServletContext();
 

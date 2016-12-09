@@ -323,6 +323,8 @@
                     	});
              			
              			connection.stopPartOfScreenSharing();
+             			
+             			
              		 }
              	 
            		 }
@@ -569,6 +571,9 @@
             e.preventDefault();
         }
   	  })
+			</script>
+			<script type="text/javascript">
+			
 			</script>
 			
 </c:if>

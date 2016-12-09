@@ -15,6 +15,7 @@ import com.phanbien.baocao.online.models.XetDuyetDeTai.XetDuyetDeTaiControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
 import com.phanbien.baocao.online.utils.objectdatabase.NhomSV;
 import com.phanbien.baocao.online.utils.objectdatabase.XD_DeTai;
+import com.phanbien.baocao.online.utils.objectdatabase.User;
 
 @WebServlet("/XetDuyetDeTai")
 public class XetDuyetDeTai extends HttpServlet {
@@ -26,6 +27,8 @@ public class XetDuyetDeTai extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		ServletContext context = getServletConfig().getServletContext();
 
 		ConnectionPool cp = (ConnectionPool) context.getAttribute("c_pool");
@@ -38,7 +41,19 @@ public class XetDuyetDeTai extends HttpServlet {
 
 		XetDuyetDeTaiControl xddt = new XetDuyetDeTaiControl(cp);
 		String MaDeTai = (request.getParameter("id")) != null ? request.getParameter("id") : "";
-		// Lưu mã đề tài để qua bên sevrlet XuLyXetDuyet dùng
+		String currentMaSoUser=((User)request.getSession().getAttribute("user")).getMaSo();
+
+		try {
+			ArrayList<String> checkTrangThai=xddt.getTrangThaiXetDuyetDeTai(MaDeTai);
+			if(checkTrangThai.get(1).equals("Xét duyệt") && !checkTrangThai.get(0).equals(currentMaSoUser)){
+				request.getRequestDispatcher("pages/404page.jsp").forward(request, response);
+				return;
+			}
+
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		context.setAttribute("maDT", MaDeTai);
 		XD_DeTai xd = null;
 		ArrayList<NhomSV> nsv = null;

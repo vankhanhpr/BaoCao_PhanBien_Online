@@ -20,4 +20,6 @@ public interface IUserDAO {
 	
 	public ResultSet InfoUser_MaSo(String MaSo);
 	
+	public ResultSet getListGiangVien();
+	
 }

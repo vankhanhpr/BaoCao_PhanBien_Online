@@ -64,6 +64,20 @@ public class XetDuyetDeTaiDAO {
 		}
 		
 		return dbm.update(pre);
+	}
+	public ResultSet getTrangThaiXetDuyetDeTai(String MaDT){
 		
+		String sql="select trangthai,magvhd from quatrinhbaocao,detai where detai.madt=quatrinhbaocao.madt and detai.madt=?";		
+		PreparedStatement pre=null;
+		try{
+			pre=dbm.getConnect().prepareStatement(sql);
+			pre.setString(1, MaDT);
+			
+		}catch(SQLException e){
+			System.out.print("FAIL Xet Duyet");
+		}
+		
+		return dbm.get(pre);		
+				
 	}
 }

@@ -69,7 +69,7 @@ public class DanhSachDeTai extends HttpServlet {
 		DeTaiSV uyvien = null;
 		DeTaiSV gvpb = null;
 		DeTaiSV chutich = null;
-		
+		String nhanxet="";
 		HttpSession session=request.getSession();
 		
 		String MaSo=((User)session.getAttribute("user")).getMaSo();
@@ -79,7 +79,7 @@ public class DanhSachDeTai extends HttpServlet {
 			uyvien = dsControl.TenUyVien(detai.getMaDT());
 			gvpb = dsControl.TenGVPB(detai.getMaDT());
 			chutich = dsControl.TenChuTich(detai.getMaDT());
-			
+			nhanxet=dsControl.getNhanXetTruocBC(detai.getMaDT());
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -91,6 +91,7 @@ public class DanhSachDeTai extends HttpServlet {
 		request.setAttribute("uyvien", uyvien);
 		request.setAttribute("gvpb", gvpb);
 		request.setAttribute("chutich", chutich);	
+		request.setAttribute("nhanxet", nhanxet);	
 		request.getRequestDispatcher("pages/danh-sach-de-tai.jsp").forward(request, response);
 	}
 	private void doShowDanhSachDeTai_GV_TK(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

@@ -47,6 +47,23 @@ public class XemKetQuaSV {
 	public void setHoiDong(HoiDong hoiDong) {
 		HoiDong = hoiDong;
 	}
-	
+	public String DTB;
+	public String XepLoaiDT;
+
+	public String getDTB() {
+		return DTB;
+	}
+
+	public void setDTB(String dTB) {
+		DTB = dTB;
+	}
+
+	public String getXepLoaiDT() {
+		return XepLoaiDT;
+	}
+
+	public void setXepLoaiDT(String xepLoaiDT) {
+		XepLoaiDT = xepLoaiDT;
+	}
 	
 }

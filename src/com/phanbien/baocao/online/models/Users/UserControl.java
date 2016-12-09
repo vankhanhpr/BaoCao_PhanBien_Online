@@ -2,6 +2,7 @@ package com.phanbien.baocao.online.models.Users;
 
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
 import com.phanbien.baocao.online.utils.objectdatabase.User;
@@ -37,5 +38,8 @@ public class UserControl {
 	}
 	public User InfoUser_MaSo(String MaSo) throws SQLException{
 		return this.uModel.InfoUser_MaSo(MaSo);
+	}
+	public ArrayList<User> getListGiangVien() throws SQLException{
+		return this.uModel.getListGiangVien();
 	}
 }

@@ -6,6 +6,9 @@
 	import="com.phanbien.baocao.online.utils.objectdatabase.XemKetQuaSV"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ page
+	import="java.text.DecimalFormat"%>
+	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 <head>
 <title>Xem Kết Quả Sinh Viên</title>
@@ -78,6 +81,8 @@
 																			align="center">Chức Vụ</p></font></td>
 																<td><font size="3" style="font-weight: bold;"><p
 																			align="center">Điểm</p></font></td>
+																			<td><font size="3" style="font-weight: bold;"><p
+																			align="center">Xếp loại</p></font></td>
 																<td><font size="3" style="font-weight: bold;"><p
 																			align="center">Nhận Xét</p></font></td>
 															</tr>
@@ -85,24 +90,29 @@
 																<td>${ requestScope.xemketqua.getHoiDong().getGVHD().getHoTen()}</td>
 																<td>Giáo viên hướng dẫn</td>
 																<td>${ requestScope.xemketqua.getHoiDong().getDiemGVHD()}</td>
+																<td>${ requestScope.xlgvhd}</td>														
 																<td><a href="#nxgvhd" data-toggle="modal">Xem</a></td>
 															</tr>
 															<tr>
 																<td>${ requestScope.xemketqua.getHoiDong().getGVPB().getHoTen()}</td>
 																<td>Giáo viên phản biện</td>
 																<td>${ requestScope.xemketqua.getHoiDong().getDiemGVPB()}</td>
+																<td>${ requestScope.xlgvpb}</td>
 																<td><a href="#nxgvpb" data-toggle="modal">Xem</a></td>
 															</tr>
 															<tr>
 																<td>${ requestScope.xemketqua.getHoiDong().getUyVien().getHoTen()}</td>
 																<td>Ủy viên hội đồng</td>
 																<td>${ requestScope.xemketqua.getHoiDong().getDiemUyVien()}</td>
+																<td>${ requestScope.xluv}</td>
 																<td><a href="#nxuv" data-toggle="modal">Xem</a></td>
 															</tr>
 														</table>
+
+															Điểm trung bình:  ${requestScope.xemketqua.getDTB()} - Xếp loại: 
+															 ${requestScope.xemketqua.getXepLoaiDT()}
 													</td>
 												</tr>
-
 											</table>
 											<br>
 										</form>
@@ -191,6 +201,8 @@
 													<th>STT</th>
 													<th>Tên đề tài</th>
 													<th>Thời gian</th>
+													<th>ĐTB</th>
+													<th>Xếp loại</th>
 													<th data-hide="phone,tablet">Điểm</th>
 												</tr>
 											</thead>
@@ -206,6 +218,8 @@
 												<td><span class="text-info"><%=i++ %></span></td>
 												<td>${kq.getTenDeTai()}</td>
 												<td>${kq.getNgayBaoCao()} / ${kq.getThoiGianBaoCao()}</td>
+												<td>${kq.getDTB() }</td>
+												<td>${kq.getXepLoaiDT() }</td>
 												<td>
 													<table class="table" data-page-size="5">
 														<thead>
@@ -216,7 +230,6 @@
 															</tr>
 														</thead>
 														<tbody>
-															
 															<tr>
 																<td>Giáo viên hướng dẫn</td>
 																<td>${kq.getHoiDong().getGVHD().getHoTen()}</td>

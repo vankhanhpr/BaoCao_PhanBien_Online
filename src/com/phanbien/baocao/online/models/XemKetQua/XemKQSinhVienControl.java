@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 import com.phanbien.baocao.online.models.Users.UserControl;
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
+import com.phanbien.baocao.online.utils.classes.Function;
 
 public class XemKQSinhVienControl {
 	private XemKQSinhVienDAO xemkqDAO;
@@ -55,17 +56,21 @@ public class XemKQSinhVienControl {
 				hd.setGVPB(gvpb);
 				hd.setUyVien(uyvien);
 				hd.setMaChuTich(MaChuTich);
-				hd.setDiemGVHD(rs.getString("DiemGVHD"));
+				hd.setDiemGVHD(rs.getString("DiemGVHD")==null?"":rs.getString("DiemGVHD"));
 				hd.setNhanXetGVHD(rs.getString("NhanXetGVHD"));
-				hd.setDiemGVPB(rs.getString("DiemGVPB"));
+				hd.setDiemGVPB(rs.getString("DiemGVPB")==null?"":rs.getString("DiemGVPB"));
 				hd.setNhanXetGVPB(rs.getString("NhanXetGVPB"));
-				hd.setDiemUyVien(rs.getString("DiemUV"));
+				hd.setDiemUyVien(rs.getString("DiemUV")==null?"":rs.getString("DiemUV"));
 				hd.setNhanXetUyVien(rs.getString("NhanXetUV"));
 				
 				
 				xemkq.setTenDeTai(rs.getString("TenDeTai"));
 				xemkq.setHoiDong(hd);
 			
+				Function function=new Function();
+				String dtb=function.TinhDiemTrungBinh(hd.getDiemGVHD(), hd.getDiemGVPB(), hd.getDiemUyVien());
+				xemkq.setDTB(dtb);
+				xemkq.setXepLoaiDT(function.XepLoai(dtb));
 				
 			}
 		}

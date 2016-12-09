@@ -3,6 +3,7 @@ package com.phanbien.baocao.online.models.Users;
 import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.phanbien.baocao.online.utils.DB.ConnectionPool;
 import com.phanbien.baocao.online.utils.objectdatabase.User;
@@ -110,6 +111,25 @@ public class UserModel {
 			}
 		}
 		return u;
+	}
+	public ArrayList<User> getListGiangVien() throws SQLException{
+		ArrayList<User> listUser=new ArrayList<>();
+		
+		ResultSet rs=this.uDAO.getListGiangVien();
+		if(rs!=null){
+			while(rs.next()){
+				User u=new User();
+				
+				u.setHoTen(rs.getString("hoten"));
+				u.setMaSo(rs.getString("maso"));
+				u.setSDT(rs.getString("sdt"));
+				u.setEmail(rs.getString("email"));
+				u.setChuyenNganh(rs.getString("chuyennganh"));
+				
+				listUser.add(u);
+			}
+		}
+		return listUser;
 	}
 	
 

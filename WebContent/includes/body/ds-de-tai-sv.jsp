@@ -86,8 +86,12 @@
 		<td>${requestScope.detai.getTrangThai()} </td>
 	</tr>
 	<tr>
-		<td class="tt_detaiSV">Chi tiết</td>
-		<td><a href="<%=request.getContextPath()%>/danh-sach-de-tai/chi-tiet?id=${requestScope.detai.getMaDT()}" target="_blank">Xem</a></td>
+		<td class="tt_detaiSV">Xem nhận xét của giảng viên</td>
+		<td><a href="#nhanxetModal" data-toggle="modal">Xem</a></td>
+	</tr>
+	<tr>
+		<td class="tt_detaiSV">File bài đã nộp</td>
+		<td><a href="<%=request.getContextPath()%>/Download?id=${requestScope.detai.getMaDT()}" target="_blank">Tải file...</a></td>
 	</tr>
 	
 </table>
@@ -125,11 +129,30 @@
 			báo cáo</a>
 	</c:when>
 	<c:otherwise>
-		<a data-toggle="modal" href="#fbaocao" style="margin-left: 45%"
+		<a  style="margin-left: 45%"
 			type="button" class="btnNopBaoCao btn btn-primary disabled"
 			id="btNopform">Nộp báo cáo</a>
 	</c:otherwise>
 </c:choose>
 </div>
+	<div id="nhanxetModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 id="alert-modal-title" class="modal-title">Nhận xét</h4>
+				</div>
+				<div id="alert-modal-body" class="modal-body">${requestScope.nhanxet}</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="btnmodalClose">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- /.modal -->
 <!--end bản tin-->
 <script type="text/javascript" src="<%=request.getContextPath() %>/public/js/ajax/submitTopic.js"></script>
