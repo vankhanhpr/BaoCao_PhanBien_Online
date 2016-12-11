@@ -90,6 +90,10 @@
 		<td><a href="#nhanxetModal" data-toggle="modal">Xem</a></td>
 	</tr>
 	<tr>
+		<td class="tt_detaiSV">Xếp Loại Đề Tài</td>
+		<td>${requestScope.xl}</td>
+	</tr>
+	<tr>
 		<td class="tt_detaiSV">File bài đã nộp</td>
 		<td><a href="<%=request.getContextPath()%>/Download?id=${requestScope.detai.getMaDT()}" target="_blank">Tải file...</a></td>
 	</tr>

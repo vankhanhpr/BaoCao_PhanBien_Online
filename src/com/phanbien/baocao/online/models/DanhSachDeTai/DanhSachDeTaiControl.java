@@ -248,7 +248,18 @@ public class DanhSachDeTaiControl {
 		}
 		return result;
 	}
-	
+	public String getXepLoaiDT(String MaDT) throws SQLException{
+		
+		String result="";
+		ResultSet rs = this.ds.getXepLoai(MaDT);
+		
+		if (rs != null) {
+			if(rs.next()){
+				result=rs.getString("xeploai");
+			}
+		}
+		return result;
+	}
 	public static void main(String[]arg) throws SQLException{
 		DanhSachDeTaiControl c=new DanhSachDeTaiControl(new ConnectionPool());
 		ArrayList<DeTaiGV_TK> dsd=c.getAllDanhSachDeTai();

@@ -31,7 +31,7 @@ public class XuLyXetDuyet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		ServletContext context = getServletConfig().getServletContext();
 		String MaDT = (String) context.getAttribute("maDT");
-
+		int xeploai=Integer.parseInt((String) request.getParameter("comChucVu"));
 		boolean check = request.getParameterValues("nopbaocao") != null;
 
 		String nhanXet = request.getParameter("nhanxetDT");
@@ -49,7 +49,26 @@ public class XuLyXetDuyet extends HttpServlet {
 		} else {
 			TrangThaiSV = "Không được báo cáo";
 		}
-
+		String xl="";
+		switch (xeploai) {
+		case 1:
+			xl="Không đạt";
+			break;
+		case 2:
+			xl="Trung bình";
+			break;
+		case 3:
+			xl="Khá";
+			break;
+		case 4:
+			xl="Giỏi";
+			break;
+		case 5:
+			xl="Xuất sắc";
+		default:
+			break;
+		}
+		
 		ConnectionPool cp = (ConnectionPool) context.getAttribute("c_pool");
 		XetDuyetDeTaiControl ctdtControl = new XetDuyetDeTaiControl(cp);
 		if (cp == null) {
@@ -57,7 +76,7 @@ public class XuLyXetDuyet extends HttpServlet {
 		}
 		XetDuyetDeTaiControl xddt = new XetDuyetDeTaiControl(cp);
 
-		boolean trangthai = xddt.updateKhiXetDuyet_DeTai(MaDT, nhanXet, "Xét duyệt", TrangThaiSV);
+		boolean trangthai = xddt.updateKhiXetDuyet_DeTai(MaDT, nhanXet, "Xét duyệt", TrangThaiSV,xl);
 		if (trangthai) {
 			response.sendRedirect("danh-sach-de-tai");
 		} else {

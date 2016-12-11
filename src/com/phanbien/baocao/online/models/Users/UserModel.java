@@ -43,7 +43,7 @@ public class UserModel {
 				u.setEmail(rs.getString(7));
 				u.setChuyenNganh(rs.getString(8));
 				u.setKhoa(rs.getString(9));
-				u.setNgaySinh(rs.getDate(10).toString());
+				u.setNgaySinh(rs.getDate(10)==null?"":rs.getDate(10).toString());
 				u.setDiaChi(rs.getString(11));
 				if(rs.getBlob(12)!=null)
 						u.setAvatar(rs.getBlob(12));
