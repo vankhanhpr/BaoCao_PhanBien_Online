@@ -86,9 +86,9 @@ public class EditAvatar extends HttpServlet {
 		
 		session.setAttribute("user", curUser);
 
-//		request.getRequestDispatcher("/thong-tin-ca-nhan/edit?update=success").Re(request, response);
+	request.getRequestDispatcher("/thong-tin-ca-nhan/edit?update=success").forward(request, response);
 			
-		response.sendRedirect("/thong-tin-ca-nhan/edit?update=success");
+		//response.sendRedirect("/thong-tin-ca-nhan/edit?update=success");
 		
 		uControl.releaseConnection();
 
