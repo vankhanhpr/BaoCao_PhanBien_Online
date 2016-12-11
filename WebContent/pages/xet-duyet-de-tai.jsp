@@ -66,6 +66,17 @@
 											</td>
 										</tr>
 										<tr>
+											<td>Xếp Loại:</td>
+											<td><select class="form-control" name="comChucVu">
+													<option value="1">Không đạt</option>
+													<option value="2">Trung bình</option>
+													<option value="3">Khá</option>
+													<option value="4">Giỏi</option>
+													<option value="5">Xuất sắc</option>
+											</select></td>
+
+										</tr>
+										<tr>
 											<td>Nhận Xét:</td>
 											<td><textarea id="danhgia" name="nhanxetDT" class="form-control"
 													rows="4" cols="80"></textarea></td>

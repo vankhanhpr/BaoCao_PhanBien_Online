@@ -70,28 +70,36 @@ public class DanhSachDeTai extends HttpServlet {
 		DeTaiSV gvpb = null;
 		DeTaiSV chutich = null;
 		String nhanxet="";
+		String xl="";
 		HttpSession session=request.getSession();
 		
 		String MaSo=((User)session.getAttribute("user")).getMaSo();
 		try {
 			detai = dsControl.ChiTietDeTaiSV(MaSo);
+			if(detai==null){
+				request.getRequestDispatcher("pages/404page.jsp").forward(request, response);
+				return;
+			}
 			gvhd = dsControl.TenGVHD(detai.getMaDT());
 			uyvien = dsControl.TenUyVien(detai.getMaDT());
 			gvpb = dsControl.TenGVPB(detai.getMaDT());
 			chutich = dsControl.TenChuTich(detai.getMaDT());
 			nhanxet=dsControl.getNhanXetTruocBC(detai.getMaDT());
+			xl=dsControl.getXepLoaiDT(detai.getMaDT());
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
 		
 		dsControl.releaseConnection();
+		
 		request.setAttribute("detai", detai);
 		request.setAttribute("gvhd", gvhd);
 		request.setAttribute("uyvien", uyvien);
 		request.setAttribute("gvpb", gvpb);
 		request.setAttribute("chutich", chutich);	
-		request.setAttribute("nhanxet", nhanxet);	
+		request.setAttribute("nhanxet", nhanxet);
+		request.setAttribute("xl", xl);
 		request.getRequestDispatcher("pages/danh-sach-de-tai.jsp").forward(request, response);
 	}
 	private void doShowDanhSachDeTai_GV_TK(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

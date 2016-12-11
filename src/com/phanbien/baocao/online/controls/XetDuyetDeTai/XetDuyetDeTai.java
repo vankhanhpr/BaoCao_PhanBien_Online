@@ -45,7 +45,7 @@ public class XetDuyetDeTai extends HttpServlet {
 
 		try {
 			ArrayList<String> checkTrangThai=xddt.getTrangThaiXetDuyetDeTai(MaDeTai);
-			if(checkTrangThai.get(1).equals("Xét duyệt") && !checkTrangThai.get(0).equals(currentMaSoUser)){
+			if(checkTrangThai.get(1).equals("Xét duyệt") || !checkTrangThai.get(0).equals(currentMaSoUser)){
 				request.getRequestDispatcher("pages/404page.jsp").forward(request, response);
 				return;
 			}

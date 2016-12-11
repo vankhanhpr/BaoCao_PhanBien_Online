@@ -60,6 +60,16 @@
     <servlet-name>quenmatkhau</servlet-name>
     <url-pattern>/quen-mat-khau</url-pattern>
   </servlet-mapping>
+
+ <servlet>
+    <servlet-name>huongdan</servlet-name>
+    <jsp-file>/pages/huong-dan.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>huongdan</servlet-name>
+    <url-pattern>/huong-dan</url-pattern>
+  </servlet-mapping>
+
   <error-page>
     <error-code>404</error-code>
     <location>/404page.jsp</location>

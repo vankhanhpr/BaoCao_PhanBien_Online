@@ -47,9 +47,9 @@ public class XetDuyetDeTaiDAO {
 		}
 		return dbm.get(pre);
 	}
-	public boolean updateKhiXetDuyet(String MaDT,String NhanXetTruocBC, String TrangThai,String TrangThaiSV) {
+	public boolean updateKhiXetDuyet(String MaDT,String NhanXetTruocBC, String TrangThai,String TrangThaiSV,String XepLoai) {
 		String sql="update quatrinhbaocao set ";
-		sql=sql+" nhanxettruocbc=?, trangthai=?, trangthaisv=? where madt= ?";
+		sql=sql+" nhanxettruocbc=?, trangthai=?, trangthaisv=?,xeploai=? where madt= ?";
 		
 		PreparedStatement pre=null;
 		try{
@@ -57,7 +57,8 @@ public class XetDuyetDeTaiDAO {
 			pre.setString(1, NhanXetTruocBC);
 			pre.setString(2, TrangThai);
 			pre.setString(3, TrangThaiSV);
-			pre.setString(4, MaDT);
+			pre.setString(4, XepLoai);
+			pre.setString(5, MaDT);
 			
 		}catch(SQLException e){
 			System.out.print("FAIL Xet Duyet");

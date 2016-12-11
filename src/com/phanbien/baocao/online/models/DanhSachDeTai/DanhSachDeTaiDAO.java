@@ -261,5 +261,18 @@ public class DanhSachDeTaiDAO {
 
 		return dbm.get(pre);
 	}
+	public ResultSet getXepLoai(String MaDT) {
+		String sql = "	select xeploai from quatrinhbaocao where madt=?";
+
+		PreparedStatement pre = null;
+		try {
+			pre = dbm.getConnect().prepareStatement(sql);
+			pre.setString(1, MaDT);
+		} catch (SQLException e) {
+			System.out.print("FAIL Form Bao Cao.");
+		}
+
+		return dbm.get(pre);
+	}
 
 }

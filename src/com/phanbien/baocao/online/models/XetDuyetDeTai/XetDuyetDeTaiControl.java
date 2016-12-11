@@ -58,8 +58,8 @@ public class XetDuyetDeTaiControl {
 		}
 		return nhom_sv;
 	}
-	public boolean updateKhiXetDuyet_DeTai(String MaDT, String NhanXetTruocBC, String TrangThai, String TrangThaiSV){
-		return xd.updateKhiXetDuyet(MaDT, NhanXetTruocBC, TrangThai, TrangThaiSV);
+	public boolean updateKhiXetDuyet_DeTai(String MaDT, String NhanXetTruocBC, String TrangThai, String TrangThaiSV,String XepLoai){
+		return xd.updateKhiXetDuyet(MaDT, NhanXetTruocBC, TrangThai, TrangThaiSV,XepLoai);
 	}
 	public ArrayList<String> getTrangThaiXetDuyetDeTai(String MaDT) throws SQLException{
 		ArrayList<String> result=new ArrayList<>();

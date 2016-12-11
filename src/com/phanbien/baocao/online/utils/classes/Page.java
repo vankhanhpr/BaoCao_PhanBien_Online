@@ -55,6 +55,6 @@ public class Page {
 	private String report;
 	private String profile;
 	private String viewresult;
-	private String GUIDE = "huong-dan.jsp";
+	private String GUIDE = "huong-dan";
 
 }

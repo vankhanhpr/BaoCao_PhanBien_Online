@@ -23,7 +23,7 @@
 						href="yeu-cau-dang-nhap"
 						class="list-group-item "><span class="pull-right"><i
 							class="icon-chevron-right"></i></span>Xem kết quả</a> <a data-toggle="modal"
-						href="yeu-cau-dang-nhap" class="list-group-item"><span
+						href="<%=request.getContextPath() %>/huong-dan" class="list-group-item"><span
 						class="pull-right"><i class="icon-chevron-right"></i></span>Hướng
 						dẫn</a>
 					</c:if>
@@ -42,7 +42,7 @@
 						href="<%=request.getContextPath() %>/${sessionScope.pages.getViewresult()}"
 						class="list-group-item "><span class="pull-right"><i
 							class="icon-chevron-right"></i></span>Xem kết quả</a> <a data-toggle="modal"
-						href="<%=request.getContextPath() %>/${sessionScope.pages.getGUIDE()}" class="list-group-item"><span
+						href="<%=request.getContextPath() %>/huong-dan" class="list-group-item"><span
 						class="pull-right"><i class="icon-chevron-right"></i></span>Hướng
 						dẫn</a>
 					</c:if>
