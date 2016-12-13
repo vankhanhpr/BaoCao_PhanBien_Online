@@ -1,0 +1,8 @@
+PhpMyAdmin:
+	http://node177687-baocaophanbienonline.jelastic.servint.net/
+
+	root 
+	PILpav41956
+
+URL:
+	https://baocaophanbienonline.jelastic.servint.net/trang-chu
