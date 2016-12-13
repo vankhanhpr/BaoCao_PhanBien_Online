@@ -218,7 +218,8 @@ DROP TABLE IF EXISTS `view_dsdt_chucvu_huongdan`;
   `TenDeTai` varchar(200) default NULL,
   `NgayBaoCao` date default NULL,
   `ThoiGianBC` time default NULL,
-  `TrangThai` varchar(45) default NULL
+  `TrangThai` varchar(45) default NULL,
+  `TrangThaiSV` varchar(45) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 */;
 
 /*Table structure for table `view_dsdt_chucvu_phanbien` */
@@ -545,7 +546,7 @@ CREATE TABLE `xeplich` (
 /*!50001 DROP TABLE IF EXISTS `view_dsdt_chucvu_huongdan` */;
 /*!50001 DROP VIEW IF EXISTS `view_dsdt_chucvu_huongdan` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_dsdt_chucvu_huongdan` AS (select `user`.`MaSo` AS `MaSo`,`detai`.`MaDT` AS `MaDT`,`detai`.`TenDeTai` AS `TenDeTai`,`xeplich`.`NgayBaoCao` AS `NgayBaoCao`,`xeplich`.`ThoiGianBC` AS `ThoiGianBC`,`quatrinhbaocao`.`TrangThai` AS `TrangThai` from (((`user` join `xeplich`) join `detai`) join `quatrinhbaocao`) where ((`user`.`MaSo` = `detai`.`MaGVHD`) and (`detai`.`MaDT` = `quatrinhbaocao`.`MaDT`) and (`detai`.`MaDT` = `xeplich`.`MaDeTai`))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_dsdt_chucvu_huongdan` AS (select `user`.`MaSo` AS `MaSo`,`detai`.`MaDT` AS `MaDT`,`detai`.`TenDeTai` AS `TenDeTai`,`xeplich`.`NgayBaoCao` AS `NgayBaoCao`,`xeplich`.`ThoiGianBC` AS `ThoiGianBC`,`quatrinhbaocao`.`TrangThai` AS `TrangThai`,`quatrinhbaocao`.`TrangThaiSV` AS `TrangThaiSV` from (((`user` join `xeplich`) join `detai`) join `quatrinhbaocao`) where ((`user`.`MaSo` = `detai`.`MaGVHD`) and (`detai`.`MaDT` = `quatrinhbaocao`.`MaDT`) and (`detai`.`MaDT` = `xeplich`.`MaDeTai`))) */;
 
 /*View structure for view view_dsdt_chucvu_phanbien */
 

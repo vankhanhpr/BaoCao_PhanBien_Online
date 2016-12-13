@@ -140,7 +140,7 @@ public class DanhSachDeTaiControl {
 				DeTaiGV_TK ct=new DeTaiGV_TK();
 				
 				DanhSach(ct, rs);
-				
+				ct.setTrangThaiSV(rs.getString(7));
 				dt.add(ct);
 			}
 			rs.close();
@@ -155,7 +155,6 @@ public class DanhSachDeTaiControl {
 		ct.setNgayBaoCao(rs.getDate(4)==null?"":rs.getDate(4).toString());
 		ct.setThoiGianBaoCao(rs.getTime(5)==null?"":rs.getTime(5).toString());
 		ct.setTrangThai(rs.getString(6));
-		
 		ResultSet hd = this.ds.TenGVHD_DeTai(ct.getMaDT());
 		ResultSet uv = this.ds.TenUyVien_DeTai(ct.getMaDT());
 		ResultSet pb = this.ds.TenPhanBien_DeTai(ct.getMaDT());

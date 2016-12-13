@@ -237,7 +237,8 @@ SET character_set_client = utf8;
  1 AS `TenDeTai`,
  1 AS `NgayBaoCao`,
  1 AS `ThoiGianBC`,
- 1 AS `TrangThai`*/;
+ 1 AS `TrangThai`,
+ 1 AS `TrangThaiSV`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -865,7 +866,7 @@ DELIMITER ;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `view_dsdt_chucvu_huongdan` AS (select `user`.`MaSo` AS `MaSo`,`detai`.`MaDT` AS `MaDT`,`detai`.`TenDeTai` AS `TenDeTai`,`xeplich`.`NgayBaoCao` AS `NgayBaoCao`,`xeplich`.`ThoiGianBC` AS `ThoiGianBC`,`quatrinhbaocao`.`TrangThai` AS `TrangThai` from (((`user` join `xeplich`) join `detai`) join `quatrinhbaocao`) where ((`user`.`MaSo` = `detai`.`MaGVHD`) and (`detai`.`MaDT` = `quatrinhbaocao`.`MaDT`) and (`detai`.`MaDT` = `xeplich`.`MaDeTai`))) */;
+/*!50001 VIEW `view_dsdt_chucvu_huongdan` AS (select `user`.`MaSo` AS `MaSo`,`detai`.`MaDT` AS `MaDT`,`detai`.`TenDeTai` AS `TenDeTai`,`xeplich`.`NgayBaoCao` AS `NgayBaoCao`,`xeplich`.`ThoiGianBC` AS `ThoiGianBC`,`quatrinhbaocao`.`TrangThai` AS `TrangThai`,`quatrinhbaocao`.`TrangThaiSV` AS `TrangThaiSV` from (((`user` join `xeplich`) join `detai`) join `quatrinhbaocao`) where ((`user`.`MaSo` = `detai`.`MaGVHD`) and (`detai`.`MaDT` = `quatrinhbaocao`.`MaDT`) and (`detai`.`MaDT` = `xeplich`.`MaDeTai`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1167,4 +1168,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-13 22:03:52
+-- Dump completed on 2016-12-13 22:39:41

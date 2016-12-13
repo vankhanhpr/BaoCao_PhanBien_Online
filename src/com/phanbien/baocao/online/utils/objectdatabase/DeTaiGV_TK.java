@@ -70,7 +70,13 @@ public class DeTaiGV_TK {
 	private String NgayBaoCao;
 	private String ThoiGianBaoCao;
 	private String TrangThai;
-	
+	private String TrangThaiSV;
+	public String getTrangThaiSV() {
+		return TrangThaiSV;
+	}
+	public void setTrangThaiSV(String trangThaiSV) {
+		TrangThaiSV = trangThaiSV;
+	}
 	private String GiangVienPB;
 	private String GiangVienHD;
 	private String UyVien;

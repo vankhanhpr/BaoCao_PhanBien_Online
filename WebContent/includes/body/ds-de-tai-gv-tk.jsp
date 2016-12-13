@@ -34,7 +34,14 @@
 							<a target="_blank" href="#"class="btn btn-danger btn-xs disabled">Đã Xét duyệt </a>
 						</c:when>
 						<c:otherwise>
-							<a href="<%= request.getContextPath()%>/XetDuyetDeTai?id=${hd.getMaDT()}"class="btn btn-success btn-xs">Chưa xét duyệt</a>
+							<c:choose>
+								<c:when test="${hd.getTrangThaiSV()=='Chưa nộp'}">
+								<a href="#"class="btn btn-success btn-xs disabled">Chưa xét duyệt</a>
+							</c:when>
+							<c:otherwise>
+								<a href="<%= request.getContextPath()%>/XetDuyetDeTai?id=${hd.getMaDT()}"class="btn btn-success btn-xs">Chưa xét duyệt</a>
+							</c:otherwise>	
+							</c:choose>
 						</c:otherwise>
 					</c:choose>
 					
