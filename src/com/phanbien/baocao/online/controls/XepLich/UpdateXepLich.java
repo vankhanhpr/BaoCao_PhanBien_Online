@@ -38,8 +38,18 @@ public class UpdateXepLich extends HttpServlet {
 		String ThoiGianBaoCao=request.getParameter("ThoiGianBaoCao").split("/")[1];
 		String ThoiLuong=request.getParameter("ThoiLuong");
 		String GVHD=request.getParameter("GVHD").split("-")[0];
+		if(request.getParameter("PhanBien")==null){
+			response.getWriter().write("error");
+			return;
+		}
+		if(request.getParameter("UyVien")==null){
+			response.getWriter().write("error");
+			return;
+		}
 		String PhanBien=request.getParameter("PhanBien").split("-")[0];
 		String UyVien=request.getParameter("UyVien").split("-")[0];
+		
+		
 		
 		int temp=Integer.parseInt(request.getParameter("ChuTich"));
 		

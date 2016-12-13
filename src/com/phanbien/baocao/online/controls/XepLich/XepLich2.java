@@ -68,8 +68,9 @@ public class XepLich2 extends HttpServlet {
 		ArrayList<DS_GiangVien> dsgv=null;
 		XepLich_DT xldt =null;
 		try {
-			dsgv=xlControl.getDS_GiangVien(temp[0], temp[1], ThoiLuong);
+			
 			xldt=xlControl.getChiTietXepLich(MaDT);
+			dsgv=xlControl.getDS_GiangVien(temp[0], temp[1], ThoiLuong,xldt.getMaGVDH());
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

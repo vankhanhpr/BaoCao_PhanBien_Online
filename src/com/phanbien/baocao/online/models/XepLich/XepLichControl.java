@@ -82,9 +82,9 @@ public class XepLichControl {
 		return dsgv;
 	}
 	
-	public ArrayList<DS_GiangVien> getDS_GiangVien(String NgayBaoCao,String ThoiGianBC,String ThoiLuong) throws SQLException{
+	public ArrayList<DS_GiangVien> getDS_GiangVien(String NgayBaoCao,String ThoiGianBC,String ThoiLuong, String MaGVHD) throws SQLException{
 		ArrayList<DS_GiangVien> dsgv=null;
-		ResultSet rs=ds.getDanhSach_GV(NgayBaoCao, ThoiGianBC, ThoiLuong);
+		ResultSet rs=ds.getDanhSach_GV(NgayBaoCao, ThoiGianBC, ThoiLuong, MaGVHD);
 		
 		if (rs != null) {
 			dsgv = new ArrayList<>();
@@ -107,12 +107,12 @@ public class XepLichControl {
 			String ThoiGianBaoCao,String ThoiLuong){
 		return ds.updateLichBaoCao(MaDT, UyVien, PhanBien, ChuTich, NgayBaoCao, ThoiGianBaoCao, ThoiLuong);
 	}
-	public static void main(String[]arg) throws SQLException{
-		XepLichControl xl=new XepLichControl(new ConnectionPool());
-		ArrayList<DS_GiangVien> ds=xl.getDS_GiangVien("2016-11-22", "9:00", "45");
-		for (DS_GiangVien ds_GiangVien : ds) {
-			System.out.println(ds_GiangVien.getTenGV());
-		}
-	}
+//	public static void main(String[]arg) throws SQLException{
+//		XepLichControl xl=new XepLichControl(new ConnectionPool());
+//		ArrayList<DS_GiangVien> ds=xl.getDS_GiangVien("2016-11-22", "9:00", "45");
+//		for (DS_GiangVien ds_GiangVien : ds) {
+//			System.out.println(ds_GiangVien.getTenGV());
+//		}
+//	}
 	
 }

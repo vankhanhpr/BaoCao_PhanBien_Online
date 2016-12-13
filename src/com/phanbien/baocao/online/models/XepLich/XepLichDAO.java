@@ -82,8 +82,8 @@ public class XepLichDAO {
 		String sql="select * from view_ds_giangvien";
 		return dbm.get(sql);
 	}
-	public ResultSet getDanhSach_GV(String NgayBaoCao, String ThoiGianBaoCao, String ThoiLuong) {
-		String sql="call spDemoXepLich(?,?,?)";
+	public ResultSet getDanhSach_GV(String NgayBaoCao, String ThoiGianBaoCao, String ThoiLuong, String MaGVHD) {
+		String sql="call spDemoXepLich(?,?,?,?)";
 		PreparedStatement pre=null;
 		try{
 			
@@ -91,7 +91,7 @@ public class XepLichDAO {
 			pre.setString(1, NgayBaoCao);
 			pre.setString(2, ThoiGianBaoCao);
 			pre.setString(3, ThoiLuong);
-			
+			pre.setString(4, MaGVHD);
 		}catch(SQLException e){
 			System.out.print("FAIL XepLich");
 		}

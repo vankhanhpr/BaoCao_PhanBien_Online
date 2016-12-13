@@ -718,12 +718,19 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spDemoXepLich`(
      _NgayBaoCao date,
      _ThoiGianBaoCao time,
-     _ThoiLuongBaoCao int
+     _ThoiLuongBaoCao int,
+     _MaGVHD varchar(45)
 )
 BEGIN
 		select user.MaSo,user.HoTen
 		from user
 		where (user.ChucVu!=1) and user.MaSo not in ( select MaSo
+		from view_demo
+        where CONCAT(_NgayBaoCao,' ',_ThoiGianBaoCao) between CONCAT(NgayBaoCao,' ',ThoiGianBC) and (CONCAT(NgayBaoCao, ' ',ThoiGianBC)+INTERVAL ThoiLuong MINUTE)
+        or (CONCAT(_NgayBaoCao, ' ',_ThoiGianBaoCao)+INTERVAL _ThoiLuongBaoCao MINUTE) between CONCAT(NgayBaoCao,' ',ThoiGianBC) and (CONCAT(NgayBaoCao, ' ',ThoiGianBC)+INTERVAL ThoiLuong MINUTE)
+        or CONCAT(NgayBaoCao,' ',ThoiGianBC) between CONCAT(_NgayBaoCao,' ',_ThoiGianBaoCao) and (CONCAT(_NgayBaoCao, ' ',_ThoiGianBaoCao)+INTERVAL _ThoiLuongBaoCao MINUTE)
+        or (CONCAT(NgayBaoCao, ' ',ThoiGianBC)+INTERVAL ThoiLuong MINUTE) between CONCAT(_NgayBaoCao,' ',_ThoiGianBaoCao) and (CONCAT(_NgayBaoCao, ' ',_ThoiGianBaoCao)+INTERVAL _ThoiLuongBaoCao MINUTE)
+        ) and _MaGVHD not in ( select MaSo
 		from view_demo
         where CONCAT(_NgayBaoCao,' ',_ThoiGianBaoCao) between CONCAT(NgayBaoCao,' ',ThoiGianBC) and (CONCAT(NgayBaoCao, ' ',ThoiGianBC)+INTERVAL ThoiLuong MINUTE)
         or (CONCAT(_NgayBaoCao, ' ',_ThoiGianBaoCao)+INTERVAL _ThoiLuongBaoCao MINUTE) between CONCAT(NgayBaoCao,' ',ThoiGianBC) and (CONCAT(NgayBaoCao, ' ',ThoiGianBC)+INTERVAL ThoiLuong MINUTE)
