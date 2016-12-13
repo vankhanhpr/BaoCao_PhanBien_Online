@@ -117,7 +117,7 @@ public class EditProfile extends HttpServlet {
 
 			boolean updateUser = uControl.UpdateUser(curUser);
 			if (!updateUser) {
-				response.getWriter().write("edit?update=error");
+				//response.getWriter().write("edit?update=error");
 				return;
 			}
 
